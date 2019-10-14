@@ -1,0 +1,2 @@
+class ArrivalManagement < ApplicationRecord
+end
