@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_135545) do
 
-  create_table "arrival_managements", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "arrival_date"
-    t.integer "arrival_count"
-  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +25,15 @@ ActiveRecord::Schema.define(version: 2019_10_13_135545) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "Lastname"
+    t.string "Firstname"
+    t.string "Lastname_kana"
+    t.string "Firstname_kana"
+    t.string "PostCode"
+    t.text "Prefecture"
+    t.text "Municipality"
+    t.text "Address"
+    t.string "Telephone"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
