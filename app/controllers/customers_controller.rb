@@ -11,6 +11,9 @@ class CustomersController < ApplicationController
   def edit
   end
 
+  def update
+  end
+  
   def destroy_confirm
   end
 
