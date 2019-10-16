@@ -72,3 +72,4 @@ gem "refile-mini_magick"
 gem 'ransack'
 gem 'paranoia'
 gem 'bootstrap-sass'
+gem "jquery-rails"
