@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-<<<<<<< HEAD
+
 
 	# def initialize
   #   @name = "last_name" + "first_name"
@@ -21,41 +21,36 @@ class Admin::CustomersController < ApplicationController
   def purchase_history
   end
 
-<<<<<<< HEAD
+
   def edit
-    @customer = Customer.find_by(id: params[:id])
+    # @customer = Customer.find_by(id: params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def update
     customer = Customer.find(params[:id])
     customer.update(customer_params)
-    redirect_to "/admin/customers/"
+    redirect_to admin_customer_path(customer)
   end
 
   def destroy_confirm
-=======
+  end
+
   def create
+    customer = Csutomer.new(customer_params)
+    customer.save
+    redirect_to '/admin/customers'
   end
 
-  def edit
-  end
-
-  def update
->>>>>>> master
-  end
 
   def destroy
   end
 
-<<<<<<< HEAD
+
   private
   def customer_params
   	params.require(:customer).permit(:name)
   end
 end
 
-=======
-  def destroy_confirm
-  end
-end
->>>>>>> master
+

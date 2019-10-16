@@ -1,29 +1,91 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <div class="col-lg-10">
   <h1>ユーザー情報編集</h1>
   
-  <form>
-    <div>
-      <label for="name">名前</label>
+
+  <%= form_for @customer, :url => {:action => :update} do |f| %>
+
+  <!-- 姓名 -->
+    <div class=row>
+        <div class="col-lg-3"></div>
+  <div class="col-lg-3">
+      <%= f.label(:last_name, "姓") %>
+      <%= f.text_field :last_name, class:'form-control' %>
+    </div>
+    
+    <div class="col-lg-3">
+      <%= f.label(:first_name, "名") %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
     </div>
 
-  </form>
-  <h2>名前</h2>
-  <h3>姓</h3>
-   <input> <%= @customer.last_name %>
-  <h3>名:<%= @customer.first_name %></h3>
-  <h3>姓（カナ):<%= @customer.lastname_kana %></h3>
-  <h3>名（カナ）:<%= @customer.firstname_kana %></h3>
+  <!-- 姓名（カナ） -->
+  <div class=row>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+        <%= f.label(:lastname_name, "姓（カナ）") %>
+        <%= f.text_field :lastname_kana, class:'form-control' %>
+      </div>
+      
+      <div class="col-lg-3">
+        <%= f.label(:firstname_kana, "名（カナ）") %>
+        <%= f.text_field :firstname_kana, class: 'form-control' %>
+      </div>
+    
+    </div>
+    
+    
+    <!--郵便番号 -->
+
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3">
+          <%= f.label(:post_code, "郵便番号") %>
+          <%= f.text_field :post_code, class:'form-control' %>
+        </div>
+      </div>
   
-  <h2>郵便番号: <%= @customer.post_code %></h2>
-  <h2>住所:<%= @customer.address %></h2>
-  <h2>電話番号:<%= @customer.telephone %></h2>
-  <h2>メールアドレス:<%= @customer.email %></h2>
+    <!-- 住所 -->
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <%= f.label(:address, "住所") %>
+        <%= f.text_area :address, class: 'form-control' %>
+      </div>
+    </div>
+
+
+    <!-- 電話番号 -->
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3">
+          <%= f.label(:telephone, "電話番号") %>
+          <%= f.text_field :telephone, class:'form-control' %>
+        </div>
+      </div>
+
+    <!-- メールアドレス -->
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+          <%= f.label(:email, "メールアドレス") %>
+          <%= f.text_field :email, class:'form-control' %>
+        </div>
+      </div>
+
+
   
-  <%= link_to '変更・編集', edit_admin_customer_path(@customer.id), class: "btn btn-default" %>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="text-center">
+  <%= link_to '変更・編集', edit_admin_customer_path(@customer.id), class: "btn btn-primary" %>
   
-  <%= link_to '退会させる', destroy_confirm_admin_customer_path(@customer.id), class: "btn btn-default" %>
+
+    
+  <%= link_to '退会させる', destroy_confirm_admin_customer_path(@customer.id), class: "btn btn-primary" %>
+</div>
+</div>
   </div>
   </div>
-=======
+  <% end %>
