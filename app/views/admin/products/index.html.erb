@@ -1,0 +1,8 @@
+<h1>商品一覧</h1>
+<% @products.each do |product| %>
+  <%= attachment_image_tag @product, :product_image, :fill, 50, 50, fallback: "/images/no_image.png", size:'50x50' %>
+  <%= product.product_name %>
+  <%= product.artist_id %>
+  <%= product.product_price %>
+<% end %>
+
