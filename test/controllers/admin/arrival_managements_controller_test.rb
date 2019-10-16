@@ -1,18 +1,18 @@
 require 'test_helper'
 
-class ArrivalManagementControllerTest < ActionDispatch::IntegrationTest
+class Admin::ArrivalManagementsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get arrival_management_new_url
+    get admin_arrival_managements_new_url
     assert_response :success
   end
 
   test "should get create" do
-    get arrival_management_create_url
+    get admin_arrival_managements_create_url
     assert_response :success
   end
 
   test "should get index" do
-    get arrival_management_index_url
+    get admin_arrival_managements_index_url
     assert_response :success
   end
 

@@ -1,0 +1,34 @@
+<h1>アーティスト登録</h1>
+  <%= form_for(@artist, url:'/admin/artists') do |f|%>
+
+
+  <%= f.text_field :artist_name %>
+   <%= f.submit '登録' %>
+<% end %>
+
+
+<div class="col-lg-8">
+	<h1>アーティスト一覧</h1>
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th>アーティスト名</th>
+			</tr>
+				</thead>
+				<tbody>
+			<% @artists.each do |artist| %>
+			<tr>
+				<td><%= artist.artist_name %></td>
+				<td><%= link_to "編集", edit_admin_artist_path(artist.id) ,class: "label label-primary" %></td>
+　　　　     </tr>
+           <% end %>
+
+
+	    </tbody>
+	</table>
+	<%= paginate @artists %>
+  </div>
+</div>
+
+
+
