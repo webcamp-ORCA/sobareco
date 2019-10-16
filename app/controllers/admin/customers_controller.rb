@@ -1,15 +1,18 @@
-class Admin::ProductsController < ApplicationController
+class Admin::CustomersController < ApplicationController
 
- def index
+	# def initialize
+  #   @name = "last_name" + "first_name"
+  # end
+
+  def index
     # name = "last_name" + "first_name"
     # @customer = Customer.where(id: params[:id])
     # @customer = Customer.find(params[:id])
     @customers = Customer.all
-    name = "last_name" + "first_name"
   end
 
   def show
-    name = "first_name"
+
     @customer = Customer.find_by(id: params[:id])
   end
 
@@ -17,7 +20,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by(id: params[:id])
   end
 
   def update
@@ -25,10 +28,16 @@ class Admin::ProductsController < ApplicationController
     customer.update(customer_params)
     redirect_to "/admin/customers/"
   end
-  
+
   def destroy_confirm
   end
 
   def destroy
   end
+
+  private
+  def customer_params
+  	params.require(:customer).permit(:name)
+  end
 end
+

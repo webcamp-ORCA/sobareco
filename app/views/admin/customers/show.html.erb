@@ -1,0 +1,19 @@
+<div class="col-lg-10">
+<h1>ユーザー情報</h1>
+
+<h2>名前</h2>
+<h3>姓:<%= @customer.last_name %></h3>
+<h3>名:<%= @customer.first_name %></h3>
+<h3>姓（カナ):<%= @customer.lastname_kana %></h3>
+<h3>名（カナ）:<%= @customer.firstname_kana %></h3>
+
+<h2>郵便番号: <%= @customer.post_code %></h2>
+<h2>住所:<%= @customer.address %></h2>
+<h2>電話番号:<%= @customer.telephone %></h2>
+<h2>メールアドレス:<%= @customer.email %></h2>
+
+<%= link_to '変更・編集', edit_admin_customer_path(@customer.id), class: "btn btn-default" %>
+
+<%= link_to '退会させる', destroy_confirm_admin_customer_path(@customer.id), class: "btn btn-default" %>
+</div>
+</div>
