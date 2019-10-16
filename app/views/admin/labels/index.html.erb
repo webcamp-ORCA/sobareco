@@ -1,0 +1,30 @@
+<h1>レーベル登録</h1>
+  <%= form_for(@label, url:'/admin/labels') do |f|%>
+
+	<%= f.text_field :label_name %>
+	   <%= f.submit '登録' %>
+	<% end %>
+<div class="col-lg-8">
+	<h1>レーベル一覧</h1>
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th>レーベル名</th>
+			</tr>
+				</thead>
+				<tbody>
+			<% @labels.each do |label| %>
+			<tr>
+				<td><%= label.label_name %></td>
+				<td><%= link_to "編集", edit_admin_label_path(label.id) ,class: "label label-primary" %></td>
+	       </tr>
+         <% end %>
+	    </tbody>
+	</table>
+	<%= paginate @labels %>
+   </div>
+</div>
+
+
+
+

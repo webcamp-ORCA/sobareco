@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+<<<<<<< HEAD
 
 	# def initialize
   #   @name = "last_name" + "first_name"
@@ -14,11 +15,13 @@ class Admin::CustomersController < ApplicationController
   def show
 
     @customer = Customer.find_by(id: params[:id])
+
   end
 
   def purchase_history
   end
 
+<<<<<<< HEAD
   def edit
     @customer = Customer.find_by(id: params[:id])
   end
@@ -30,14 +33,29 @@ class Admin::CustomersController < ApplicationController
   end
 
   def destroy_confirm
+=======
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+>>>>>>> master
   end
 
   def destroy
   end
 
+<<<<<<< HEAD
   private
   def customer_params
   	params.require(:customer).permit(:name)
   end
 end
 
+=======
+  def destroy_confirm
+  end
+end
+>>>>>>> master
