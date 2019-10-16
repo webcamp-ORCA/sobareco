@@ -16,13 +16,13 @@ class Admin::ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
-    get admin_artists_update_url
+  test "should get destroy" do
+    get admin_artists_destroy_url
     assert_response :success
   end
 
-  test "should get destroy" do
-    get admin_artists_destroy_url
+  test "should get update" do
+    get admin_artists_update_url
     assert_response :success
   end
 
