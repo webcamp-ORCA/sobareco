@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_10_15_063123) do
+=======
+
+>>>>>>> master
 
   create_table "arrival_managements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "arrival_date"
     t.integer "arrival_count"
+    t.integer "product_id"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "artist_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -45,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_063123) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.integer "product_price"
@@ -57,11 +69,9 @@ ActiveRecord::Schema.define(version: 2019_10_15_063123) do
     t.integer "genre_id"
     t.integer "label_id"
   end
+=======
+>>>>>>> master
 
-  create_table "records", force: :cascade do |t|
-    t.string "song_title"
-    t.integer "disc_number"
-    t.integer "music_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"

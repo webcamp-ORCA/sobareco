@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
 
+<<<<<<< HEAD
   def new
     @product = Product.new
     @product.records.build
@@ -25,4 +26,6 @@ private
     params.require(:product).permit(:name, records_attributes: [:id, :disc_number, :song_title, :_destroy])
   end
 
+=======
+>>>>>>> master
 end
