@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   namespace :admin do
     resources :customers
     resources :orders
@@ -10,17 +11,23 @@ Rails.application.routes.draw do
     resources :arrival_managements
   end
 
+
   namespace :admin do
-    devise_for :admin_users,controllers: {
+   resources :arrival_management
+   resources :product
+   resources :customers do
+    member do
+      get :purchase_history
+      get :destroy_confirm
+    end
+  end
+
+  
+  devise_for :admin_users,controllers: {
         sessions: 'admin/admin_users/sessions',
         registrations: 'admin/admin_users/registrations',
         passwords: 'admin/admin_users/passwords'
       }
-    end
-  resources :product
-
-  devise_for :customers
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
