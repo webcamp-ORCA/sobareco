@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-=======
 
   namespace :admin do
     resources :customers
@@ -12,7 +11,6 @@ Rails.application.routes.draw do
     resources :arrival_managements
   end
 
->>>>>>> master
    resources :arrival_management
    resources :product
    resources :customers do
@@ -21,7 +19,7 @@ Rails.application.routes.draw do
       get :destroy_confirm
     end
   end
-  end
+
 
   devise_for :customers
 
