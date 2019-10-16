@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+ActiveRecord::Schema.define(version: 2019_10_15_050338) do
+
+
 
   create_table "arrival_managements", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -32,22 +35,17 @@
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "Lastname"
-    t.string "Firstname"
-    t.string "Lastname_kana"
-    t.string "Firstname_kana"
-    t.string "PostCode"
-    t.text "Prefecture"
-    t.text "Municipality"
-    t.text "Address"
-    t.string "Telephone"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "lastname_kana"
+    t.string "firstname_kana"
+    t.string "post_code"
+    t.text "prefecture"
+    t.text "municipality"
+    t.text "address"
+    t.string "telephone"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

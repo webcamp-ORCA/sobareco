@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+=======
+
   namespace :admin do
     resources :customers
     resources :orders
@@ -10,8 +12,15 @@ Rails.application.routes.draw do
     resources :arrival_managements
   end
 
+>>>>>>> master
    resources :arrival_management
    resources :product
+   resources :customers do
+    member do
+      get :purchase_history
+      get :destroy_confirm
+    end
+  end
   end
 
   devise_for :customers
