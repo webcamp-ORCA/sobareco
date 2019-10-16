@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
    resources :arrival_management
    resources :product
-  end
 
   devise_for :customers
 
