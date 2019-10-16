@@ -10,12 +10,8 @@ Rails.application.routes.draw do
     resources :arrival_managements
   end
 
- namespace :admin do
-  devise_for :admin_users,controllers: {
-      sessions: 'admin/admin_users/sessions',
-      registrations: 'admin/admin_users/registrations',
-      passwords: 'admin/admin_users/passwords'
-    }
+   resources :arrival_management
+   resources :product
   end
 
   devise_for :customers
