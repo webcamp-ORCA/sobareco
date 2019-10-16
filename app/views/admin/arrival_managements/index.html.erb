@@ -1,0 +1,27 @@
+<h1>入荷登録一覧</h1>
+
+
+<div class="col-lg-8">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>商品名</th>
+				<th>アーティスト名</th>
+				<th>入荷日時</th>
+				<th>入荷個数</th>
+			</tr>
+		</thead>
+	<tbody>
+     <% @arrival.each do |arrival| %>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><%= arrival_date.to_s(:arrival_date_on) %></td>
+				<td><%= arrival.arrival_count %></td>
+　　　　     </tr>
+<% end %>
+<%= paginate @arrival %>
+
+
+
+
