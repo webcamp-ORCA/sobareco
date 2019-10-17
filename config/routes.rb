@@ -12,11 +12,13 @@ Rails.application.routes.draw do
     resources :labels
     resources :genres
     resources :arrival_managements
+
     resources :products do
       get 'destroy_confirm', :on => :member
     end
 
   end
+
 
 namespace :admin do
  devise_for :admin_users,controllers: {
@@ -30,6 +32,6 @@ namespace :admin do
 
 
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-end
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    end

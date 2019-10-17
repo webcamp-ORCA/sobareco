@@ -5,11 +5,12 @@ class Admin::CustomersController < ApplicationController
   #   @name = "last_name" + "first_name"
   # end
 
+  PER = 8
   def index
     # name = "last_name" + "first_name"
     # @customer = Customer.where(id: params[:id])
     # @customer = Customer.find(params[:id])
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(PER)
   end
 
   def show
@@ -19,6 +20,8 @@ class Admin::CustomersController < ApplicationController
   end
 
   def purchase_history
+    @customer = Customer.find_by(id: params[:id])
+    # @orders = @customer.orders Orderモデルが出来上がってから設定
   end
 
 
