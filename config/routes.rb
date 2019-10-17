@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-  namespace :admin do
-   resources :products
-=======
-
   namespace :admin do
     resources :customers
     resources :orders
@@ -12,12 +7,19 @@ Rails.application.routes.draw do
     resources :labels
     resources :genres
     resources :arrival_managements
+    resources :products do
+      get 'destroy_confirm', :on => :member
+    end
+
   end
 
-   resources :arrival_management
-   resources :product
->>>>>>> master
-  end
+namespace :admin do
+ devise_for :admin_users,controllers: {
+     sessions: 'admin/admin_users/sessions',
+     registrations: 'admin/admin_users/registrations',
+     passwords: 'admin/admin_users/passwords'
+   }
+ end
 
   devise_for :customers
 

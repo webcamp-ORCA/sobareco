@@ -12,28 +12,14 @@
   <body>
 
 
-<<<<<<< HEAD
- <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12" style=background-color: ghostwhite;>
-          <div id= "slidemenu">
-            <nav class="navbar-left">
-              <h2>sobareco'</h2>
-            </nav>
-            <nav class="navbar-right">
-            <h4>ログアウト</h4>
-            <p>検索</p>
-            </nav>
 
-          </div>
-=======
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12" style="background-color: ghostwhite";>
       <div id= "slidemenu">
         <div class="col-md-2 col-md-offset-0">
             <h2>sobareco'</h2>
->>>>>>> master
+
         </div>
           <div class="col-md-1 col-md-offset-5">
                <%= link_to "ログイン", new_admin_admin_user_session_path %>
@@ -57,10 +43,10 @@
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <td>商品一覧</td>
+              <td><%= link_to '商品一覧', admin_products_path %></td>
             </tr>
             <tr>
-              <td>商品登録</td>
+              <td><%= link_to '商品登録', new_admin_product_path %></td>
             </tr>
             <tr>
                <td><%= link_to '入荷一覧', admin_arrival_managements_path %></td>
@@ -83,10 +69,7 @@
           </tbody>
         </table>
    </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
     <%= yield %>
   </body>

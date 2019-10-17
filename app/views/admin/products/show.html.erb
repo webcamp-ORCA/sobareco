@@ -1,1 +1,33 @@
 <h1>商品詳細</h1>
+
+  <!-- 商品画像 -->
+  <%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %>
+
+  <p>商品ID：<%= @product.id %></p>
+
+  <!-- 商品名 -->
+  <%= @product.product_name %>
+
+  <p>アーティスト名：<%= @product.artist.artist_name %></p>
+
+  <p>ジャンル名：<%= @product.genre.genre_name %></p>
+
+  <p>レーベル名：<%= @product.label.label_name %></p>
+
+  <p>在庫数：<%= @product.stock %></p>
+
+  <!-- 販売状況 -->
+  <%= @product.product_status %>
+
+  <!-- 編集ボタン -->
+  <%= link_to "編集", edit_admin_product_path %>
+
+  <!-- 削除ボタン -->
+  <%= link_to "削除", destroy_confirm_admin_product_path %>
+
+  <% @records.each do |record| %>
+    <%= record.disc_number %>
+    <%= record.song_title %>
+  <% end %>
+
+
