@@ -13,19 +13,17 @@
 
 
 
- <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12" style="background-color: ghostwhite;">
-          <div id= "slidemenu">
-            <nav class="navbar-left">
-              <h2>sobareco'</h2>
-            </nav>
-            <nav class="navbar-right">
-            <h4>ログアウト</h4>
-            <p>検索</p>
-            </nav>
 
-          </div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12" style="background-color: ghostwhite";>
+      <div id= "slidemenu">
+        <div class="col-md-2 col-md-offset-0">
+            <h2>sobareco'</h2>
+
+
         </div>
           <div class="col-md-1 col-md-offset-5">
                <%= link_to "ログイン" %>
@@ -49,10 +47,10 @@
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <td>商品一覧</td>
+              <td><%= link_to '商品一覧', admin_products_path %></td>
             </tr>
             <tr>
-              <td>商品登録</td>
+              <td><%= link_to '商品登録', new_admin_product_path %></td>
             </tr>
             <tr>
                <td><%= link_to '会員一覧', admin_customers_path %></td>
@@ -79,9 +77,6 @@
         </table>
    </div>
 
-<!--   </div>
-</div> -->
-<!-- 上の<div>タグつけたままだと、メイン部分がサイドバーの下に表示されてしまうため、各自html.erb内の最後に<div>タグ二つを記載して下さい。 -->
 
 
     <%= yield %>
