@@ -1,3 +1,3 @@
-class ApplicationRecord < ActiveRecord::Base
+gitclass ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 end

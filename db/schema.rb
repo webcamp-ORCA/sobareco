@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_10_14_155316) do
 
 
   create_table "arrival_managements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "arrival_date"
-    t.integer "arrival_count"
-    t.integer "product_id"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "artists", force: :cascade do |t|
-    t.string "artist_name"
+  create_table "arrival_managements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "arrival_date"
+    t.integer "arrival_count"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -44,15 +45,18 @@ ActiveRecord::Schema.define(version: 2019_10_14_155316) do
     t.text "municipality"
     t.text "address"
     t.string "telephone"
+    t.integer "prefecture_code"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
+
 
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "labels", force: :cascade do |t|
     t.string "label_name"

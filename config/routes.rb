@@ -3,13 +3,17 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :customers
+    resources :customers do
+      member do
+        get :purchase_history
+        get :destroy_confirm
+      end
+    end
     resources :orders
     resources :artists
     resources :labels
     resources :genres
     resources :arrival_managements
-  end
 
 
   namespace :admin do
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
         registrations: 'admin/admin_users/registrations',
         passwords: 'admin/admin_users/passwords'
       }
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
