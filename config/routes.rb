@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :customers
+    resources :customers do
+      member do
+        get :purchase_history
+        get :destroy_confirm
+      end
+    end
     resources :orders
     resources :artists
     resources :labels
@@ -22,7 +27,6 @@ namespace :admin do
  end
 
   devise_for :customers
-
 
 
 
