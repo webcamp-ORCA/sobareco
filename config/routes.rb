@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :arrival_managements
 
+  end
 
   namespace :admin do
    resources :arrival_management
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
+end
   
   devise_for :admin_users,controllers: {
         sessions: 'admin/admin_users/sessions',
@@ -35,5 +37,4 @@ Rails.application.routes.draw do
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-end
+    end

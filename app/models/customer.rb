@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :orders
   # composed_of :fullname,
   # 	:class_name => "FullName",
   # 	:mapping => [
