@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
 
-<<<<<<< HEAD
+
  def index
     # name = "last_name" + "first_name"
     # @customer = Customer.where(id: params[:id])
@@ -33,4 +33,4 @@ class Admin::ProductsController < ApplicationController
   def destroy
   end
 end
-=======
+

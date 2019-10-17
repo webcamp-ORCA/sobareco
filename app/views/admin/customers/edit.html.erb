@@ -1,8 +1,9 @@
 
 <!DOCTYPE html>
 <div class="col-lg-10">
+  <div class="text-center">
   <h1>ユーザー情報編集</h1>
-  
+</div>
 
   <%= form_for @customer, :url => {:action => :update} do |f| %>
 
@@ -46,15 +47,35 @@
         </div>
       </div>
   
-    <!-- 住所 -->
+    <!-- 都道府県 -->
     <div class="row">
       <div class="col-lg-3"></div>
+   
       <div class="col-lg-6">
         <%= f.label(:address, "住所") %>
-        <%= f.text_area :address, class: 'form-control' %>
+        <p>
+        <%= f.select :prefecture_code, as: :select, collection: JpPrefecture::Prefecture.all {|prefecture| [prefecture.name, prefecture.code]} %> 都道府県を選択してください
+        </p>
       </div>
     </div>
 
+    <!-- 市区町村 -->
+      <div class="row">
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-3">
+          <%= f.text_field :municipality, class: 'form-control' %> 市区郡を入力してください
+        </div>
+      </div>
+  
+      <!-- 町名・番地 -->
+      <div class="row">
+        <div class="col-lg-3"></div>
+
+        <div class= "col-lg-3">
+          <%= f.text_field :address, class: 'form-control' %> 町名・番地を入力してください
+        </div>
+      </div>
 
     <!-- 電話番号 -->
     <div class="row">
@@ -75,15 +96,17 @@
       </div>
 
 
+    
   
   <div class="row">
     <div class="col-lg-3"></div>
     <div class="text-center">
-  <%= link_to '変更・編集', edit_admin_customer_path(@customer.id), class: "btn btn-primary" %>
-  
 
-    
-  <%= link_to '退会させる', destroy_confirm_admin_customer_path(@customer.id), class: "btn btn-primary" %>
+      <!-- f.submit '変更する', class: "btn btn-primary" -->
+
+ <%= link_to '変更する', "/admin/customers/#{@customer.id}", class: "btn btn-primary" %>
+  
+ <!-- admin_customer_path(@customer.id) -->
 </div>
 </div>
   </div>

@@ -34,22 +34,19 @@ class Admin::CustomersController < ApplicationController
   end
 
   def destroy_confirm
+    @customer = Customer.find(params[:id])
   end
-
-  def create
-    customer = Csutomer.new(customer_params)
-    customer.save
-    redirect_to '/admin/customers'
-  end
-
 
   def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to admin_customers_path
   end
 
 
   private
   def customer_params
-  	params.require(:customer).permit(:name)
+  	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_name)
   end
 end
 
