@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   namespace :admin do
     resources :customers do
       member do
@@ -14,24 +12,22 @@ Rails.application.routes.draw do
     resources :labels
     resources :genres
     resources :arrival_managements
-
-
-  namespace :admin do
-   resources :arrival_management
-   resources :product
-   resources :customers do
-    member do
-      get :purchase_history
-      get :destroy_confirm
+    resources :products do
+      get 'destroy_confirm', :on => :member
     end
+
   end
 
-  
-  devise_for :admin_users,controllers: {
-        sessions: 'admin/admin_users/sessions',
-        registrations: 'admin/admin_users/registrations',
-        passwords: 'admin/admin_users/passwords'
-      }
+namespace :admin do
+ devise_for :admin_users,controllers: {
+     sessions: 'admin/admin_users/sessions',
+     registrations: 'admin/admin_users/registrations',
+     passwords: 'admin/admin_users/passwords'
+   }
+ end
+
+  devise_for :customers
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
