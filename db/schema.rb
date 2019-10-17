@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_083813) do
   create_table "cartitems", force: :cascade do |t|
     t.integer "purchase_quantity"
     t.integer "customer_id"
-    t.integer "product_id"    
+    t.integer "product_id"
   end
 
   create_table "customers", force: :cascade do |t|
