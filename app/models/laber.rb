@@ -1,0 +1,2 @@
+class Laber < ApplicationRecord
+end
