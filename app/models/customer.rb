@@ -3,4 +3,26 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # composed_of :fullname,
+  # 	:class_name => "FullName",
+  # 	:mapping => [
+  # 				[ :last_name, :family_name],
+  # 				[ :first_name, :given_name]
+  # 			    ]
+  # 			end
+  # class FullName
+  # 	attr_render :family_name, :given_name
+
+  # 	def initialize(family_name, given_name)
+  # 		@family_name = family_name
+  # 		@given_name = given_name
+  # 	end
+
+  # 	def to_s
+  # 		[@family_name, @given_name].compact.join("")
+  # 	end
+  def name
+  	last_name + first_name
+  end
 end
