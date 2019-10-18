@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+  enums:
+    product:
+      product_status:
+        on_sale: 販売中
+        sold_out: 品切れ

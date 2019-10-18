@@ -1,36 +1,54 @@
 class Admin::ProductsController < ApplicationController
 
-<<<<<<< HEAD
- def index
-    # name = "last_name" + "first_name"
-    # @customer = Customer.where(id: params[:id])
-    # @customer = Customer.find(params[:id])
-    @customers = Customer.all
-    name = "last_name" + "first_name"
-  end
-
-  def show
-    name = "first_name"
-    @customer = Customer.find_by(id: params[:id])
-  end
-
-  def purchase_history
-  end
-
-  def edit
-    @customer = Customer.find(params[:id])
-  end
-
-  def update
-    customer = Customer.find(params[:id])
-    customer.update(customer_params)
-    redirect_to "/admin/customers/"
-  end
-  
-  def destroy_confirm
-  end
-
-  def destroy
-  end
+def new
+  @product = Product.new
+  @product.records.build
 end
-=======
+
+
+def create
+  @product = Product.new(product_params)
+  @product.save
+  redirect_to admin_product_path(@product.id)
+end
+
+def index
+  @products = Product.all
+end
+
+def show
+  @product = Product.find(params[:id])
+  @records = Record.all
+end
+
+def edit
+  @product = Product.find(params[:id])
+end
+
+def update
+  @product = Product.find(params[:id])
+  @product.update(product_params)
+  redirect_to admin_product_path(@product.id)
+end
+
+def destroy_confirm
+  @product = Product.find(params[:id])
+end
+
+def destroy
+  product = Product.find(params[:id])
+  product.destroy
+  redirect_to admin_products_path
+end
+
+private
+  def product_params
+    params.require(:product).permit(:name, :product_image, :product_status, :product_name, :artist_id, :genre_id, :label_id, :product_price, records_attributes: [:id, :disc_number, :song_title, :_destroy])
+  end
+
+
+
+ 
+
+end
+

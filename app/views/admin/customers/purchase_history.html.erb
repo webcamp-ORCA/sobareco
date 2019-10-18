@@ -1,2 +1,54 @@
-<h1>Admin::Customers#purchase_history</h1>
-<p>Find me in app/views/admin/customers/purchase_history.html.erb</p>
+<div class="col-lg-10">
+
+<h1>購入履歴</h1>
+<h2>ユーザー名:<%= @customer.name %></h2>
+
+<!-- @orders.each |order| do -->
+<div class="col-lg-10">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>注文日</th>
+        <th>合計数量</th>
+        <th>合計金額</th>
+        <th>お届け先住所</th>
+
+      </tr>
+      </thead>
+
+
+      <!--  Orderモデル完成後に、変数@orderで書き換える。 -->
+      <tbody>
+        <tr>
+        <td>10月17日</td>
+        <td>2</td>
+        <td>6,000円</td>
+        <td>長野県</td>
+        </tr>
+      </tbody>
+
+    </thead>
+  </table>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <img src="assets/no_image.jpn">
+    </div>
+
+    <div class="col-lg-9">
+      <h2><font color="blue">TATSUYA 〜今宵は長い〜</font></h2>
+      <h3><font color="orange">3,000円</font></h3>
+      <p>アーティスト：小林タツヤ</p>
+      <p>ジャンル：演歌</p>
+
+
+    </div>
+
+  </div>
+
+</div>
+  
+</div>
+</div>
+</div>
+

@@ -605,4 +605,26 @@ firewall...
 
 Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
-ubuntu-bionic login: 
+ubuntu-bionic login: [ 1269.099147] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 1269.099147]   Tx Queue             <0>
+[ 1269.099147]   TDH                  <75>
+[ 1269.099147]   TDT                  <78>
+[ 1269.099147]   next_to_use          <78>
+[ 1269.099147]   next_to_clean        <75>
+[ 1269.099147] buffer_info[next_to_clean]
+[ 1269.099147]   time_stamp           <10003b03f>
+[ 1269.099147]   next_to_watch        <77>
+[ 1269.099147]   jiffies              <10003b2fd>
+[ 1269.099147]   next_to_watch.status <0>
+[ 1270.166661] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 1270.166661]   Tx Queue             <0>
+[ 1270.166661]   TDH                  <75>
+[ 1270.166661]   TDT                  <78>
+[ 1270.166661]   next_to_use          <78>
+[ 1270.166661]   next_to_clean        <75>
+[ 1270.166661] buffer_info[next_to_clean]
+[ 1270.166661]   time_stamp           <10003b03f>
+[ 1270.166661]   next_to_watch        <77>
+[ 1270.166661]   jiffies              <10003b408>
+[ 1270.166661]   next_to_watch.status <0>
+[ 1271.412314] e1000 0000:00:03.0 enp0s3: Reset adapter
