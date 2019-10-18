@@ -1,2 +1,0 @@
-class Gerne < ApplicationRecord
-end

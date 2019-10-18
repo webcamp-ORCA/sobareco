@@ -69,13 +69,13 @@ ActiveRecord::Schema.define(version: 2019_10_17_191752) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "gernes", force: :cascade do |t|
-    t.string "gerne_name"
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "labers", force: :cascade do |t|
+  create_table "labels", force: :cascade do |t|
     t.string "label_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

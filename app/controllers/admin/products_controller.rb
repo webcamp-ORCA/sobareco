@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+before_action :ransack
 
 def new
   @product = Product.new
@@ -46,9 +47,10 @@ private
     params.require(:product).permit(:name, :product_image, :product_status, :product_name, :artist_id, :genre_id, :label_id, :product_price, records_attributes: [:id, :disc_number, :song_title, :_destroy])
   end
 
+ def ransack
+      @q = Product.ransack(params[:q])
+    end
 
-
- 
 
 end
 
