@@ -8,10 +8,14 @@ before_action :ransack
   end
 
   def create
-        artist = Artist.new(artist_params)
-        artist.save
-        redirect_to admin_artists_path
-  end
+         @artist = Artist.new(artist_params)
+        if @artist.save
+        redirect_to admin_products_path
+      else
+        @artists = Artist.page(params[:page]).per(PER)
+        render :index
+   end
+ end
 
   def edit
       @artist = Artist.find(params[:id])
