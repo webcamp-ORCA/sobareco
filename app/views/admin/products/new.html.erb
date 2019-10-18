@@ -11,76 +11,77 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10">
-      <table>
-        <tbody>
           <%= form_for(@product, url: admin_products_path) do |f| %>
-              <tr>
-                <td>商品名</td>
-                <td><%= f.text_field :product_name %></td>
-              </tr>
+            <table>
+              <tbody>
+                <tr>
+                  <td>商品名</td>
+                  <td><%= f.text_field :product_name %></td>
+                </tr>
 
-              <tr>
-                <td>アーティスト名</td>
-                <td><%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択してください" %></td>
-              </tr>
+                <tr>
+                  <td>アーティスト名</td>
+                  <td><%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択してください" %></td>
+                </tr>
 
-              <tr>
-                <td>ジャケット画像</td>
-                <td><%= f.attachment_field :product_image %></td>
-              </tr>
+                <tr>
+                  <td>ジャケット画像</td>
+                  <td><%= f.attachment_field :product_image %></td>
+                </tr>
 
-              <tr>
-                <td>価格(税込)</td>
-                <td><%= f.text_field :product_price %></td>
-              </tr>
+                <tr>
+                  <td>価格(税込)</td>
+                  <td><%= f.text_field :product_price %></td>
+                </tr>
 
-              <tr>
-                <td>レーベル名</td>
-                <td><%= f.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択してください" %></td>
-              </tr>
+                <tr>
+                  <td>レーベル名</td>
+                  <td><%= f.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択してください" %></td>
+                </tr>
 
-              <tr>
-                <td>ジャンル</td>
-                <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択してください" %></td>
-              </tr>
+                <tr>
+                  <td>ジャンル</td>
+                  <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択してください" %></td>
+                </tr>
 
-              <tr>
-                <div class="records">
-                  <th>トラックリスト</th>
+                <tr>
+                  <div class="records">
+                    <th>トラックリスト</th>
+                    <td>
+                      <%= f.fields_for :records do |record| %>
+                        <%= render 'record_fields', f: record %>
+                      <% end %>
+                    </td>
+                  </div>
                   <td>
-                    <%= f.fields_for :records do |record| %>
-                      <%= render 'record_fields', f: record %>
-                    <% end %>
+                  <div class="links">
+                     <%= link_to_add_association "トラックを追加", f, :records %>
+                  </div>
                   </td>
-                </div>
-                <td>
-                <div class="links">
-                   <%= link_to_add_association "トラックを追加", f, :records %>
-                </div>
-                </td>
 
-              </tr>
+                </tr>
 
 
 
 
-              <tr>
-                <td>ステータス</td>
-                <td><%= f.select :product_status, Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %></td>
-              </tr>
+                <tr>
+                  <td>ステータス</td>
+                  <td><%= f.select :product_status, Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %></td>
+                </tr>
 
 
-              <tr>
-                <td><%= f.submit "商品登録" %></td>
-              </tr>
+                <tr>
+                  <td><%= f.submit "商品登録" %></td>
+                </tr>
+
+               </tbody>
+              </table>
             <% end %>
-
-        </tbody>
-      </table>
 
 
 
     </div>
   </div>
 </div>
+
 

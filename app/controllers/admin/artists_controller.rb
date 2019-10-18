@@ -24,7 +24,7 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def destroy
-      artist = Label.find(params[:id])
+      artist = Artist.find(params[:id])
       artist.destroy
       redirect_to admin_artists_path
   end
