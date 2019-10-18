@@ -4,25 +4,17 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :orders
-  # composed_of :fullname,
-  # 	:class_name => "FullName",
-  # 	:mapping => [
-  # 				[ :last_name, :family_name],
-  # 				[ :first_name, :given_name]
-  # 			    ]
-  # 			end
-  # class FullName
-  # 	attr_render :family_name, :given_name
+  has_many :orders, dependent: :destroy
+  validates :name, presence: true
+  validates :post_code, presence: true
+  validates :prefectures, presence: true
+  validates :municipality, presence: true
+  validates :address, presence: true
+  validates :telephone, presence: true
+  validates :email, presence: true
 
-  # 	def initialize(family_name, given_name)
-  # 		@family_name = family_name
-  # 		@given_name = given_name
-  # 	end
-
-  # 	def to_s
-  # 		[@family_name, @given_name].compact.join("")
-  # 	end
+  acts_as_paranoid
+  
   def name
   	last_name + first_name
   end
