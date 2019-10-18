@@ -9,6 +9,7 @@ devise_for :customers
         get :purchase_history
         get :destroy_confirm
       end
+    end
     resources :orders
     resources :artists
     resources :labels
@@ -19,10 +20,12 @@ devise_for :customers
       member do
         get :purchase_history
         get :destroy_confirm
-
-        resources :products do
-          get 'destroy_confirm', :on => :member
+      end
+      resources :products do
+        get 'destroy_confirm', :on => :member
+      end
     end
+  end
 
 
     scope module: :public do
@@ -45,7 +48,7 @@ devise_for :customers
          registrations: 'admin/admin_users/registrations',
          passwords: 'admin/admin_users/passwords'
        }
-     end
+    end
 
 
 end
