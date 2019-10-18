@@ -4,6 +4,7 @@ class Admin::LabelsController < ApplicationController
   def index
       @label = Label.new
       @labels = Label.page(params[:page]).per(PER)
+      @q = Product.ransack(params[:q])
   end
 
   def create
@@ -14,6 +15,7 @@ class Admin::LabelsController < ApplicationController
 
   def edit
        @label = Label.find(params[:id])
+       @q = Product.ransack(params[:q])
   end
 
   def update

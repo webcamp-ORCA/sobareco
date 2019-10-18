@@ -28,7 +28,11 @@
                <%= link_to "ログアウト",  destroy_admin_admin_user_session_path, method: :delete %>
           </div>
           <div class="col-md-1 col-md-offset-1">
-              <p>検索</p>
+            <p>検索</p>
+            <%= search_form_for @q, url: admin_products_path do |f| %>
+              <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
+              <%= f.submit "検索" %>
+            <% end %>
           </div>
       </div>
     </div>
