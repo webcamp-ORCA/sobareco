@@ -1,2 +1,27 @@
-<h1>Admin::Customers#destroy_confirm</h1>
-<p>Find me in app/views/admin/customers/destroy_confirm.html.erb</p>
+
+
+
+
+<div class="col-lg-10">
+  <div class="text-center">
+    <h1>ユーザー削除確認</h1>
+    <h2>このユーザー会員情報を削除します。</h2>
+    <h2>よろしいですか？</h2>
+  </div>
+    <h2>名前</h2>
+    <h3>姓:<%= @customer.last_name %></h3>
+    <h3>名:<%= @customer.first_name %></h3>
+    <h3>姓（カナ):<%= @customer.lastname_kana %></h3>
+    <h3>名（カナ）:<%= @customer.firstname_kana %></h3>
+    
+    <h2>郵便番号: <%= @customer.post_code %></h2>
+    <h2>住所:<%= @customer.address %></h2>
+    <h2>電話番号:<%= @customer.telephone %></h2>
+    <h2>メールアドレス:<%= @customer.email %></h2>
+    
+    <div class="row">
+      <div class="col-lg-3"></div>
+   
+    <%= link_to '詳細ページに戻る', admin_customer_path(@customer), class: "btn btn-primary" %>
+
+    <%= link_to '削除する', "/admin/customers/#{@customer.id}", method: :delete, class: "btn btn-primary" %>

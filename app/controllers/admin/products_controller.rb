@@ -70,3 +70,4 @@ before_action :ransack
 
 
 end
+

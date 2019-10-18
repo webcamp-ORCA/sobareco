@@ -1,2 +1,58 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<<<<<<< HEAD
+
+<div class="col-lg-8">
+
+<h1>会員一覧</h1>
+  <div class="row">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <div class="col-lg-8">
+      <th>ユーザー名</th>
+      </div>
+      <div class="col-lg-2">
+      <th>ユーザー情報</th>
+      </div>
+      <div class="col-lg-2">
+      <th>購入履歴</th>
+    </div>
+    </tr>
+  </thead>
+
+  <div class="row">
+  <% @customers.each do |customer| %>
+  <tbody>
+    <tr>
+
+     <div class="col-lg-8">
+        <td>
+          <%= link_to customer.name, admin_customer_path(customer.id) %>
+        </td>
+
+    </div>
+    <div class="col-lg-2">
+
+        <td>
+      <%= link_to '編集', edit_admin_customer_path(customer.id), class: "btn btn-primary" %>
+        </td>
+
+      </div>
+
+      <div class="col-lg-2">
+      <td>
+        <%= link_to '購入履歴', purchase_history_admin_customer_path(customer.id), class: "btn btn-primary" %>
+
+        </td>
+      </div>
+  </tr>
+  </tbody>
+  <% end %>
+
+  </table>
+  <%= paginate @customers, class: "pagenate" %>
+</div>
+</div>
+
+
+
+

@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_10_15_063123) do
 
+
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,15 +33,15 @@ ActiveRecord::Schema.define(version: 2019_10_15_063123) do
   create_table "arrival_managements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "arrival_date"
-    t.integer "arrival_count"
-    t.integer "product_id"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "artists", force: :cascade do |t|
-    t.string "artist_name"
+  create_table "arrival_managements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "arrival_date"
+    t.integer "arrival_count"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -49,22 +50,18 @@ ActiveRecord::Schema.define(version: 2019_10_15_063123) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "Lastname"
-    t.string "Firstname"
-    t.string "Lastname_kana"
-    t.string "Firstname_kana"
-    t.string "PostCode"
-    t.text "Prefecture"
-    t.text "Municipality"
-    t.text "Address"
-    t.string "Telephone"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "lastname_kana"
+    t.string "firstname_kana"
+    t.string "post_code"
+    t.text "prefecture"
+    t.text "municipality"
+    t.text "address"
+    t.string "telephone"
+    t.integer "prefecture_code"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -94,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_063123) do
     t.integer "label_id"
   end
 
+
   create_table "records", force: :cascade do |t|
     t.string "song_title"
     t.integer "disc_number"
@@ -103,4 +101,37 @@ ActiveRecord::Schema.define(version: 2019_10_15_063123) do
     t.integer "product_id"
   end
 
+
+  create_table "labels", force: :cascade do |t|
+    t.string "label_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_name"
+    t.integer "product_price"
+    t.string "product_image_id"
+    t.integer "product_status"
+    t.integer "stock_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+   create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 end
