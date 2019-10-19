@@ -41,15 +41,24 @@ Rails.application.routes.draw do
   end
 
 
+  namespace :admin do
+   resources :arrival_management
+   resources :product
+   resources :customers do
+    member do
+      get :purchase_history
+      get :destroy_confirm
 
+    end
+  end
+  resources :products do
+      get 'destroy_confirm', :on => :member
 
+    end
 
-  # devise_for :customers
-  # end
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
 
 end
+
 
 
