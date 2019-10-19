@@ -23,7 +23,13 @@ Rails.application.routes.draw do
        }
   end
 
+    devise_for :customers,contrtollers: {
+          sessions: 'public/customers/sessions',
+          registrations: 'public/customers/registrations',
+          passwords: 'public/customers/passwords'
+    }
   scope module: :public do
+
     resources :customers do
      get 'destroy_confilm',:on => :member
     end
@@ -32,8 +38,10 @@ Rails.application.routes.draw do
     end
     resources :products
     resources :deliveries
-    resources :cart_item
-    devise_for :customers
+    resources :cart_items
+
+    
+
   end
 
 
