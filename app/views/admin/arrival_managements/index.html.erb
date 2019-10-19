@@ -14,9 +14,9 @@
 	<tbody>
      <% @arrival.each do |arrival| %>
 			<tr>
-				<td></td>
-				<td></td>
-				<td><%= arrival_date.to_s(:arrival_date_on) %></td>
+				<td><%= arrival.product_id %></td>
+				<td>アーティスト名</td>
+				<td><%= arrival.arrival_date %></td>
 				<td><%= arrival.arrival_count %></td>
 　　　　     </tr>
 <% end %>

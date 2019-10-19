@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  acts_as_paranoid
   has_many :records, dependent: :destroy
   attachment :product_image
   accepts_nested_attributes_for :records, reject_if: :all_blank, allow_destroy: true
@@ -11,6 +12,7 @@ class Product < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   belongs_to :genre
+  has_many :arrival_management
 
     def stock
       return 0

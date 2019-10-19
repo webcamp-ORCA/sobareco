@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-10">
+    <div class="col-lg-8">
       <table>
         <tbody>
           <% @products.each do |product| %>
@@ -23,7 +23,45 @@
 
         </tbody>
       </table>
-
+      <%= paginate @products %>
     </div>
+
+    <div class="row">
+      <div class="col-lg-2">
+        <table class="table navbar-fixed-right">
+          <tbody>
+            <tr>
+              <td><%= link_to '商品一覧', admin_products_path %></td>
+            </tr>
+            <tr>
+              <td><%= link_to '商品登録', new_admin_product_path %></td>
+            </tr>
+            <tr>
+               <td><%= link_to '会員一覧', admin_customers_path %></td>
+            </tr>
+            <tr>
+               <td><%= link_to '入荷一覧', admin_arrival_managements_path %></td>
+            </tr>
+            <tr>
+              <td><%= link_to '入荷登録', new_admin_arrival_management_path %></td>
+            </tr>
+            <tr>
+              <td><%= link_to '注文一覧',  admin_orders_path %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'アーティスト一覧', admin_artists_path %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'レーベル登録', admin_labels_path %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'ジャンル登録', admin_genres_path %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+   </div>
+
   </div>
 </div>
+
