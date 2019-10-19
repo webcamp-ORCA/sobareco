@@ -1,5 +1,5 @@
 class Admin::ArrivalManagementsController < ApplicationController
-
+    before_action :ransack
 
   PER = 8
   def new
@@ -25,6 +25,9 @@ class Admin::ArrivalManagementsController < ApplicationController
         params.require(:arrival_management).permit(:arrival_date, :arrival_count)
     end
 
+    def ransack
+        @q = Product.ransack(params[:q])
+      end
 
 
 end

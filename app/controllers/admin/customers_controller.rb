@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-
+  before_action :ransack
 
 	# def initialize
   #   @name = "last_name" + "first_name"
@@ -50,6 +50,10 @@ class Admin::CustomersController < ApplicationController
   private
   def customer_params
   	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_name)
+  end
+
+  def ransack
+    @q = Product.ransack(params[:q])
   end
 end
 
