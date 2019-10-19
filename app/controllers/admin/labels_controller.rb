@@ -1,5 +1,7 @@
 class Admin::LabelsController < ApplicationController
+
 before_action :ransack
+
   PER = 8
   def index
       @label = Label.new
@@ -39,9 +41,9 @@ before_action :ransack
     def label_params
         params.require(:label).permit(:label_name)
     end
-     def ransack
-      @q = Product.ransack(params[:q])
-    end
+   
 
-
+    def ransack
+        @q = Product.ransack(params[:q])
+      end
 end
