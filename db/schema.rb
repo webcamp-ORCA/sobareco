@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_10_18_083813) do
-
+ActiveRecord::Schema.define(version: 2019_10_18_140129) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,14 +41,14 @@ ActiveRecord::Schema.define(version: 2019_10_18_083813) do
     t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
   end
 
   create_table "cartitems", force: :cascade do |t|
     t.integer "purchase_quantity"
     t.integer "customer_id"
-    t.integer "product_id"    
-
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -82,7 +80,6 @@ ActiveRecord::Schema.define(version: 2019_10_18_083813) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-
   create_table "deliveries", force: :cascade do |t|
     t.string "name"
     t.string "post_code"
@@ -100,12 +97,11 @@ ActiveRecord::Schema.define(version: 2019_10_18_083813) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "labers", force: :cascade do |t|
+  create_table "labels", force: :cascade do |t|
     t.string "label_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "products", force: :cascade do |t|
     t.string "product_name"

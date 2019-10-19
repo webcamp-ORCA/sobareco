@@ -1,6 +1,14 @@
 <h1>アーティスト登録</h1>
-  <%= form_for(@artist, url:'/admin/artists') do |f|%>
 
+<% if @artist.errors.any? %>
+            <%= @artist.errors.count %>件のerrorが発生しました
+            <% @artist.errors.full_messages.each do |message| %>
+                <%= message %>
+            <% end %>
+        <% end %>
+
+
+ <%= form_for(@artist, url: admin_artists_path , method: :post) do |f|%>
 
   <%= f.text_field :artist_name %>
    <%= f.submit '登録' %>
@@ -16,6 +24,10 @@
 			</tr>
 				</thead>
 				<tbody>
+
+
+
+
 			<% @artists.each do |artist| %>
 			<tr>
 				<td><%= artist.artist_name %></td>
@@ -29,6 +41,4 @@
 	<%= paginate @artists %>
   </div>
 </div>
-
-
 
