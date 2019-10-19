@@ -50,24 +50,16 @@ Rails.application.routes.draw do
     member do
       get :purchase_history
       get :destroy_confirm
-    resources :products do
+
+    end
+  end
+  resources :products do
       get 'destroy_confirm', :on => :member
 
     end
 
   end
 
-
-  
-  devise_for :admin_users,controllers: {
-        sessions: 'admin/admin_users/sessions',
-        registrations: 'admin/admin_users/registrations',
-        passwords: 'admin/admin_users/passwords'
-      }
-
-    end
-  resources :product
-  devise_for :customers
 
 
 namespace :admin do
@@ -84,4 +76,4 @@ namespace :admin do
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    end
+end

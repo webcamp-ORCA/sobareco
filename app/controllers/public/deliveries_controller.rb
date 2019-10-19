@@ -1,5 +1,6 @@
 class Public::DeliveriesController < ApplicationController
   def index
+    @deliveries = Derivery.page(params[:page])
   end
   
   def new
