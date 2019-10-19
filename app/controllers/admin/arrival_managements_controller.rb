@@ -1,5 +1,6 @@
 class Admin::ArrivalManagementsController < ApplicationController
-    before_action :ransack
+
+before_action :ransack
 
   PER = 8
   def new
@@ -26,8 +27,11 @@ class Admin::ArrivalManagementsController < ApplicationController
     end
 
     def ransack
-        @q = Product.ransack(params[:q])
-      end
+
+      @q = Product.ransack(params[:q])
+    end
+
+
 
 
 end

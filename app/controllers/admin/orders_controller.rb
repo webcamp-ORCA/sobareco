@@ -1,13 +1,18 @@
 class Admin::OrdersController < ApplicationController
-  before_action :ransack
+
+before_action :ransack
+
+
   def index
   end
 
   def update
   end
 
-  private
+
+private
   def ransack
-    @q = Product.ransack(params[:q])
-  end
+      @q = Product.ransack(params[:q])
+    end
+
 end

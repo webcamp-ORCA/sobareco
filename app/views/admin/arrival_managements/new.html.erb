@@ -2,8 +2,9 @@
       	<h1>入荷登録</h1>
 		  <%= form_for(@arrival, url: '/admin/arrival_managements') do |f|%>
 		  <label class="control-label" for="">商品登録</label>
+		   <%= f.text_field :product_id, class: 'form-control' %>
 			    <label class="control-label" for="">入荷日時</label>
-			  <%= f.date_select :arrival_date, {}, class: 'form-control' %>
+			 <%= f.date_field :arrival_date, class: 'form-control' %>
 			    <label class="control-label" for="">入荷個数</label>
 			  <%= f.text_field :arrival_count, class: 'form-control' %>
 			   <%= f.submit '登録'  ,class: "col-xs-7 btn btn-primary "%>

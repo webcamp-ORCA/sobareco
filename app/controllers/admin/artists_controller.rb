@@ -1,5 +1,6 @@
 class Admin::ArtistsController < ApplicationController
-    before_action :ransack
+
+before_action :ransack
 
    PER = 8
   def index
@@ -8,10 +9,14 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def create
-        artist = Artist.new(artist_params)
-        artist.save
-        redirect_to admin_artists_path
-  end
+         @artist = Artist.new(artist_params)
+        if @artist.save
+        redirect_to admin_products_path
+      else
+        @artists = Artist.page(params[:page]).per(PER)
+        render :index
+   end
+ end
 
   def edit
       @artist = Artist.find(params[:id])
@@ -35,7 +40,10 @@ class Admin::ArtistsController < ApplicationController
         params.require(:artist).permit(:artist_name)
     end
 
-    def ransack
-        @q = Product.ransack(params[:q])
-      end
+
+     def ransack
+      @q = Product.ransack(params[:q])
+    end
+
+
 end
