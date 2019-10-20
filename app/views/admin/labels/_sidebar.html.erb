@@ -1,36 +1,17 @@
-<%= render 'sidebar'%>
-<h1>商品一覧</h1>
-
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-lg-8">
-      <table>
-        <tbody>
-          <% @products.each do |product| %>
-            <%= link_to admin_product_path(product.id) do %>
-              <tr><%= attachment_image_tag product, :product_image, :fill, 100, 100, fallback: "no_image.png", size:'100x100' %></tr><br>
-
-              <tr><%= product.product_name %></tr>
-
-              <tr><% if product.artist_id.nil?%>
-                いません
-              <% else %>
-                <%= product.artist.artist_name %>
-              <% end %>
-
-              <tr><%= product.product_price %>円</tr><br>
-            <% end %>
-          <% end %>
-
-        </tbody>
-      </table>
-      <%= paginate @products %>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-2">
-        <table class="table navbar-fixed-right">
+    <div class="col-lg-2">
+        <table class="table table-bordered">
           <tbody>
+
+      <tr>
+         <td>
+            <%= search_form_for @q, url: admin_products_path do |f| %>
+              <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
+              <%= f.submit "検索" %>
+            <% end %>
+         </td>
+       </tr>
             <tr>
               <td><%= link_to '商品一覧', admin_products_path %></td>
             </tr>
@@ -60,9 +41,4 @@
             </tr>
           </tbody>
         </table>
-      </div>
    </div>
-
-  </div>
-</div>
-

@@ -27,7 +27,13 @@ Rails.application.routes.draw do
        }
   end
 
+    devise_for :customers,contrtollers: {
+          sessions: 'public/customers/sessions',
+          registrations: 'public/customers/registrations',
+          passwords: 'public/customers/passwords'
+    }
   scope module: :public do
+
     resources :customers do
      get 'destroy_confirm',:on => :member
      get 'address_index', :on => :member
@@ -37,20 +43,31 @@ Rails.application.routes.draw do
     end
     resources :products
     resources :deliveries
-    resources :cart_item
-    devise_for :customers
+    resources :cart_items
+
+    
+
   end
 
 
+  namespace :admin do
+   resources :arrival_management
+   resources :product
+   resources :customers do
+    member do
+      get :purchase_history
+      get :destroy_confirm
 
+    end
+  end
+  resources :products do
+      get 'destroy_confirm', :on => :member
 
+    end
 
-  # devise_for :customers
-  # end
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
 
 end
+
 
 

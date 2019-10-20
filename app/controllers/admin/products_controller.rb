@@ -1,8 +1,6 @@
 class Admin::ProductsController < ApplicationController
 before_action :ransack
 
-before_action :ransack
-
   PER = 5
 
   def new
