@@ -8,49 +8,6 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
   </div>
 
- <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "姓" %>
-  </div>
-<div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "名" %>
-  </div>
-<div class="field">
-    <%= f.label :last_name_kana %><br />
-    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "姓(カナ)" %>
-  </div>
-<div class="field">
-    <%= f.label :first_name_kana %><br />
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "名(カナ)" %>
-  </div>
-<div class="field">
-    <%= f.label :post_code %><br />
-    <%= f.text_field :post_code, autofocus: true, autocomplete: "郵便番号" %>
-  </div>
-  <div class="field">
-     <%= f.label(:address, "住所") %>
-        <p>
-        <%= f.select :prefecture_code, as: :select, collection: JpPrefecture::Prefecture.all {|prefecture| [prefecture.name, prefecture.code]} %> 都道府県を選択してください
-        </p>
-    </div>
-<div class="field">
-    <%= f.label :municipality %><br />
-    <%= f.text_field :municipality, autofocus: true, autocomplete: "市区群" %>
-  </div>
-
-<div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "町名番地" %>
-  </div>
-
-<div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "電話番号" %>
-  </div>
-
-
-
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

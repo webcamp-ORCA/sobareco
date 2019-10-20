@@ -13,7 +13,6 @@
 
 
 
- new_customer_registration
 
 
 <div class="container-fluid">
@@ -26,20 +25,26 @@
                     <!--  管理者側ヘッダー -->
 
           <li class="">
-            <%= link_to "ログイン(管理者）",  new_admin_admin_user_registration_path %>
+            <%= link_to "ログイン(管理者）",  new_admin_user_registration_path %>
           </li>
           <li class="listbar">
-            <%= link_to "ログアウト(管理者側)", admin_admin_user_registration_path, method: :delete %>
+            <%= link_to "ログアウト(管理者側)", admin_user_registration_path, method: :delete %>
           </li>
           <!--  ユーザー側ヘッダー -->
            <li class="listbar">
-            <%= link_to "マイページ" %>
+            <%= link_to "マイページ"  %>
+          </li>
+            <li class="listbar">
+            <%= link_to "購入履歴一覧", orders_path  %>
+          </li>
+　　　　　　　<li class="listbar">
+            <%= link_to "購入画面", new_order_path  %>
           </li>
           <li class="listbar">
            <%= link_to "カート" %>
            </li>
            <li class="listbar">
-           <%= link_to "新規登録",new_customer_registration_path %>
+           <%= link_to "新規登録", new_customer_registration_path %>
            </li>
           <li class="">
             <%= link_to "ログイン（ユーザー)",new_customer_session_path  %>
@@ -56,9 +61,6 @@
 
 
     <%= yield %>
- 
-  
+
   </body>
 </html>
-
-

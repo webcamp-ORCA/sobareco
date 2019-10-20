@@ -2,13 +2,14 @@ class Public::OrdersController < ApplicationController
 
    before_action :ransack
 
+
 # 　購入画面
    def new
-    # @order = Order.new
-     # @customer = Order.find(params[:id])
-     # @order = Order.find(params[:id])
-     @orders = Order.all
+     @order = Order.new
+     @customer = current_customer
+     @customers = Order.all
   end
+
 
   def create
     @order = Order.new
@@ -19,6 +20,8 @@ class Public::OrdersController < ApplicationController
 # 購入履歴詳細
 
   def show
+
+
   end
 
 # 　　注文確認画面
