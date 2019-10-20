@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
 
 
-    devise_for :admin_users,controllers: {
+    devise_for :admin_users, :controllers => {
           sessions: 'admin/admin_users/sessions',
           registrations: 'admin/admin_users/registrations',
           passwords: 'admin/admin_users/passwords'
@@ -29,7 +29,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :customers do
-     get 'destroy_confilm',:on => :member
+     get 'destroy_confirm',:on => :member
+     get 'address_index', :on => :member
     end
     resources :orders do
      get 'order_confirm',:on => :member

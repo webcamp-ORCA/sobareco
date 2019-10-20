@@ -12,6 +12,7 @@ before_action :ransack
     # @customer = Customer.where(id: params[:id])
     # @customer = Customer.find(params[:id])
     @customers = Customer.page(params[:page]).per(PER)
+
   end
 
   def show

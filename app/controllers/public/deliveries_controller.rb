@@ -1,4 +1,5 @@
 class Public::DeliveriesController < ApplicationController
+  before_action :ransack
   def index
   end
   
@@ -16,5 +17,11 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def ransack
+
+    @q = Product.ransack(params[:q])
   end
 end

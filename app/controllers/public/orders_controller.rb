@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :ransack
   def show
   end
 
@@ -12,5 +13,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+  end
+
+  private
+  def ransack
+
+    @q = Product.ransack(params[:q])
   end
 end
