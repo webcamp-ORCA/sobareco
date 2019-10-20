@@ -1,28 +1,71 @@
-<h2>Sign up</h2>
+<h2>アカウントを作成</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
   </div>
+
+ <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "姓" %>
+  </div>
+<div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "名" %>
+  </div>
+<div class="field">
+    <%= f.label :last_name_kana %><br />
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "姓(カナ)" %>
+  </div>
+<div class="field">
+    <%= f.label :first_name_kana %><br />
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "名(カナ)" %>
+  </div>
+<div class="field">
+    <%= f.label :post_code %><br />
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "郵便番号" %>
+  </div>
+  <div class="field">
+     <%= f.label(:address, "住所") %>
+        <p>
+        <%= f.select :prefecture_code, as: :select, collection: JpPrefecture::Prefecture.all {|prefecture| [prefecture.name, prefecture.code]} %> 都道府県を選択してください
+        </p>
+    </div>
+<div class="field">
+    <%= f.label :municipality %><br />
+    <%= f.text_field :municipality, autofocus: true, autocomplete: "市区群" %>
+  </div>
+
+<div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "町名番地" %>
+  </div>
+
+<div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "電話番号" %>
+  </div>
+
+
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "パスワード" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary"%>
   </div>
 <% end %>
 

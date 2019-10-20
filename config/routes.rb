@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :deliveries
     resources :cart_items
 
-    
+
 
   end
 
