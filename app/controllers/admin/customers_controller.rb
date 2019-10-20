@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
 before_action :ransack
+
 	# def initialize
   #   @name = "last_name" + "first_name"
   # end
@@ -53,9 +54,11 @@ before_action :ransack
   end
 
 
+
    def ransack
       @q = Product.ransack(params[:q])
     end
+
 
 end
 

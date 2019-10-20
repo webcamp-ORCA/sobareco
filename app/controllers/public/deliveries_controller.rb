@@ -1,6 +1,7 @@
 class Public::DeliveriesController < ApplicationController
   before_action :ransack
   def index
+    @deliveries = Derivery.page(params[:page])
   end
 
   def new
