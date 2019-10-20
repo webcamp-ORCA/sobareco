@@ -1,10 +1,11 @@
+<%= render 'sidebar'%>
 <h1>入荷登録一覧</h1>
-
 
 <div class="col-lg-8">
 	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th>商品id</th>
 				<th>商品名</th>
 				<th>アーティスト名</th>
 				<th>入荷日時</th>
@@ -15,7 +16,8 @@
      <% @arrival.each do |arrival| %>
 			<tr>
 				<td><%= arrival.product_id %></td>
-				<td>アーティスト名</td>
+				<td><%= arrival.product.product_name %></td>
+				<td><%= arrival.product.artist.artist_name %></td>
 				<td><%= arrival.arrival_date %></td>
 				<td><%= arrival.arrival_count %></td>
 　　　　     </tr>

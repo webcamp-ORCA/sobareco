@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Public::Custemer::PasswordsController < Devise::PasswordsController
+class Public::Customers::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new
   #   super

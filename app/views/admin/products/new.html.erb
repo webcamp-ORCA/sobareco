@@ -1,3 +1,4 @@
+<%= render 'sidebar'%>
 <h1>商品登録</h1>
 <% if @product.errors.any? %>
     <h2><%= @product.errors.count %> errors prohibited this obj from being saved:</h2>
@@ -7,7 +8,6 @@
       <% end %>
     </ul>
 <% end %>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-10">
