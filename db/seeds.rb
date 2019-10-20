@@ -16,6 +16,6 @@ Customer.create!(
 	municipality: '千曲市横田町',
 	address: '1-2-2',
 	telephone: 'xxx-xxxx-xxxx',
-	email: 'kobaba@hot.sss',
+	email: 'kobaba@hotmail.ppp',
 	password: '111111',
 	)

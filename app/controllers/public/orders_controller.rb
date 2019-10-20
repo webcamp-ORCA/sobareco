@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+
    before_action :ransack
 
 # 　購入画面
@@ -16,6 +17,7 @@ class Public::OrdersController < ApplicationController
   end
 
 # 購入履歴詳細
+
   def show
   end
 
@@ -29,6 +31,7 @@ class Public::OrdersController < ApplicationController
   end
 
 
+
    private
     def order_params
         params.require(:order).permit(:settlement_method,:delivery_preferred_date,:postage,:delivery_status,:total_amount,:addresses,:customer_id,:post_code,:prefectures,:municipality,:address,:address)
@@ -37,6 +40,7 @@ class Public::OrdersController < ApplicationController
    def ransack
       @q = Product.ransack(params[:q])
    end
+
 end
 
 

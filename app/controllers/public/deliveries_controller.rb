@@ -1,6 +1,7 @@
 class Public::DeliveriesController < ApplicationController
   before_action :ransack
   def index
+    @deliveries = Derivery.page(params[:page])
   end
 
   def new
@@ -19,8 +20,10 @@ class Public::DeliveriesController < ApplicationController
   def destroy
   end
 
+
    private
    def ransack
       @q = Product.ransack(params[:q])
     end
+
 end

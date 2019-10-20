@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   namespace :admin do
     resources :orders
     resources :artists
@@ -12,11 +13,14 @@ Rails.application.routes.draw do
         get :destroy_confirm
       end
     end
+
+
     resources :products do
       get 'destroy_confirm', :on => :member
     end
 
-    devise_for :admin_users,controllers: {
+
+    devise_for :admin_users, :controllers => {
           sessions: 'admin/admin_users/sessions',
           registrations: 'admin/admin_users/registrations',
           passwords: 'admin/admin_users/passwords'
@@ -31,7 +35,8 @@ Rails.application.routes.draw do
   scope module: :public do
 
     resources :customers do
-     get 'destroy_confilm',:on => :member
+     get 'destroy_confirm',:on => :member
+     get 'address_index', :on => :member
     end
     resources :orders do
      get 'order_confirm',:on => :member
@@ -40,15 +45,25 @@ Rails.application.routes.draw do
     resources :deliveries
     resources :cart_items
 
-
-
   end
 
 
-
-
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+   resources :arrival_management
+   resources :product
+   resources :customers do
+    member do
+      get :purchase_history
+      get :destroy_confirm
+    end
+  end
 end
+  resources :products do
+      get 'destroy_confirm', :on => :member
+
+    end
+
+end
+
+
 

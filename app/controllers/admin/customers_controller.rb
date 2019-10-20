@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
 before_action :ransack
+
 	# def initialize
   #   @name = "last_name" + "first_name"
   # end
@@ -11,6 +12,7 @@ before_action :ransack
     # @customer = Customer.where(id: params[:id])
     # @customer = Customer.find(params[:id])
     @customers = Customer.page(params[:page]).per(PER)
+
   end
 
   def show
@@ -53,9 +55,11 @@ before_action :ransack
   end
 
 
+
    def ransack
       @q = Product.ransack(params[:q])
     end
+
 
 end
 
