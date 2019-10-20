@@ -8,6 +8,18 @@ class Public::OrdersController < ApplicationController
      @order = Order.new
      @customer = current_customer
      @customers = Order.all
+
+     # 売れた数だけレコードを取得してレコードロック
+    arrival_managements = .lock.where(item_id: item_id).limit order_count
+
+      # 在庫データが購入数取得できなければ、在庫切れとして例外を投げる
+    if arrival_managements.count < order_count
+      errors.add(:base, 'out of  arrival_management')
+      raise ActiveRecord::RecordInvalid.new(self), 'out of arrival_management'
+    end
+     # 足りていればその在庫分削除
+     arrival_managements.destroy_all
+
   end
 
 
@@ -20,11 +32,10 @@ class Public::OrdersController < ApplicationController
 # 購入履歴詳細
 
   def show
-
-
   end
 
-# 　　注文確認画面
+
+# 注文確認画面
   def order_confirm
     @orders = Order.all
   end
