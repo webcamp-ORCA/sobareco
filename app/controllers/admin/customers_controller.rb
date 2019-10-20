@@ -4,10 +4,6 @@ before_action :ransack
 	# def initialize
   #   @name = "last_name" + "first_name"
   # end
-  def new 
-    
-  end
-
 
   PER = 8
   def index
