@@ -20,8 +20,10 @@ class Public::DeliveriesController < ApplicationController
   def destroy
   end
 
+
    private
    def ransack
       @q = Product.ransack(params[:q])
     end
+
 end

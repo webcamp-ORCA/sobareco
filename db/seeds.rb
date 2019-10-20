@@ -14,6 +14,6 @@ Customer.create!(
 	post_code: '000-0000',
 	address: '長野県千曲市xxxxxx',
 	telephone: 'xxx-xxxx-xxxx',
-	email: 'kobaba@hotmail.qqq',
+	email: 'kobaba@hotmail.ppp',
 	password: '111111',
 	)
