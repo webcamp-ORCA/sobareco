@@ -13,11 +13,10 @@ class Customer < ApplicationRecord
   # validates :prefecture, presence: true
   # validates :municipality, presence: true
   # validates :address, presence: true
-  
   # validates :email, presence: true
 
   acts_as_paranoid
-  
+
   def name
   	last_name + first_name
   end
@@ -32,4 +31,5 @@ class Customer < ApplicationRecord
   # def prefecture_name=(prefecture_name)
   #   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   # end
+
 end

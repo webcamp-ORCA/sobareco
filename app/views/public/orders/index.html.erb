@@ -1,7 +1,9 @@
 <h1>購入履歴一覧画面</h1>
 
+
 <div class="col-lg-8">
 	<table class="table table-hover">
+   <!-- <   @order.each do |o|  > -->
 		<thead>
 			<tr>
 				<th>注文日</th>
@@ -9,21 +11,21 @@
 		</thead>
 	<tbody>
 		<tr>
-			<td><!-- 購入日 --></td>
-			<td><!-- 商品ステータス --></td>
-			<td><!-- リンク　購入履歴詳細 --></td>
+			<td></td>
+			<td> <!-- o.order.delivery_status --></td>
+			<td class="label col-xs-4 label-danger">購入履歴詳細リンク</td>
 		</tr>
          <tr>
 			 <th>タイトル</th>
-			 <td><!-- <商品名> --></td>
+			 <td><!-- o.product_name --></td>
 	　　　</tr>
 　　　　　　　　<tr>
 			 <th>商品単価</th>
-			 <td><!-- <金額> --></td>
+			 <td><!-- o.product_price --></td>
 		 </tr>
 　　　　   <tr>
 			 <th>商品個数</th>
-			 <td><!-- <個数> --></td>
+			 <td><!-- o.product.arrival_count --></td>
 		　</tr>
 
 </tbody>
