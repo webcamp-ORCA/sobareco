@@ -1,11 +1,12 @@
 class Admin::ProductsController < ApplicationController
 before_action :ransack
 
-  PER = 5
+  PER = 12
 
   def new
     @product = Product.new
-    @product.records.build
+    @disc = @product.discs.build
+    @record = @disc.records.build
 
   end
 
@@ -22,9 +23,11 @@ before_action :ransack
 
   def index
     if params[:genre_id]
-      @products = Product.where(genre_id: params[:genre_id])
+
+      @products = Product.where(genre_id: params[:genre_id]).page(params[:page]).per(PER)
     elsif params[:q]
-      @products = @q.result(distinct: true)
+      @products = @q.result(distinct: true).page(params[:page]).per(PER)
+
     else
       @products = Product.all.page(params[:page]).per(PER)
     end
@@ -33,7 +36,11 @@ before_action :ransack
 
   def show
     @product = Product.find(params[:id])
+
     @records = @product.records
+
+    @discs = @product.discs
+
   end
 
   def edit
@@ -63,14 +70,15 @@ before_action :ransack
     redirect_to admin_products_path
   end
 
+
+  private
+    def product_params
+      params.require(:product).permit(:name, :product_image, :product_status, :product_name, :artist_id, :genre_id, :label_id, :product_price, discs_attributes: [:id, :disc_no, :_destroy,records_attributes: [:id, :song_title, :_destroy]])
+    end
+
     def ransack
       @q = Product.ransack(params[:q])
     end
 
-  private
-    def product_params
-      params.require(:product).permit(:name, :product_image, :product_status, :product_name, :artist_id, :genre_id, :label_id, :product_price, records_attributes: [:id, :disc_number, :song_title, :_destroy])
-    end
-    
 end
 

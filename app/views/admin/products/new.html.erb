@@ -8,76 +8,68 @@
       <% end %>
     </ul>
 <% end %>
-<div class="container">
-  <div class="row">
+
+
     <div class="col-lg-10">
           <%= form_for(@product, url: admin_products_path) do |f| %>
-            <table>
-              <tbody>
-                <tr>
-                  <th>商品名</th>
-                  <td><%= f.text_field :product_name, autocomplete: 'off',:placeholder => "入力してください" %></td>
-                </tr>
 
-                <tr>
-                  <th>アーティスト名</th>
-                  <td><%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択してください" %></td>
-                </tr>
+            <div class="form-group">
+                <label>ステータス</label>
+                <%= f.select :product_status,  Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %>
+            </div><br>
 
-                <tr>
-                  <th>ジャケット画像</th>
-                  <td><%= f.attachment_field :product_image %></td>
-                </tr>
+            <div class="form-group">
+              <label>商品名</label>
+              <%= f.text_field :product_name, class: "form-control", autocomplete: 'off',placeholder: "入力してください" %>
+            </div><br>
 
-                <tr>
-                  <th>価格(税抜)</th>
-                  <td><%= f.text_field :product_price, autocomplete: 'off', :placeholder => "例:3000" %></td>
-                </tr>
+            <div class="form-group">
+              <label>アーティスト名</label>
+              <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, {prompt: "選択してください"}, class: "form-control" %>
+            </div><br>
 
-                <tr>
-                  <th>レーベル名</th>
-                  <td><%= f.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択してください" %></td>
-                </tr>
+            <div class="form-group">
+              <label>ジャケット画像</label>
+              <%= f.attachment_field :product_image %>
+            </div><br>
 
-                <tr>
-                  <th>ジャンル</th>
-                  <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択してください" %></td>
-                </tr>
+            <div class="form-group">
+              <label>価格(税抜)</label>
+              <%= f.text_field :product_price, autocomplete: 'off', class: "form-control", :placeholder => "半角数字で入力" %>
+            </div><br>
 
-                <tr>
-                  <div class="records">
-                    <th>トラックリスト</th>
-                    <td>
-                      <%= f.fields_for :records do |record| %>
-                        <%= render 'record_fields', f: record %>
-                      <% end %>
-                    </td>
-                  </div>
-                  <td>
-                  <div class="links">
-                     <%= link_to_add_association "トラックを追加", f, :records %>
-                  </div>
-                  </td>
-                </tr>
+            <div class="form-group">
+              <label>レーベル名</label>
+              <%= f.collection_select :label_id, Label.all, :id, :label_name, {:prompt => "選択してください"}, class: "form-control" %>
+            </div><br>
 
-                <tr>
-                  <th>ステータス</th>
-                  <td><%= f.select :product_status, Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %></td>
-                </tr>
+            <div class="form-group">
+              <label>ジャンル</label>
+              <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {:prompt => "選択してください"}, class: "form-control" %>
+            </div><br>
+
+            <div class="form-group">
+              <label>トラックリスト</label>
+              <div class="discs">
+                <%= f.fields_for :discs do |disc| %>
+                  <%= render 'disc_fields', f: disc %>
+                <% end %>
+
+                <div class="links col-lg-6">
+                  <%= link_to_add_association "ディスクを追加", f, :discs %>
+                </div>
+              </div>
+            </div>
 
 
-                <tr>
-                  <td><%= f.submit "商品登録" %></td>
-                </tr>
+            <%= f.submit "商品登録" , class: "btn btn-success col-lg-12" %>
+>>>>>>> ryuta8
 
-               </tbody>
-              </table>
-            <% end %>
+
+      <% end %>
 
 
 
     </div>
-  </div>
-</div>
 
 

@@ -1,5 +1,5 @@
 class Record < ApplicationRecord
-  belongs_to :product
-  validates :disc_number, presence: true
-  validates :song_title, presence: true
+  belongs_to :disc
+  # validates :song_title, length: { in: 1..50 }
+
 end

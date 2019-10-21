@@ -11,7 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2019_10_21_031813) do
+ActiveRecord::Schema.define(version: 2019_10_22_044501) do
+
+
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -91,6 +93,15 @@ ActiveRecord::Schema.define(version: 2019_10_21_031813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "disc_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id"
+
   end
 
   create_table "genres", force: :cascade do |t|
@@ -105,7 +116,6 @@ ActiveRecord::Schema.define(version: 2019_10_21_031813) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "order_details", force: :cascade do |t|
     t.integer "order_quantity"
     t.integer "price"
@@ -118,7 +128,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_031813) do
   create_table "orders", force: :cascade do |t|
     t.integer "settlement_method"
     t.datetime "delivery_preferred_date"
-    t.string "postage"
+    t.integer "postage", default: 500, null: false
     t.integer "delivery_status"
     t.integer "total_amount"
     t.string "addresses"
@@ -155,6 +165,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_031813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
+    t.integer "disc_id"
   end
 
 end

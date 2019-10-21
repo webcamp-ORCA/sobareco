@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :deliveries, dependent: :destroy
-  has_many :cart_items, dependent: :destroy
+  has_many :cartitems, dependent: :destroy
 
   validates :first_name, presence: true
   # validates :post_code, presence: true
@@ -20,6 +20,14 @@ class Customer < ApplicationRecord
   def name
   	last_name + first_name
   end
+
+  def homeaddress
+    municipality + address
+  end
+
+
+
+
 
   # include JpPrefecture
   # jp_prefecture :prefecture_code
