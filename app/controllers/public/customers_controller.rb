@@ -14,9 +14,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def destroy_confirm
+    @customer = Customer.find_by(id: params[:id])
   end
 
   def destroy
+    customer = Customer.find_by(id: params[:id])
+    customer.destroy
+    redirect_to("/products")
   end
 
   private
