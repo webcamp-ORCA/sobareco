@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_083813) do
+ActiveRecord::Schema.define(version: 2019_10_20_062408) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_083813) do
 
   create_table "records", force: :cascade do |t|
     t.string "song_title"
-    t.integer "disc_number"
+    t.string "disc_number"
     t.integer "music_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

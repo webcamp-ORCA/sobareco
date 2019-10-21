@@ -1,19 +1,35 @@
 <h1>商品削除確認</h1>
 <h2>この商品を削除します。よろしいですか？</h2>
 
-<%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %>
+<div class="col-lg-10">
+  <table>
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %></td>
+      </tr>
 
+      <!-- 商品名 -->
+      <tr>
+        <td>商品名：<%= @product.product_name %></td>
+      </tr>
 
-  <!-- 商品名 -->
-  <%= @product.product_name %>
+      <tr>
+        <td>アーティスト名：<%= @product.artist.artist_name %></td>
+      </tr>
 
-  <p>アーティスト名：<%= @product.artist.artist_name %></p>
+      <tr>
+        <td>ジャンル名：<%= @product.genre.genre_name %></td>
+      </tr>
 
-  <p>ジャンル名：<%= @product.genre.genre_name %></p>
+      <tr>
+        <td>レーベル名：<%= @product.label.label_name %></td>
+      </tr>
 
-  <p>レーベル名：<%= @product.label.label_name %></p>
+      <tr>
+        <td><%= link_to "詳細ページに戻る", admin_product_path(@product.id) %></td>
 
-
-  <%= link_to "詳細ページに戻る", admin_product_path(@product.id) %>
-
-  <%= link_to "商品を削除する", admin_product_path(@product.id), method: :delete %>
+        <td><%= link_to "商品を削除する", admin_product_path(@product.id), method: :delete %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

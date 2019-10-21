@@ -1,5 +1,5 @@
 class Admin::ArtistsController < ApplicationController
-
+before_action :ransack
 
    PER = 8
   def index
@@ -29,9 +29,12 @@ class Admin::ArtistsController < ApplicationController
       redirect_to admin_artists_path
   end
 
-   private
+private
 
-    def artist_params
-        params.require(:artist).permit(:artist_name)
-    end
+  def artist_params
+      params.require(:artist).permit(:artist_name)
+  end
+  def ransack
+    @q = Product.ransack(params[:q])
+  end
 end
