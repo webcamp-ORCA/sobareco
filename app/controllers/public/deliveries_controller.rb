@@ -31,6 +31,14 @@ class Public::DeliveriesController < ApplicationController
         render :index
     end
 
+    @deliveries = Delivery.new
+        if @deliveries.save
+        redirect_to new_delivery_path(@deliveries)
+      else
+        @deliveries = Deliver.page(params[:page])
+        render :index
+    end
+
   end
 
   def edit
@@ -40,19 +48,15 @@ class Public::DeliveriesController < ApplicationController
   def update
     deliveries = Delivery.find(params[:id])
     deliveries.update
-<<<<<<< .merge_file_4Pqpt5
-    redirect_to delivery_path(delivery.id)
   end
 
   def destroy
       deliveries = Delivery.find(params[:id])
-=======
     redirect_to deliveries_path
   end
 
   def destroy
     deliveries = Delivery.find(params[:id])
->>>>>>> .merge_file_tCXHNb
       deliveries.destroy
       redirect_to deliveries_path
   end
@@ -60,15 +64,7 @@ class Public::DeliveriesController < ApplicationController
 
 private
     def deliveries_params
-<<<<<<< .merge_file_4Pqpt5
-      params.require(:delivery).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone)
-    end
-
-    def ransack
-      @q = Product.ransack(params[:q])
-=======
       params.require(:deliveries).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone)
->>>>>>> .merge_file_tCXHNb
     end
         def ransack
       @q = Product.ransack(params[:q])

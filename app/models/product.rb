@@ -11,13 +11,13 @@ class Product < ApplicationRecord
   belongs_to :label
   belongs_to :genre
   has_many :arrival_management
-<<<<<<< .merge_file_G628ZA
   has_many :cartitems
-=======
+
   has_many :discs, dependent: :destroy
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
->>>>>>> .merge_file_032d1y
 
+  has_many :discs, dependent: :destroy
+  accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
     def stock
       return 0
     end
