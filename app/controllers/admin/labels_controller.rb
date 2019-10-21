@@ -12,7 +12,7 @@ before_action :ransack
   def create
       @label = Label.new(label_params)
         if @label.save
-        redirect_to admin_products_path
+        redirect_to admin_labels_path
       else
          @labels = Label.page(params[:page]).per(PER)
          render :index
@@ -41,9 +41,9 @@ before_action :ransack
     def label_params
         params.require(:label).permit(:label_name)
     end
-   
 
     def ransack
-        @q = Product.ransack(params[:q])
-      end
+      @q = Product.ransack(params[:q])
+    end
+
 end

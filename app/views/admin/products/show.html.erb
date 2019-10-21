@@ -1,36 +1,57 @@
 <%= render 'sidebar'%>
+
+<%= flash[:notice] %>
+
 <h1>商品詳細</h1>
 
-  <!-- 商品画像 -->
-  <%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %>
+<div class="col-lg-3">
+      <!-- 商品画像 -->
+      <%= attachment_image_tag @product, :product_image, :fill, 300, 300, fallback: "no_image.png", size:'300x300' %><br>
+</div>
+<div class="col-lg-7">
+      商品ID：<%= @product.id %><br>
+    <!-- 商品名 -->
 
-  <p>商品ID：<%= @product.id %></p>
+      【<%= @product.product_name %>】<br>
 
-  <!-- 商品名 -->
-  <%= @product.product_name %>
 
-  <p>アーティスト名：<%= @product.artist.artist_name %></p>
+      アーティスト名：<%= @product.artist.artist_name %><br>
 
-  <p>ジャンル名：<%= @product.genre.genre_name %></p>
 
-  <p>レーベル名：<%= @product.label.label_name %></p>
+      ジャンル名：<%= @product.genre.genre_name %><br>
 
-  <p>価格：<%= @product.product_price %>円</p>
 
-  <p>在庫数：<%= @product.stock %></p>
+      レーベル名：<%= @product.label.label_name %><br>
 
-  <!-- 販売状況 -->
-  <%= @product.product_status %>
 
-  <!-- 編集ボタン -->
-  <%= link_to "編集", edit_admin_product_path %>
+      価格(税抜)：￥<%= @product.product_price %><br>
 
-  <!-- 削除ボタン -->
-  <%= link_to "削除", destroy_confirm_admin_product_path %>
 
-  <% @records.each do |record| %>
-    <%= record.disc_number %>
-    <%= record.song_title %>
-  <% end %>
+      在庫数：<%= @product.stock %><br>
+
+    <!-- 販売状況 -->
+
+      <%= @product.product_status_i18n %><br>
+
+</div>
+
+<div class="col-lg-offset-2 col-lg-10">
+
+
+      <% @discs.each do |disc| %>
+        ディスク<%= disc.disc_no %><br>
+        <% disc.records.each do |record| %>
+          <%= record.song_title %><br>
+        <% end %>
+      <% end %>
+
+    <!-- 編集ボタン -->
+      <%= link_to "編集", edit_admin_product_path, class: "btn btn-warning btn-sm" %>
+
+    <!-- 削除ボタン -->
+      <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger btn-sm" %>
+
+
+</div>
 
 

@@ -1,5 +1,10 @@
 class Public::CartItemsController < ApplicationController
 
+<<<<<<< .merge_file_zCowiM
+=======
+before_action :ransack
+
+>>>>>>> .merge_file_F4ouhP
 
   def index
   end
@@ -13,11 +18,11 @@ class Public::CartItemsController < ApplicationController
   def destroy
   end
 
-
   private
 
 
      def ransack
+
       @q = Product.ransack(params[:q])
     end
 end

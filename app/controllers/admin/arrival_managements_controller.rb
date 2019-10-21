@@ -12,7 +12,7 @@ before_action :ransack
   def create
         @arrival = ArrivalManagement.new(arrival_params)
         if @arrival.save
-           redirect_to admin_arrival_managements_path
+           redirect_to admin_arrival_managements_path(arrival)
         else
           render :new
 
@@ -24,14 +24,13 @@ end
      @arrival = ArrivalManagement.page(params[:page]).per(PER)
   end
 
-     private
+private
 
     def arrival_params
         params.require(:arrival_management).permit(:arrival_date, :arrival_count, :product_id,)
     end
 
     def ransack
-
       @q = Product.ransack(params[:q])
     end
 

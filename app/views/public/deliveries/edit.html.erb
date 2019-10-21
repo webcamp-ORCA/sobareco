@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ZBDCZB
 <h1>お届け先住所変更</h1>
 
 <% if @deliveries.errors.any? %>
@@ -10,6 +11,15 @@
 
 <%= form_for @deliveries do |f| %>
 
+=======
+<!DOCTYPE html>
+<div class="col-lg-8">
+
+
+<h1>お届け先住所 編集</h1>
+
+<%= form_for @deliveries do |f| %>
+>>>>>>> .merge_file_EMuGsG
 <div class="field">
 <div class="col-log-3">
     <%= f.label :name, "名前" %>
@@ -47,6 +57,7 @@
 </div>
 
 <div class="actions">
+<<<<<<< .merge_file_ZBDCZB
 <%= f.submit '変更する', class: "btn btn-primary" %>
 <%= link_to "削除", delivery_path, method: :delete ,class: "label label-success" %>
 
@@ -55,3 +66,11 @@
 
 
 
+=======
+    <%= f.submit "登録する", class: "btn btn-primary" %>
+</div>
+
+<%=link_to '一覧に戻る', "/deliveries/", class: "btn btn-default" %>
+
+<% end %>
+>>>>>>> .merge_file_EMuGsG
