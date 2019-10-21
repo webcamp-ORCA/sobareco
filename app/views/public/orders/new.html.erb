@@ -1,0 +1,95 @@
+<h2>購入画面</h2zs>
+<h4>お届け先・お支払い方法の選択</h4>
+<h5>お届け先</h5>
+
+<table class="table table-hover">
+	<%= check_box_tag :test1 %>
+	<%= label_tag :test1, "ログイン中のユーザー様のお届け先を使用" %>
+     <tr>
+		<td>名前</td>
+		<td><%= @customer.last_name %></td>
+	</tr>
+	<tr>
+		<td>住所</td>
+        <td><%= @customer.address %></td>
+	</tr>
+	<tr>
+		<td>郵便番号</td>
+		<td><%= @customer.post_code %></td>
+	</tr>
+		</table>
+	<%= check_box_tag :test1 %><%= label_tag :test1, "上記以外の登録済みのお届け先を使用" %>
+		<table class="table table-hover">
+		<!-- <   @customers.each do |d|  > -->
+	<tr>
+		<td>名前</td>
+	<td><!-- <d.customer.deliverie.name> --></td>
+	</tr>
+	<tr>
+		<td>住所</td>
+	<td><!-- < d.customer.deliverie.address > --></td>
+	</tr>
+	<tr>
+		<td>電話番号</td>
+	<td><!-- < d.customer.deliverie.telephone. > --></td>
+	</tr>
+</table>
+
+<table class="table table-hover">
+<%= link_to "新しい住所を登録する", new_delivery_path , class: "col-xs-4 btn btn-primary" %>
+  <tr>
+  	<td>
+	<%= check_box_tag :test1 %><%= label_tag :test1, "銀行振込" %>
+    </td>
+	</tr>
+	<tr>
+    <td>
+	<%= check_box_tag :test1 %><%= label_tag :test1, "代引き" %>
+     </td>
+	</tr>
+	<tr>
+	<td>
+	<%= check_box_tag :test1 %><%= label_tag :test1, "クレジットカード" %>
+   </td>
+  </tr>
+</table>
+<!-- ユーザーに基づいた購入情報の表示 -->
+<div class="actions">
+	<table class="table table-hover">
+		<tr>
+			<td>商品合計</td>
+		<td><!-- <  商品合計　orders.customer. > --></td>
+		</tr>
+		<tr>
+			<td>送料</td>
+		<td><!-- < 送料　orders.order.postage > --></td>
+		</tr>
+		<tr>
+			<td>合計（税込）</td>
+		<td><!-- < 合計（税込)　orders.customer. > --></td>
+		</tr>
+		<tr>
+		<td><!-- < link_to '次に進む', order_confirm_order_path(order.id) > --></td>
+		</tr>
+		<tr>
+		<%= link_to "次に進む", class: "col-xs-4 btn btn-primary" %>
+
+		</tr>
+	</table>
+<form action="cgi-bin/abc.cgi" method="post">
+  <p>
+    <input type="checkbox" name="riyu" value="1">選択肢 - 1
+  </p>
+  <p>
+    <input type="checkbox" name="riyu" value="2">選択肢 - 2
+  </p>
+  <p>
+    <input type="checkbox" name="riyu" value="3">選択肢 - 3
+  </p>
+  <p>
+    <input type="submit" value="送信する">
+  </p>
+</form>
+
+
+</div><%= render 'footer'%>

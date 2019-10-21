@@ -12,6 +12,7 @@ class Product < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   belongs_to :genre
+  has_many :arrival_management
 
     def stock
       return 0

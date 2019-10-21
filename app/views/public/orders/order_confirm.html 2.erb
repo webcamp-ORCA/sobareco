@@ -1,0 +1,53 @@
+<h1>注文確認画面</h1>
+
+<h2>注文内容の確認</h2>
+
+
+<div class="col-lg-8">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>注文一覧</th>
+				<th>価格</th>
+			</tr>
+		</thead>
+	<tbody>
+		<tr>
+			<td>商品画像</td>
+			<td>商品名</td>
+			<td>商品金額</td>
+			<td>アーティスト名</td>
+			<td>ジャンル名</td>
+　　　　  </tr>
+</tbody>
+    </table>
+
+<%= link_to 'カートに戻る',  cart_items_path %>
+<table class="table table-hover">
+		<thead>
+			<tr>
+             <th>お届け先</th>
+　　        </tr>
+			 <tr>
+			 <th>郵便番号</th>
+			 <td>< ></td>
+			 </tr>
+             <tr>
+			 <th>都道府県</th>
+			 <td>< ></td>
+			 </tr>
+			 <tr>
+			 <th>住所</th>
+			 <td>< ></td>
+			 </tr>
+			 <tr>
+			 <th>名前</th>
+			 <td>< ></td>
+			 </tr>
+			 <tr>
+			 <th>電話番号</th>
+			 <td>< ></td>
+			 </tr>
+			</table>
+ <%= link_to '購入画面に戻って変更する',  new_product_path %>
+<%= render 'footer'%>

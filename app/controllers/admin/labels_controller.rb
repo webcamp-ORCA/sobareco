@@ -1,5 +1,7 @@
 class Admin::LabelsController < ApplicationController
+
 before_action :ransack
+
   PER = 8
   def index
       @label = Label.new
@@ -8,9 +10,13 @@ before_action :ransack
   end
 
   def create
-     label = Label.new(label_params)
-        label.save
-        redirect_to admin_labels_path
+      @label = Label.new(label_params)
+        if @label.save
+        redirect_to admin_products_path
+      else
+         @labels = Label.page(params[:page]).per(PER)
+         render :index
+   end
   end
 
   def edit
@@ -35,7 +41,9 @@ before_action :ransack
     def label_params
         params.require(:label).permit(:label_name)
     end
+
     def ransack
       @q = Product.ransack(params[:q])
     end
+
 end

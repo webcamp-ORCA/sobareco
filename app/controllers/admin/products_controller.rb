@@ -1,5 +1,4 @@
 class Admin::ProductsController < ApplicationController
-
 before_action :ransack
 
   PER = 5
@@ -64,16 +63,14 @@ before_action :ransack
     redirect_to admin_products_path
   end
 
+    def ransack
+      @q = Product.ransack(params[:q])
+    end
 
   private
     def product_params
       params.require(:product).permit(:name, :product_image, :product_status, :product_name, :artist_id, :genre_id, :label_id, :product_price, records_attributes: [:id, :disc_number, :song_title, :_destroy])
     end
-
-    def ransack
-      @q = Product.ransack(params[:q])
-    end
-
-
+    
 end
 

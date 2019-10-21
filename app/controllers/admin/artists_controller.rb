@@ -1,4 +1,5 @@
 class Admin::ArtistsController < ApplicationController
+
 before_action :ransack
 
    PER = 8
@@ -8,9 +9,13 @@ before_action :ransack
   end
 
   def create
-        artist = Artist.new(artist_params)
-        artist.save
-        redirect_to admin_artists_path
+         @artist = Artist.new(artist_params)
+      if @artist.save
+        redirect_to admin_products_path
+      else
+        @artists = Artist.page(params[:page]).per(PER)
+        render :index
+      end
   end
 
   def edit
@@ -24,12 +29,13 @@ before_action :ransack
   end
 
   def destroy
-      artist = Label.find(params[:id])
+      artist = Artist.find(params[:id])
       artist.destroy
       redirect_to admin_artists_path
   end
 
 private
+
 
   def artist_params
       params.require(:artist).permit(:artist_name)
@@ -37,4 +43,5 @@ private
   def ransack
     @q = Product.ransack(params[:q])
   end
+
 end

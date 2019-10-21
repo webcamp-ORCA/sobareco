@@ -1,7 +1,13 @@
+<%= render 'sidebar'%>
 <h1>ジャンル登録</h1>
-  <%= form_for(@genre, url: '/admin/genres/') do |f|%>
+<% if @genre.errors.any? %>
+            <%= @genre.errors.count %>件のerrorが発生しました
+            <% @genre.errors.full_messages.each do |message| %>
+                <%= message %>
+            <% end %>
+        <% end %>
 
-
+<%= form_for(@genre, url: admin_genres_path,method: :post) do |f|%>
 
     <%= f.text_field :genre_name %>
       <%= f.submit '登録' %>
