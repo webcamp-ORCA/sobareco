@@ -27,6 +27,7 @@ class Public::CustomersController < ApplicationController
     customer = Customer.find_by(id: params[:id])
     customer.destroy
 
+
     flash[:notice] = "退会手続きが完了しました。"
 
     redirect_to("/products")

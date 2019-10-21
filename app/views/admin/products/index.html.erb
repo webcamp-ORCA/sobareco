@@ -1,11 +1,8 @@
-
-<%= flash[:notice] %>
-
-
 <%= render 'sidebar'%>
-
-
 <%= flash[:notice] %>
+
+
+
 
 <h1>商品一覧</h1>
 
@@ -25,19 +22,3 @@
     </div>
 
 
->>>>>>> ryuta8
-      <div class="col-lg-2">
-        <table class="table table-bordered">
-          <tbody>
-
-            <% @genres.each do |genre| %>
-                <tr>
-                  <td><%=link_to genre.genre_name, admin_products_path(genre_id: genre.id)%></td>
-                </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-
-
-</div>

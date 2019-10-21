@@ -12,6 +12,7 @@ before_action :ransack
          @artist = Artist.new(artist_params)
       if @artist.save
 
+
         redirect_to admin_artists_path
 
       else
