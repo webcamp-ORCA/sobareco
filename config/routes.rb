@@ -36,29 +36,7 @@ Rails.application.routes.draw do
     end
     resources :products
     resources :deliveries
-    resources :cart_item
-    devise_for :customers
+    resources :cart_items
+   
   end
-
-
-  namespace :admin do
-   resources :arrival_management
-   resources :product
-   resources :customers do
-    member do
-      get :purchase_history
-      get :destroy_confirm
-
-    end
-  end
-  resources :products do
-      get 'destroy_confirm', :on => :member
-
-    end
-
-  
-
 end
-
-
-
