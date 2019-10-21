@@ -24,14 +24,13 @@ end
      @arrival = ArrivalManagement.page(params[:page]).per(PER)
   end
 
-     private
+private
 
     def arrival_params
         params.require(:arrival_management).permit(:arrival_date, :arrival_count, :product_id,)
     end
 
     def ransack
-
       @q = Product.ransack(params[:q])
     end
 

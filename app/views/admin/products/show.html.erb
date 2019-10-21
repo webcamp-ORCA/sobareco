@@ -1,36 +1,67 @@
+
+<%= flash[:notice] %>
+
 <%= render 'sidebar'%>
+
 <h1>商品詳細</h1>
 
-  <!-- 商品画像 -->
-  <%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %>
+<div class="col-lg-10">
+  <table>
+    <tbody>
+      <!-- 商品画像 -->
+      <tr>
+        <td><%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %></td>
+      </tr>
 
-  <p>商品ID：<%= @product.id %></p>
+      <tr>
+        <td>商品ID：<%= @product.id %></td>
 
-  <!-- 商品名 -->
-  <%= @product.product_name %>
+        <!-- 編集ボタン -->
+        <td><%= link_to "編集", edit_admin_product_path %></td>
 
-  <p>アーティスト名：<%= @product.artist.artist_name %></p>
+      <!-- 削除ボタン -->
+        <td><%= link_to "削除", destroy_confirm_admin_product_path %></td>
+      </tr>
 
-  <p>ジャンル名：<%= @product.genre.genre_name %></p>
+      <!-- 商品名 -->
+      <tr>
+        <td><%= @product.product_name %></td>
+      </tr>
 
-  <p>レーベル名：<%= @product.label.label_name %></p>
+      <tr>
+        <td>アーティスト名：<%= @product.artist.artist_name %></td>
+      </tr>
 
-  <p>価格：<%= @product.product_price %>円</p>
+      <tr>
+        <td>ジャンル名：<%= @product.genre.genre_name %></td>
+      </tr>
 
-  <p>在庫数：<%= @product.stock %></p>
+      <tr>
+        <td>レーベル名：<%= @product.label.label_name %></td>
+      </tr>
 
-  <!-- 販売状況 -->
-  <%= @product.product_status %>
+      <tr>
+        <td>価格(税抜)：￥<%= @product.product_price %></td>
+      </tr>
 
-  <!-- 編集ボタン -->
-  <%= link_to "編集", edit_admin_product_path %>
+      <tr>
+        <td>在庫数：<%= @product.stock %></td>
+      </tr>
 
-  <!-- 削除ボタン -->
-  <%= link_to "削除", destroy_confirm_admin_product_path %>
+      <!-- 販売状況 -->
+      <tr>
+        <td><%= @product.product_status_i18n %></td>
+      </tr>
 
-  <% @records.each do |record| %>
-    <%= record.disc_number %>
-    <%= record.song_title %>
-  <% end %>
+      <% @records.each do |record| %>
+        <tr>
+          <td><%= record.disc_number %></td>
+          <td><%= record.song_title %></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
 
 

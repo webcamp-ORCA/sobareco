@@ -10,13 +10,13 @@ before_action :ransack
 
   def create
          @artist = Artist.new(artist_params)
-        if @artist.save
+      if @artist.save
         redirect_to admin_products_path
       else
         @artists = Artist.page(params[:page]).per(PER)
         render :index
-   end
- end
+      end
+  end
 
   def edit
       @artist = Artist.find(params[:id])
@@ -34,16 +34,14 @@ before_action :ransack
       redirect_to admin_artists_path
   end
 
-   private
-
-    def artist_params
-        params.require(:artist).permit(:artist_name)
-    end
+private
 
 
-     def ransack
-      @q = Product.ransack(params[:q])
-    end
-
+  def artist_params
+      params.require(:artist).permit(:artist_name)
+  end
+  def ransack
+    @q = Product.ransack(params[:q])
+  end
 
 end

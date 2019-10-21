@@ -1,8 +1,8 @@
 class Admin::GenresController < ApplicationController
 
-
 before_action :ransack
-  PER = 8
+  PER = 10
+
 
   def index
      @genre = Genre.new
@@ -36,15 +36,15 @@ before_action :ransack
   end
 
 
-   private
+private
 
-    def genre_params
-        params.require(:genre).permit(:genre_name)
-    end
-  
+  def genre_params
+      params.require(:genre).permit(:genre_name)
+  end
 
-    def ransack
-        @q = Product.ransack(params[:q])
-      end
+  def ransack
+    @q = Product.ransack(params[:q])
+  end
+
 
 end
