@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   belongs_to :label
   belongs_to :genre
   has_many :arrival_management
+  has_many :cartitems
 
     def stock
       return 0

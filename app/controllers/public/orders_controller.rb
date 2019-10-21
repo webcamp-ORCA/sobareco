@@ -6,27 +6,19 @@ class Public::OrdersController < ApplicationController
 # 　購入画面
    def new
      @order = Order.new
+     # @order = customer.build_address
      @customer = current_customer
+     @carts = @customer.cartitems
+     # 下で定義したtotal_priceメソッドを呼びだす
+     total_price(@carts)
      @customers = Order.all
-
-     # 売れた数だけレコードを取得してレコードロック
-    arrival_managements = .lock.where(item_id: item_id).limit order_count
-
-      # 在庫データが購入数取得できなければ、在庫切れとして例外を投げる
-    if arrival_managements.count < order_count
-      errors.add(:base, 'out of  arrival_management')
-      raise ActiveRecord::RecordInvalid.new(self), 'out of arrival_management'
-    end
-     # 足りていればその在庫分削除
-     arrival_managements.destroy_all
-
+     @postage = Order.select("postage")
   end
 
-
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.save
-    redirect_to admin_products_path
+    redirect_to "/orders/#{@order.id}/order_confirm"
   end
 
 # 購入履歴詳細
@@ -46,14 +38,23 @@ class Public::OrdersController < ApplicationController
 
 
 
-   private
-    def order_params
-        params.require(:order).permit(:settlement_method,:delivery_preferred_date,:postage,:delivery_status,:total_amount,:addresses,:customer_id,:post_code,:prefectures,:municipality,:address,:address)
-    end
+  private
+  def order_params
+      params.require(:order).permit(:settlement_method,:delivery_preferred_date,:postage,:delivery_status,:total_amount,:addresses,:customer_id,:post_code,:prefectures,:municipality,:address,:address)
+  end
 
-   def ransack
-      @q = Product.ransack(params[:q])
-   end
+  def ransack
+    @q = Product.ransack(params[:q])
+  end
+  def total_price(cartitems)
+    @total_price = 0
+    @total_amount = 0
+    cartitems.each do |cartitem|
+      # @total = @total + cartitem.product.product_price * purchase_quantity
+      @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
+      @total_amount += cartitem.purchase_quantity
+    end
+  end
 
 end
 
