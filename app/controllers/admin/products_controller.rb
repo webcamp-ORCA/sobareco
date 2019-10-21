@@ -1,8 +1,6 @@
 class Admin::ProductsController < ApplicationController
 before_action :ransack
 
-before_action :ransack
-
   PER = 5
 
   def new
@@ -15,6 +13,7 @@ before_action :ransack
   def create
     @product = Product.new(product_params)
     if @product.save
+      flash[:notice] = "#{@product.product_name}を登録しました。"
        redirect_to admin_product_path(@product.id)
     else
       render 'new'
@@ -22,15 +21,19 @@ before_action :ransack
   end
 
   def index
-    @products = Product.all
-    # @products = Product.where(params[:genre_id])
-
-    @products = @q.result(distinct: true).page(params[:page]).per(PER)
+    if params[:genre_id]
+      @products = Product.where(genre_id: params[:genre_id])
+    elsif params[:q]
+      @products = @q.result(distinct: true)
+    else
+      @products = Product.all.page(params[:page]).per(PER)
+    end
+    @genres = Genre.all
   end
 
   def show
     @product = Product.find(params[:id])
-    @records = Record.all
+    @records = @product.records
   end
 
   def edit
@@ -41,6 +44,7 @@ before_action :ransack
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
+       flash[:notice] = "#{@product.product_name}の情報を変更しました。"
        redirect_to admin_product_path(@product.id)
     else
       render 'edit'
@@ -55,6 +59,7 @@ before_action :ransack
   def destroy
     product = Product.find(params[:id])
     product.destroy
+    flash[:notice] = "商品を削除しました。"
     redirect_to admin_products_path
   end
 

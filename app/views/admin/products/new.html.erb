@@ -1,3 +1,4 @@
+<%= render 'sidebar'%>
 <h1>商品登録</h1>
 <% if @product.errors.any? %>
     <h2><%= @product.errors.count %> errors prohibited this obj from being saved:</h2>
@@ -7,7 +8,6 @@
       <% end %>
     </ul>
 <% end %>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-10">
@@ -15,32 +15,32 @@
             <table>
               <tbody>
                 <tr>
-                  <td>商品名</td>
-                  <td><%= f.text_field :product_name %></td>
+                  <th>商品名</th>
+                  <td><%= f.text_field :product_name, autocomplete: 'off',:placeholder => "入力してください" %></td>
                 </tr>
 
                 <tr>
-                  <td>アーティスト名</td>
+                  <th>アーティスト名</th>
                   <td><%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択してください" %></td>
                 </tr>
 
                 <tr>
-                  <td>ジャケット画像</td>
+                  <th>ジャケット画像</th>
                   <td><%= f.attachment_field :product_image %></td>
                 </tr>
 
                 <tr>
-                  <td>価格(税込)</td>
-                  <td><%= f.text_field :product_price %></td>
+                  <th>価格(税抜)</th>
+                  <td><%= f.text_field :product_price, autocomplete: 'off', :placeholder => "例:3000" %></td>
                 </tr>
 
                 <tr>
-                  <td>レーベル名</td>
+                  <th>レーベル名</th>
                   <td><%= f.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択してください" %></td>
                 </tr>
 
                 <tr>
-                  <td>ジャンル</td>
+                  <th>ジャンル</th>
                   <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択してください" %></td>
                 </tr>
 
@@ -58,14 +58,10 @@
                      <%= link_to_add_association "トラックを追加", f, :records %>
                   </div>
                   </td>
-
                 </tr>
 
-
-
-
                 <tr>
-                  <td>ステータス</td>
+                  <th>ステータス</th>
                   <td><%= f.select :product_status, Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %></td>
                 </tr>
 

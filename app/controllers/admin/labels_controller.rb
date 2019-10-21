@@ -41,9 +41,9 @@ before_action :ransack
     def label_params
         params.require(:label).permit(:label_name)
     end
-   
 
     def ransack
-        @q = Product.ransack(params[:q])
-      end
+      @q = Product.ransack(params[:q])
+    end
+
 end

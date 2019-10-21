@@ -9,10 +9,9 @@ before_action :ransack
   def update
   end
 
-
 private
   def ransack
-      @q = Product.ransack(params[:q])
-    end
+    @q = Product.ransack(params[:q])
+  end
 
 end

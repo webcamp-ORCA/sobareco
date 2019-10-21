@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
 
+
 before_action :ransack
 
 	# def initialize
@@ -12,6 +13,7 @@ before_action :ransack
     # @customer = Customer.where(id: params[:id])
     # @customer = Customer.find(params[:id])
     @customers = Customer.page(params[:page]).per(PER)
+
   end
 
   def show
@@ -48,17 +50,14 @@ before_action :ransack
   end
 
 
-  private
+private
   def customer_params
   	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_name)
   end
 
-
-
-   def ransack
-      @q = Product.ransack(params[:q])
-    end
-
+  def ransack
+    @q = Product.ransack(params[:q])
+  end
 
 end
 
