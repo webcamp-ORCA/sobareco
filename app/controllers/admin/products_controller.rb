@@ -23,9 +23,11 @@ before_action :ransack
 
   def index
     if params[:genre_id]
+
       @products = Product.where(genre_id: params[:genre_id]).page(params[:page]).per(PER)
     elsif params[:q]
       @products = @q.result(distinct: true).page(params[:page]).per(PER)
+
     else
       @products = Product.all.page(params[:page]).per(PER)
     end
@@ -34,7 +36,15 @@ before_action :ransack
 
   def show
     @product = Product.find(params[:id])
+
+
+    @records = @product.records
+
     @discs = @product.discs
+
+
+
+
   end
 
   def edit

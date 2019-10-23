@@ -7,7 +7,7 @@ before_action :ransack
   #   @name = "last_name" + "first_name"
   # end
 
-  PER = 8
+  PER = 3
   def index
     # name = "last_name" + "first_name"
     # @customer = Customer.where(id: params[:id])

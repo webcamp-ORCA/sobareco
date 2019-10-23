@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  
   root :to => 'public/products#index'
 
   namespace :admin do
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
     # }
 
 
- devise_for :customers,contrtollers: {
+ devise_for :customers,controllers: {
           sessions: 'public/customers/sessions',
           registrations: 'public/customers/registrations',
           passwords: 'public/customers/passwords'
@@ -59,10 +60,22 @@ Rails.application.routes.draw do
     resources :products
     resources :deliveries
     resources :cart_items
+    resources :cards do
+      collection do
+        post 'create', to: 'card#create'
+        post 'delete', to: 'card#delete'
+        post 'show', to: 'card#show'
+      end
+    end
 
 
 
   end
+
+
+
+
+
 
 
 end
