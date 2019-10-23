@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_062408) do
-
+ActiveRecord::Schema.define(version: 2019_10_22_044501) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +57,11 @@ ActiveRecord::Schema.define(version: 2019_10_20_062408) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
@@ -85,6 +89,13 @@ ActiveRecord::Schema.define(version: 2019_10_20_062408) do
     t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "disc_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -147,6 +158,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_062408) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
+    t.integer "disc_id"
   end
 
 end

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root :to => 'public/products#index'
 
   namespace :admin do
+    resources :records
+    resources :discs
     resources :orders
     resources :artists
     resources :labels
@@ -60,11 +62,6 @@ Rails.application.routes.draw do
 
 
   end
-
-
-
-    
-  
 
 
 end

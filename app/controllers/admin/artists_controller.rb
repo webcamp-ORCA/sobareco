@@ -11,7 +11,7 @@ before_action :ransack
   def create
          @artist = Artist.new(artist_params)
       if @artist.save
-        redirect_to admin_products_path
+        redirect_to admin_artists_path
       else
         @artists = Artist.page(params[:page]).per(PER)
         render :index
