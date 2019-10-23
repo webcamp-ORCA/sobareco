@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_GwaTRr
-ActiveRecord::Schema.define(version: 2019_10_21_031702) do
-=======
 ActiveRecord::Schema.define(version: 2019_10_22_044501) do
-
->>>>>>> .merge_file_BMz3ju
-=======
-ActiveRecord::Schema.define(version: 2019_10_22_044501) do
-
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -100,11 +90,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
-<<<<<<< HEAD
-<<<<<<< .merge_file_GwaTRr
-=======
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
   end
 
   create_table "discs", force: :cascade do |t|
@@ -112,10 +97,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
-<<<<<<< HEAD
->>>>>>> .merge_file_BMz3ju
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
   end
 
   create_table "genres", force: :cascade do |t|
@@ -130,13 +111,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< .merge_file_GwaTRr
-=======
-
-<<<<<<< HEAD
->>>>>>> .merge_file_BMz3ju
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
   create_table "order_details", force: :cascade do |t|
     t.integer "order_quantity"
     t.integer "price"
@@ -163,13 +137,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< .merge_file_GwaTRr
-=======
-
-<<<<<<< HEAD
->>>>>>> .merge_file_BMz3ju
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.integer "product_price"
