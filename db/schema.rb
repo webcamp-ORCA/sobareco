@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_222853) do
+
+ActiveRecord::Schema.define(version: 2019_10_22_044501) do
+
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -98,6 +100,13 @@ ActiveRecord::Schema.define(version: 2019_10_22_222853) do
     t.integer "customer_id"
   end
 
+  create_table "discs", force: :cascade do |t|
+    t.integer "disc_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
     t.datetime "created_at", null: false
@@ -164,6 +173,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_222853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
+    t.integer "disc_id"
   end
 
 end

@@ -1,67 +1,57 @@
+<%= render 'sidebar'%>
 
 <%= flash[:notice] %>
 
-<%= render 'sidebar'%>
-
 <h1>商品詳細</h1>
 
-<div class="col-lg-10">
-  <table>
-    <tbody>
+<div class="col-lg-3">
       <!-- 商品画像 -->
-      <tr>
-        <td><%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.png", size:'200x200' %></td>
-      </tr>
+      <%= attachment_image_tag @product, :product_image, :fill, 300, 300, fallback: "no_image.png", size:'300x300' %><br>
+</div>
+<div class="col-lg-7">
+      商品ID：<%= @product.id %><br>
+    <!-- 商品名 -->
 
-      <tr>
-        <td>商品ID：<%= @product.id %></td>
+      【<%= @product.product_name %>】<br>
 
-        <!-- 編集ボタン -->
-        <td><%= link_to "編集", edit_admin_product_path %></td>
 
-      <!-- 削除ボタン -->
-        <td><%= link_to "削除", destroy_confirm_admin_product_path %></td>
-      </tr>
+      アーティスト名：<%= @product.artist.artist_name %><br>
 
-      <!-- 商品名 -->
-      <tr>
-        <td><%= @product.product_name %></td>
-      </tr>
 
-      <tr>
-        <td>アーティスト名：<%= @product.artist.artist_name %></td>
-      </tr>
+      ジャンル名：<%= @product.genre.genre_name %><br>
 
-      <tr>
-        <td>ジャンル名：<%= @product.genre.genre_name %></td>
-      </tr>
 
-      <tr>
-        <td>レーベル名：<%= @product.label.label_name %></td>
-      </tr>
+      レーベル名：<%= @product.label.label_name %><br>
 
-      <tr>
-        <td>価格(税抜)：￥<%= @product.product_price %></td>
-      </tr>
 
-      <tr>
-        <td>在庫数：<%= @product.stock %></td>
-      </tr>
+      価格(税抜)：￥<%= @product.product_price %><br>
 
-      <!-- 販売状況 -->
-      <tr>
-        <td><%= @product.product_status_i18n %></td>
-      </tr>
 
-      <% @records.each do |record| %>
-        <tr>
-          <td><%= record.disc_number %></td>
-          <td><%= record.song_title %></td>
-        </tr>
+      在庫数：<%= @product.stock %><br>
+
+    <!-- 販売状況 -->
+
+      <%= @product.product_status_i18n %><br>
+
+</div>
+
+<div class="col-lg-offset-2 col-lg-10">
+
+
+      <% @discs.each do |disc| %>
+        ディスク<%= disc.disc_no %><br>
+        <% disc.records.each do |record| %>
+          <%= record.song_title %><br>
+        <% end %>
       <% end %>
 
-    </tbody>
-  </table>
+    <!-- 編集ボタン -->
+      <%= link_to "編集", edit_admin_product_path, class: "btn btn-warning btn-sm" %>
+
+    <!-- 削除ボタン -->
+      <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger btn-sm" %>
+
+
 </div>
 
 
