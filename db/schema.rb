@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_GwaTRr
-ActiveRecord::Schema.define(version: 2019_10_21_031702) do
-=======
+
+
+
+
+
+
+
+
+
 ActiveRecord::Schema.define(version: 2019_10_22_044501) do
 
->>>>>>> .merge_file_BMz3ju
-=======
-ActiveRecord::Schema.define(version: 2019_10_22_044501) do
-
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
   create_table "cartitems", force: :cascade do |t|
     t.integer "purchase_quantity"
     t.integer "customer_id"
@@ -67,11 +76,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
@@ -79,16 +83,19 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.string "lastname_kana"
     t.string "firstname_kana"
     t.string "post_code"
-    t.text "prefecture"
     t.text "municipality"
     t.text "address"
     t.string "telephone"
     t.integer "prefecture_code"
     t.datetime "deleted_at"
+    t.string "card_id"
+    t.integer "prefecture_id"
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
     t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["prefecture_id"], name: "index_customers_on_prefecture_id"
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
+ 
 
   create_table "deliveries", force: :cascade do |t|
     t.string "name"
@@ -100,11 +107,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
-<<<<<<< HEAD
-<<<<<<< .merge_file_GwaTRr
-=======
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
+
   end
 
   create_table "discs", force: :cascade do |t|
@@ -112,10 +115,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
-<<<<<<< HEAD
->>>>>>> .merge_file_BMz3ju
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
+
   end
 
   create_table "genres", force: :cascade do |t|
@@ -130,13 +130,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< .merge_file_GwaTRr
-=======
-
-<<<<<<< HEAD
->>>>>>> .merge_file_BMz3ju
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
   create_table "order_details", force: :cascade do |t|
     t.integer "order_quantity"
     t.integer "price"
@@ -163,13 +156,14 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< .merge_file_GwaTRr
-=======
 
-<<<<<<< HEAD
->>>>>>> .merge_file_BMz3ju
-=======
->>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.integer "product_price"

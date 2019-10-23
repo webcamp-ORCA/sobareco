@@ -30,9 +30,47 @@ class Public::CustomersController < ApplicationController
     redirect_to("/products")
   end
 
+  # クレジット機能はここから
+  # require "payjp"
+
+  # def card_new
+  #   customer = Customer.where(customer_id: current_customer.id)
+  #   redirect_to action: "card_show" if card.exists?
+  # end
+
+  # def pay #payjpとCardのデータベースを作成するaction
+  #   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+  #   if params['payjp-token'].blank?
+  #     redirect_to action: "card_new"
+  #   else
+  #     payuser = Payjp::Payuser.create(
+  #       description: '登録テスト',
+  #       email: current_user.email,
+  #       card: params['payjp-token'],
+  #       metadata: {customer_id: current_customer.id}
+  #     )
+  #     @customer = 
+  #   end
+  # end
+
+  # def card_show
+  # end
+
+  # def card_create
+  # end
+
+  # def card_edit
+  # end
+
+  # def card_update
+  # end
+
+  # def card_destroy
+  # end
+
   private
   def customer_params
-  	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_name)
+  	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_id)
   end
   
   def ransack
