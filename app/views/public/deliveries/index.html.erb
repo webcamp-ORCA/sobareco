@@ -1,4 +1,24 @@
+
 <div class="col-lg-8">
+
+			<h1>お届け先住所一覧</h1>
+	<table class="table table-hover">
+		<tbody>
+			 <% @deliveries.each do |d| %>
+				<tr>
+					<td><%= d.id %></td>
+					<td><%= d.post_code %></td>
+					<td><%= d.prefecture %></td>
+					<td><%= d.municipality %></td>
+					<td><%= d.address %></td>
+					<td><%= d.telephone%></td>
+					<td><%= link_to "編集", edit_delivery_path(d.id) ,class: "label label-primary" %></td>
+			<% end %>
+	    </tbody>
+	</table>
+		<%= link_to '新しい住所を登録する', new_delivery_path %>
+	<%= paginate @deliveries %>
+
 	<h1>お届け先住所一覧</h1>
-    
+
 </div>

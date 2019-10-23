@@ -1,20 +1,22 @@
 <h1>購入履歴一覧画面</h1>
 
 
-<div class="col-lg-8">
-	<table class="table table-hover">
+<div class="col-lg-6">
+	<table class="table table-hover col-lg-7 ">
    <!-- <   @order.each do |o|  > -->
 		<thead>
 			<tr>
-				<th>注文日</th>
+				<th><!-- 注文日 --></th>
 			</tr>
 		</thead>
 	<tbody>
 		<tr>
 			<td></td>
-			<td> <!-- o.order.delivery_status --></td>
-			<td class="label col-xs-4 label-danger">購入履歴詳細リンク</td>
-		</tr>
+			<td class="label col-xs-1 btn btn-primary">商品ステータス</td>
+			<td class="label col-xs-1 label-danger">購入履歴詳細リンク</td>
+			<td></td>
+        </tr>
+	  <!-- link_to '購入履歴詳細リンク',  new_product_path ,class: "col-xs-7 btn btn-primary  -->
          <tr>
 			 <th>タイトル</th>
 			 <td><!-- o.product_name --></td>
@@ -28,8 +30,9 @@
 			 <td><!-- o.product.arrival_count --></td>
 		　</tr>
 
-</tbody>
+     </tbody>
     </table>
+</div>
 
 
 

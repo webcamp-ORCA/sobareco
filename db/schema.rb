@@ -11,8 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2019_10_22_044501) do
 
+
+
+
+
+
+
+
+ActiveRecord::Schema.define(version: 2019_10_22_044501) do
 
 
   create_table "admin_users", force: :cascade do |t|
@@ -88,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.index ["prefecture_id"], name: "index_customers_on_prefecture_id"
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
+ 
 
   create_table "deliveries", force: :cascade do |t|
     t.string "name"
@@ -99,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+
   end
 
   create_table "discs", force: :cascade do |t|
@@ -106,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
+
   end
 
   create_table "genres", force: :cascade do |t|
@@ -132,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
   create_table "orders", force: :cascade do |t|
     t.integer "settlement_method"
     t.datetime "delivery_preferred_date"
-    t.string "postage"
+    t.integer "postage", default: 500, null: false
     t.integer "delivery_status"
     t.integer "total_amount"
     t.string "addresses"
@@ -146,11 +156,13 @@ ActiveRecord::Schema.define(version: 2019_10_22_044501) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "products", force: :cascade do |t|
     t.string "product_name"

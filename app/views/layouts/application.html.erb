@@ -23,15 +23,11 @@
 　　　　　<h2><%= link_to "Sobareco'", admin_products_path %></h2>
 　　　 </nav>
         <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-                    <!--  管理者側ヘッダー -->
-
-          <li class="">
-            <%= link_to "ログイン(管理者）",  new_admin_user_registration_path %>
-          </li>
-          <li class="listbar">
-            <%= link_to "ログアウト(管理者側)", admin_user_registration_path, method: :delete %>
-          </li>
-          <!--  ユーザー側ヘッダー -->
+            <% if customer_signed_in? %>
+           <!--  ユーザー側ヘッダー　ログイン時 -->
+            <li class="listbar">
+　　　　　　　こんにちは<%= current_customer.name %>様
+　　　　　　　</li>
            <li class="listbar">
             <%= link_to "マイページ"  %>
           </li>
@@ -44,8 +40,9 @@
           <li class="listbar">
            <%= link_to "カート" %>
            </li>
+          <% else %>
            <li class="listbar">
-           <%= link_to "新規登録", new_customer_registration_path %>
+           <%= link_to "新規登録 (ユーザー)", new_customer_registration_path %>
            </li>
           <li class="">
             <%= link_to "ログイン（ユーザー)",new_customer_registration_path  %>
@@ -54,6 +51,17 @@
           <li class="listbar">
              <%= link_to "ログアウト(ユーザー)" %>
           </li>
+
+ <% end %>
+          <li class="">
+            <%= link_to "ログイン(管理者）",  new_admin_user_registration_path %>
+          </li>
+          <li class="listbar">
+            <%= link_to "ログアウト(管理者側)", admin_user_registration_path, method: :delete %>
+          </li>
+
+
+
        </ul>
     </div>
   </div>
