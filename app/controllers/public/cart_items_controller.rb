@@ -1,5 +1,8 @@
 class Public::CartItemsController < ApplicationController
-	before_action :ransack
+
+before_action :ransack
+
+
   def index
   end
 
@@ -12,11 +15,11 @@ class Public::CartItemsController < ApplicationController
   def destroy
   end
 
-
   private
 
 
      def ransack
+
       @q = Product.ransack(params[:q])
     end
 end
