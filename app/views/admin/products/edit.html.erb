@@ -1,6 +1,6 @@
 <%= render 'sidebar'%>
 
-<h1>商品編集</h1>
+<h1 class="headline">商品編集</h1>
 <% if @product.errors.any? %>
     <h2><%= @product.errors.count %> errors prohibited this obj from being saved:</h2>
     <ul>
@@ -25,8 +25,8 @@
     </div><br>
 
     <div class="form-group">
-      <label>アーティスト名</label>
-      <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, {prompt: "選択してください"}, class: "form-control" %>
+      <label>アーティスト名</label><br>
+      <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, {prompt: "選択してください"},class: "mySelect2 form-control" %>
     </div><br>
 
     <div class="form-group">
@@ -40,13 +40,13 @@
     </div><br>
 
     <div class="form-group">
-      <label>レーベル名</label>
-      <%= f.collection_select :label_id, Label.all, :id, :label_name, {:prompt => "選択してください"}, class: "form-control" %>
+      <label>レーベル名</label><br>
+      <%= f.collection_select :label_id, Label.all, :id, :label_name, {:prompt => "選択してください"}, class: "mySelect2 form-control" %>
     </div><br>
 
     <div class="form-group">
-      <label>ジャンル</label>
-      <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {:prompt => "選択してください"}, class: "form-control" %>
+      <label>ジャンル</label><br>
+      <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {:prompt => "選択してください"}, class: "mySelect2 form-control" %>
     </div><br>
 
     <div class="form-group">
@@ -63,7 +63,7 @@
     </div>
 
 
-    <%= f.submit "商品登録" , class: "btn btn-success" %>
+    <%= f.submit "商品登録" , class: "btn btn-success col-lg-10" %>
 
 
 

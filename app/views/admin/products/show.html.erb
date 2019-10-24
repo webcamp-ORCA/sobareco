@@ -1,57 +1,90 @@
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name %>">
+    <%= msg.html_safe %>
+  </div>
+<% end %>
+
 <%= render 'sidebar'%>
 
-<%= flash[:notice] %>
-
-<h1>商品詳細</h1>
-
-<div class="col-lg-3">
-      <!-- 商品画像 -->
-      <%= attachment_image_tag @product, :product_image, :fill, 300, 300, fallback: "no_image.png", size:'300x300' %><br>
-</div>
-<div class="col-lg-7">
-      商品ID：<%= @product.id %><br>
-    <!-- 商品名 -->
-
-      【<%= @product.product_name %>】<br>
 
 
-      アーティスト名：<%= @product.artist.artist_name %><br>
 
 
-      ジャンル名：<%= @product.genre.genre_name %><br>
+<h1 class="headline">商品詳細</h1>
+
+<div class="product-main">
+  <div class="col-lg-3">
+    <!-- 商品画像 -->
+    <%= attachment_image_tag @product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'250x250' %><br>
+
+    <div class="btn-group">
+
+        <!-- 編集ボタン -->
+      <%= link_to "編集", edit_admin_product_path, class: "btn btn-warning " %>
+
+      <!-- 削除ボタン -->
+      <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger " %>
+
+    </div><br>
+
+    <div class="product-content">
+        <% @discs.each do |disc| %>
+        <div class="disc-number">
+          <span class="mgl-10">Disc.<%= disc.disc_no %></span>
+        </div><br>
 
 
-      レーベル名：<%= @product.label.label_name %><br>
+          <% disc.records.each do |record| %>
+            <div class="song-title">
+              <%= record.song_title %>
+            </div><br>
+          <% end %>
+
+        <% end %>
+    </div>
 
 
-      価格(税抜)：￥<%= @product.product_price %><br>
+  </div>
+  <div class="col-lg-7">
+      商品ID：<%= @product.id %>
+
+      <div class="label label-info label-sm">
+        <%= @product.product_status_i18n %>
+      </div><br>
+
+      <!-- 商品名 -->
+      <div class="product-name">
+        <%= @product.product_name %>
+      </div><br>
+
+      <div class="product-info">
+
+        <div class="info-name">
+          アーティスト名：<%= @product.artist.artist_name %>
+        </div>
+
+
+        <div class="info-name">
+          ジャンル名：<%= @product.genre.genre_name %>
+        </div>
+
+
+        <div class="info-name">
+          レーベル名：<%= @product.label.label_name %>
+        </div>
+
+      </div>
+
+      <div class="product-price">
+        価格(税抜)：￥<%= @product.product_price %>
+      </div><br>
 
 
       在庫数：<%= @product.stock %><br>
 
-    <!-- 販売状況 -->
-
-      <%= @product.product_status_i18n %><br>
-
+  </div>
 </div>
 
-<div class="col-lg-offset-2 col-lg-10">
 
-
-      <% @discs.each do |disc| %>
-        ディスク<%= disc.disc_no %><br>
-        <% disc.records.each do |record| %>
-          <%= record.song_title %><br>
-        <% end %>
-      <% end %>
-
-    <!-- 編集ボタン -->
-      <%= link_to "編集", edit_admin_product_path, class: "btn btn-warning btn-sm" %>
-
-    <!-- 削除ボタン -->
-      <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger btn-sm" %>
-
-
-</div>
 
 
