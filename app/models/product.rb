@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
   acts_as_paranoid
+  has_many :cartitems
+  has_many :customer, through: :cartitems
   has_many :records, dependent: :destroy
   attachment :product_image
   accepts_nested_attributes_for :records, reject_if: :all_blank, allow_destroy: true
@@ -17,5 +19,4 @@ class Product < ApplicationRecord
     def stock
       return 0
     end
-
 end
