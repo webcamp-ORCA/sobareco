@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
   
+  namespace :public do
+    get 'order_details/new'
+  end
+  get 'order_detail/new'
   root :to => 'public/products#index'
 
   namespace :admin do
@@ -55,7 +59,9 @@ Rails.application.routes.draw do
      get 'address_index', :on => :member
     end
     resources :orders do
-     get 'order_confirm',:on => :member
+     post 'order_confirm',:on => :member
+     # get 'purchase_complete',:on=>:member
+      get 'purchase_complete'
     end
     resources :products
     resources :deliveries

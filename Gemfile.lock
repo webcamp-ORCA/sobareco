@@ -265,6 +265,9 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     sexp_processor (4.13.0)
+    simple_form (5.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     sinatra (2.0.7)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -341,6 +344,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   seed-fu
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

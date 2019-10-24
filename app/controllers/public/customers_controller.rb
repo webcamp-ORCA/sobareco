@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :ransack
-  
+
   def show
     @customer = Customer.find_by(id: params[:id])
   end

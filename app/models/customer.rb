@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :deliveries, dependent: :destroy
 
    #validates :first_name, presence: true
-  has_many :cart_items, dependent: :destroy
+  has_many :cartitems, dependent: :destroy
   has_many :cards, dependent: :destroy, foreign_key: 'user_id'
   belongs_to :prefecture, optional:true
 
@@ -21,9 +21,9 @@ class Customer < ApplicationRecord
 
   acts_as_paranoid
 
-  # def name
-  # 	last_name + first_name
-  # end
+  def name
+  	last_name + first_name
+  end
 
   def homeaddress
     municipality + address

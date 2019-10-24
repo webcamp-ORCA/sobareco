@@ -12,3 +12,6 @@ ja:
       label_name: レーベル名
     genre:
       genre_name: ジャンル名
+    orders:
+      delivery_status: 商品準備中
+      getting_ready: 配送中

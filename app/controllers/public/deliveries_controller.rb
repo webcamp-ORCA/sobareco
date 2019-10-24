@@ -23,21 +23,13 @@ class Public::DeliveriesController < ApplicationController
     end
 
 
-    @deliveries = Delivery.new
-        if @deliveries.save
-        redirect_to new_delivery_path(@deliveries)
-      else
-        @deliveries = Deliver.page(params[:page])
-        render :index
-    end
-
-    @deliveries = Delivery.new
-        if @deliveries.save
-        redirect_to new_delivery_path(@deliveries)
-      else
-        @deliveries = Deliver.page(params[:page])
-        render :index
-    end
+    #@deliveries = Delivery.new
+        #if @deliveries.save
+        #redirect_to new_delivery_path(@deliveries)
+      #else
+        #@deliveries = Deliver.page(params[:page])
+        #render :index
+    #end
 
   end
 
