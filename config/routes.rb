@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  
   root :to => 'public/products#index'
 
   namespace :admin do
@@ -22,24 +20,14 @@ Rails.application.routes.draw do
     resources :products do
       get 'destroy_confirm', :on => :member
     end
-
-
   end
 
-   devise_for :admin_users,controllers: {
+
+devise_for :admin_users,controllers: {
           sessions: 'admin/admin_users/sessions',
           registrations:'admin/admin_users/registrations',
           passwords: 'admin/admin_users/passwords'
         }
-
-
-
-
-    # devise_for :customers,contrtollers: {
-    #       sessions: 'public/customers/sessions',
-    #       registrations: 'public/customers/registrations',
-    #       passwords: 'public/customers/passwords'
-    # }
 
 
  devise_for :customers,controllers: {
@@ -51,27 +39,23 @@ Rails.application.routes.draw do
   scope module: :public do
 
     resources :customers do
-     get 'destroy_confirm',:on => :member
-     get 'address_index', :on => :member
+    get 'destroy_confirm',:on => :member
+    get 'address_index', :on => :member
     end
     resources :orders do
-     get 'order_confirm',:on => :member
+    get 'order_confirm',:on => :member
     end
     resources :products
     resources :deliveries
     resources :cart_items
-    resources :cards do
+    resources :cards, only: [:new, :show] do
       collection do
-        post 'create', to: 'card#create'
-        post 'delete', to: 'card#delete'
-        post 'show', to: 'card#show'
+        post 'show', to: 'cards#show'
+        post 'pay', to: 'cards#pay'
+        post 'delete', to: 'cards#delete'
       end
     end
-
-
   end
-
-
 end
 
 
