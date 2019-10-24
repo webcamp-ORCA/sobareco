@@ -8,17 +8,17 @@ class Public::OrdersController < ApplicationController
      @order = Order.new
      # @order = customer.build_address
      @customer = current_customer
-     @carts = @customer.cartitems
+    #  @carts = @customer.cartitems
      # 下で定義したtotal_priceメソッドを呼びだす
-     total_price(@carts)
-     @customers = Order.all
-     @postage = Order.select("postage")
+    #  total_price(@carts)
+    #  @customers = Order.all
+    #  @postage = Order.select("postage")
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
-    redirect_to "/orders/#{@order.id}/order_confirm"
+    order = Order.new(order_params)
+    order.save
+    redirect_to "/orders/#{order.id}/order_confirm"
   end
 
 # 購入履歴詳細
@@ -46,15 +46,15 @@ class Public::OrdersController < ApplicationController
   def ransack
     @q = Product.ransack(params[:q])
   end
-  def total_price(cartitems)
-    @total_price = 0
-    @total_amount = 0
-    cartitems.each do |cartitem|
-      # @total = @total + cartitem.product.product_price * purchase_quantity
-      @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
-      @total_amount += cartitem.purchase_quantity
-    end
-  end
+  # def total_price(cartitems)
+  #   @total_price = 0
+  #   @total_amount = 0
+  #   cartitems.each do |cartitem|
+  #     # @total = @total + cartitem.product.product_price * purchase_quantity
+  #     @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
+  #     @total_amount += cartitem.purchase_quantity
+  #   end
+  
 
 end
 
