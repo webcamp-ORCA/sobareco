@@ -12,8 +12,17 @@ Customer.create!(
 	lastname_kana: 'コバヤシ',
 	firstname_kana: 'タツヤ',
 	post_code: '000-0000',
-	address: '長野県千曲市xxxxxx',
+	prefecture: '長野県',
+	municipality: '千曲市横田町',
+	address: '1-2-2',
 	telephone: 'xxx-xxxx-xxxx',
-	email: 'kobaba@hotmail.qqq',
+	email: 'kobaba@hotmail.ppp',
 	password: '111111',
 	)
+
+ Order.create!(
+ 	postage: '500',
+ )
+
+
+

@@ -2,15 +2,15 @@
 <html>
   <head>
     <title>Sobareco'</title>
+    <script src="https://js.pay.jp/" type="text/javascript"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track':'reload' %>
   </head>
 
   <body>
-
 
 
 
@@ -23,32 +23,45 @@
 　　　　　<h2><%= link_to "Sobareco'", admin_products_path %></h2>
 　　　 </nav>
         <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-                    <!--  管理者側ヘッダー -->
-          <li class="listbar">
-            <%= search_form_for @q, url: admin_products_path do |f| %>
-              <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
-              <%= f.submit "検索" %>
-            <% end %>
-         </li>
-          <li class="">
-            <%= link_to "ログイン(管理者）",  new_admin_admin_user_registration_path %>
-          </li>
-          <li class="listbar">
-            <%= link_to "ログアウト(管理者側)", admin_admin_user_registration_path, method: :delete %>
-          </li>
-          <!--  ユーザー側ヘッダー -->
+            <% if customer_signed_in? %>
+           <!--  ユーザー側ヘッダー　ログイン時 -->
+            <li class="listbar">
+　　　　　　　こんにちは<%= current_customer.name %>様
+　　　　　　　</li>
            <li class="listbar">
-            <%= link_to "マイページ" %>
+            <%= link_to "マイページ"  %>
+          </li>
+            <li class="listbar">
+            <%= link_to "購入履歴一覧", orders_path  %>
+          </li>
+　　　　　　　<li class="listbar">
+            <%= link_to "購入画面", new_order_path  %>
           </li>
           <li class="listbar">
-           <%= link_to "カート",  new_cart_item_path %>
+           <%= link_to "カート" %>
+           </li>
+          <% else %>
+           <li class="listbar">
+           <%= link_to "新規登録 (ユーザー)", new_customer_registration_path %>
            </li>
           <li class="">
-            <%= link_to "ログイン（ユーザー)" %>
+            <%= link_to "ログイン（ユーザー)",new_customer_registration_path  %>
+
           </li>
           <li class="listbar">
              <%= link_to "ログアウト(ユーザー)" %>
           </li>
+
+ <% end %>
+          <li class="">
+            <%= link_to "ログイン(管理者）",  new_admin_user_registration_path %>
+          </li>
+          <li class="listbar">
+            <%= link_to "ログアウト(管理者側)", admin_user_registration_path, method: :delete %>
+          </li>
+
+
+
        </ul>
     </div>
   </div>
@@ -56,53 +69,7 @@
 
 
 
-
-
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-2">
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <td><%= link_to '商品一覧', admin_products_path %></td>
-            </tr>
-            <tr>
-              <td><%= link_to '商品登録', new_admin_product_path %></td>
-            </tr>
-            <tr>
-               <td><%= link_to '会員一覧', admin_customers_path %></td>
-            </tr>
-            <tr>
-               <td><%= link_to '入荷一覧', admin_arrival_managements_path %></td>
-            </tr>
-            <tr>
-              <td><%= link_to '入荷登録', new_admin_arrival_management_path %></td>
-            </tr>
-            <tr>
-              <td><%= link_to '注文一覧',  admin_orders_path %></td>
-            </tr>
-            <tr>
-              <td><%= link_to 'アーティスト一覧', admin_artists_path %></td>
-            </tr>
-            <tr>
-              <td><%= link_to 'レーベル登録', admin_labels_path %></td>
-            </tr>
-            <tr>
-              <td><%= link_to 'ジャンル登録', admin_genres_path %></td>
-            </tr>
-          </tbody>
-        </table>
-   </div>
-
-
-
-
-
     <%= yield %>
 
   </body>
 </html>
-
-

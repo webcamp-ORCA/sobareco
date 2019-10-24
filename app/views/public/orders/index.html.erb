@@ -1,34 +1,49 @@
-<<h1>購入履歴一覧画面</h1>
+<h1>購入履歴一覧画面</h1>
 
 
+<div class="col-lg-6">
+	<table class="table table-hover col-lg-7 ">
+   <!-- <   @order.each do |o|  > -->
+		<thead>
+			<tr>
+				<th><!-- 注文日 --></th>
+			</tr>
+		</thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td class="label col-xs-1 btn btn-primary">商品ステータス</td>
+			<td class="label col-xs-1 label-danger">購入履歴詳細リンク</td>
+			<td></td>
+        </tr>
+	  <!-- link_to '購入履歴詳細リンク',  new_product_path ,class: "col-xs-7 btn btn-primary  -->
+         <tr>
+			 <th>タイトル</th>
+			 <td><!-- o.product_name --></td>
+	　　　</tr>
+　　　　　　　　<tr>
+			 <th>商品単価</th>
+			 <td><!-- o.product_price --></td>
+		 </tr>
+　　　　   <tr>
+			 <th>商品個数</th>
+			 <td><!-- o.product.arrival_count --></td>
+		　</tr>
 
-
-
-
-
-
-
-
-
-
-<footer class="footer">
-<div class="row row-eq-height">
-  <div class="col-lg-12" style="background-color: whitesmoke";>
-	<div class="container">
-	  <div class="row">
-	  	 <nav class="navbar-left">
-	      <h2>SobaReco'</h2>
-	      <p>©︎ sobareco inc. All Rights Reserved.</p>
-	   </nav>
-	    <nav class="navbar-right">
-		  <p>お問い合わせ</p>
-		  <p>代表:小林勃也</p>
-		  <p>090-××××-××××</p>
-		  <p>sobareco.xx@tmail.com</p>
-	</nav>
-     </div>
-   </div>
-  </div>
+     </tbody>
+    </table>
 </div>
-</footer>
+
+
+
+<%= render 'footer'%>
+
+
+
+
+
+
+
+
+
 

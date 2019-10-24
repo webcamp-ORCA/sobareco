@@ -1,5 +1,15 @@
 class Public::CartItemsController < ApplicationController
+
+<<<<<<< HEAD
+<<<<<<< .merge_file_zCowiM
+=======
 before_action :ransack
+
+>>>>>>> .merge_file_F4ouhP
+=======
+before_action :ransack
+
+>>>>>>> 9a8722a34cf8cb8c716a9ef07c7dd9ec20ba4ab2
 
   def index
     @cartitems = CartItem.where(:customer_id, current_customer.id)
@@ -26,8 +36,11 @@ before_action :ransack
     redirect_to cart_items_path
   end
 
-private
-    def ransack
+  private
+
+
+     def ransack
+
       @q = Product.ransack(params[:q])
     end
 end

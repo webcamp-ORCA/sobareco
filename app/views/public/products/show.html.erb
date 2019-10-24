@@ -1,0 +1,49 @@
+<h1>商品詳細</h1>
+
+<div class="col-lg-offset-2 col-lg-3">
+      <!-- 商品画像 -->
+      <%= attachment_image_tag @product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'250x250' %><br>
+</div>
+<div class="col-lg-7">
+    <!-- 商品名 -->
+      【<%= @product.product_name %>】<br>
+
+
+      アーティスト名：<%= @product.artist.artist_name %><br>
+
+
+      ジャンル名：<%= @product.genre.genre_name %><br>
+
+
+      レーベル名：<%= @product.label.label_name %><br>
+
+
+      価格(税抜)：￥<%= @product.product_price %><br>
+
+
+      <%= @product.product_status_i18n %><br>
+
+      <%= link_to "購入する", new_order_path %>
+      <%= link_to "カートに入れる", cart_items_path %>
+
+</div>
+
+<div class="col-lg-offset-2 col-lg-10">
+
+
+      <% @discs.each do |disc| %>
+        ディスク<%= disc.disc_no %><br>
+        <% disc.records.each do |record| %>
+          <%= record.song_title %><br>
+        <% end %>
+      <% end %>
+
+    <!-- 編集ボタン -->
+      <%= link_to "編集", edit_admin_product_path, class: "btn btn-warning btn-sm" %>
+
+    <!-- 削除ボタン -->
+      <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger btn-sm" %>
+
+
+</div>
+
