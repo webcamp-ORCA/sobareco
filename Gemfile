@@ -76,6 +76,8 @@ gem 'jquery-rails'
 gem 'enum_help'
 gem 'pry-rails'
 gem 'rails-i18n'
+gem 'select2-rails'
 gem 'haml-rails'
 gem 'dotenv-rails'
 gem 'seed-fu'
+

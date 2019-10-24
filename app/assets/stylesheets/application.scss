@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require select2
+ *= require select2-bootstrap
+
  */
 
   @import "bootstrap-sprockets";
@@ -28,6 +31,7 @@
     a {
   color: green;
 }
+
 
   .form-control {
     display: block;
@@ -47,6 +51,105 @@
     -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.search-btn{
+  background:#5fad35;
+  color:#FFF;
+}
+
+
+
+
+
+.pagination>li>a {
+  border: none;
+  color: #333333;
+}
+
+.pagination>.active>a {
+  background: #008000;
+  border-radius: 15px;
+}
+
+
+.product-index{
+  margin: 10px 0;
+}
+
+
+
+
+.product-main{
+  margin-left:350px;
+}
+
+.btn-group{
+  margin-left: 70px;
+  padding: 15px 0 30px 0;
+  width: 250px;
+}
+
+.product-name{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+.product-info{
+  font-size: 20px;
+}
+
+.info-name{
+  padding-bottom: 10px;
+}
+
+.headline{
+  font-weight: bold;
+  margin: 20px 0 30px 265px;
+}
+
+.product-price{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.disc-number{
+  font-size: 20px;
+  padding: 7px 0;
+  width: 300%;
+  background-color: lightgray;
+  color: white;
+  border-radius: 10px;
+}
+
+.mgl-10{
+  margin-left: 10px;
+}
+
+.song-title{
+  width: 290%;
+  border-bottom: dotted 1px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.btn-success {
+    margin: 30px 0;
+}
+
+
+.destroy-confirm-main{
+  margin-left:350px;
+}
+
+h3{
+  color:red;
+}
+
 
 
 
