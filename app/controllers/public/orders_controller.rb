@@ -55,30 +55,30 @@ class Public::OrdersController < ApplicationController
     @order.settlement_method = params[:order][:settlement_method]
     if @order.save
      #カートに入っているアイテムをeach文で出す
-    current_customer.cartitems.each do |f|
-        # 注文詳細
-        order_detail = OrderDetail.new
-        #注文詳細の注文数 カートに入っている購入希望数を注文数に
-        order_detail.order_quantity = f.purchase_quantity
-         #注文詳細の税込価格 商品価格
-        order_detail.price = f.product.product_price
-         #注文詳細の注文id        注文id
-        order_detail.order_id = @order.id
-        #注文詳細の商品idに商品id
-        order_detail.product_id = f.product.id
-        # 注文詳細に保存
-        order_detail.save
-        #カートの中身を削除する
-        f.destroy
-    end
-
-      # もし配送先住所,支払い方法,合計金額の保存に成功したら
-       # 購入確認画面に移動
+      current_customer.cartitems.each do |f|
+          # 注文詳細
+          order_detail = OrderDetail.new
+          #注文詳細の注文数 カートに入っている購入希望数を注文数に
+          order_detail.order_quantity = f.purchase_quantity
+           #注文詳細の税込価格 商品価格
+          order_detail.price = f.product.product_price
+           #注文詳細の注文id        注文id
+          order_detail.order_id = @order.id
+          #注文詳細の商品idに商品id
+          order_detail.product_id = f.product.id
+          # 注文詳細に保存
+          order_detail.save
+          #カートの中身を削除する
+          f.destroy
+      end
+    # もし配送先住所,支払い方法,合計金額の保存に成功したら購入完了画面に移動
         redirect_to order_purchase_complete_path(@order)
-       else
+    else
        #失敗したら購入画面に戻る
           # @customer = current_customer
           render :new
+    end
+
   end
 
 
@@ -101,33 +101,27 @@ class Public::OrdersController < ApplicationController
     @order = Order.all
   end
 
-
-
-
-
-
   private
-      def order_params
-          params.require(:order).permit(:settlement_method,:postage,:delivery_status,:total_amount,:total_price,:addresses,:customer_id,:name,:post_code,:prefectures,:municipality,:address,:address)
+    def order_params
+      params.require(:order).permit(:settlement_method,:postage,:delivery_status,:total_amount,:total_price,:addresses,:customer_id,:name,:post_code,:prefectures,:municipality,:address,:address)
+    end
+
+    def order_detail_params
+      params.require(:order_detail).permit(:order_quantity,:price,:order_id,:product_id)
+    end
+    def ransack
+      @q = Product.ransack(params[:q])
+    end
+    def total_price(cartitems)
+      @total_price = 0
+      @total_amount = 0
+
+      cartitems.each do |cartitem|
+        # 下はコメントアウトのまま
+
+        # (例)@total = @total + cartitem.product.product_price * purchase_quantity
+        @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
+        @total_amount += cartitem.purchase_quantity
       end
-
-       def order_detail_params
-           params.require(:order_detail).permit(:order_quantity,:price,:order_id,:product_id)
-       end
-      def ransack
-        @q = Product.ransack(params[:q])
-      end
-
-        def total_price(cartitems)
-           @total_price = 0
-           @total_amount = 0
-
-          cartitems.each do |cartitem|
-            # 下はコメントアウトのまま
-
-            # (例)@total = @total + cartitem.product.product_price * purchase_quantity
-             @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
-             @total_amount += cartitem.purchase_quantity
-          end
-        end
+    end
 end
