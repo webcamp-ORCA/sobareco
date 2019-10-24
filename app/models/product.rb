@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
   acts_as_paranoid
+  has_many :cartitems
+  has_many :customer, through: :cartitems
+  has_many :records, dependent: :destroy
+
   attachment :product_image
 
   enum product_status: {on_sale: 0, sold_out: 1}
@@ -21,5 +25,4 @@ class Product < ApplicationRecord
     def stock
       return 0
     end
-
 end
