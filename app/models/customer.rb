@@ -3,23 +3,36 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
+  has_many :cartitems
+  has_many :products, through: :cartitems
   has_many :orders, dependent: :destroy
   has_many :deliveries, dependent: :destroy
-  has_many :cart_items, dependent: :destroy
 
+  has_many :cart_items, dependent: :destroy
+  has_many :cards, dependent: :destroy, foreign_key: 'user_id'
+  belongs_to :prefecture, optional:true
+  
   validates :first_name, presence: true
-  # validates :post_code, presence: true
-  # validates :prefecture, presence: true
-  # validates :municipality, presence: true
-  # validates :address, presence: true
-  # validates :email, presence: true
+  validates :post_code, presence: true
+  validates :prefecture_id, presence: true
+  validates :municipality, presence: true
+  validates :address, presence: true
+  validates :email, presence: true
 
   acts_as_paranoid
 
   def name
   	last_name + first_name
   end
+
+  def homeaddress
+    prefecture_id + municipality + address
+  end
+
+
+
+
 
   # include JpPrefecture
   # jp_prefecture :prefecture_code

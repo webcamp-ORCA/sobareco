@@ -19,3 +19,10 @@ Customer.create!(
 	email: 'kobaba@hotmail.ppp',
 	password: '111111',
 	)
+
+ Order.create!(
+ 	postage: '500',
+ )
+
+
+

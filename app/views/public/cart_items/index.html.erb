@@ -1,4 +1,81 @@
 <div class="col-lg-8">
-	<h1>ショッピングカート</h1>
+	<h1><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>ショッピングカート</h1>
+    <table class="table table-hover">
+			<thead>
+			<tr>
+				<th class="text-right">価格&emsp;&emsp;</th>
+			</tr>
+				</thead>
+			<tbody>
+            
+            </tbody>
+            <%= @cartitems.product.name %>
 
+<<<<<<< HEAD
+current_customer.cartitems.each do |cart_item|
+<%= cartitems.product.name %>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<br>
+<span>　　</span><%= link_to '一覧に戻る', product_path %>
+        <%= link_to '購入手続きへ', orders_new_path %>
+<span>
+<br>
+<br>
+<table>
+	<tr>
+		<th></th>
+		<th>商品名</th>
+		<th>価格</th>
+	</tr>
+		<% @cart.line_items.each do |item| %>
+		<tr>
+			<td text-align:center;><img products.height="80" src="<%= cartitems.image_url %>"/></td>
+			<td text-align:center;><font size="4"><%= products.title %></font></td>
+			<td text-align:center;><font size="4"><%= (product_price).to_i %>円</font></td>
+		</tr>
+		<% end %>
+</table>
+<% end %>
+=======
+	<div class="col-lg-8">
+	<table class="table table-hover">
+
+		 <tr>
+			 <th>タイトル</th>
+			 <td><!-- o.product_name --></td>
+	　　　</tr>
+         <tr>
+			 <th>タイトル</th>
+			 <td><!-- o.product_name --></td>
+			 <td>商品価格</td>
+	　　　</tr>
+　　　　　　　　<tr>
+			 <th>アーティスト</th>
+			 <td><!-- o.product_price --></td>
+		 </tr>
+　　　　   <tr>
+			 <th>ジャンル</th>
+			 <td><!-- o.product.arrival_count --></td>
+		　</tr>
+　　　　　　<tr>
+			 <th>数量</th>
+			 <td>削除</td>
+		　</tr>
+		<tr>
+			 <th>数量を更新</th>
+		　</tr>
+
+
+
+
+
+     </tbody>
+    </table>
 </div>
+
+
+>>>>>>> 5666c0d819195f40b467047c4149ed34cec6cabc
+</div>
+
