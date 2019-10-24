@@ -79,9 +79,9 @@ class Public::OrdersController < ApplicationController
        #失敗したら購入画面に戻る
           # @customer = current_customer
           render :new
-    end
+  end
 
-       
+
         # @order_detail.save
         #item.destroy （カートのアイテムを削除)
 
@@ -118,18 +118,16 @@ class Public::OrdersController < ApplicationController
         @q = Product.ransack(params[:q])
       end
 
-      def total_price(cartitems)
-       @total_price = 0
-       @total_amount = 0
+        def total_price(cartitems)
+           @total_price = 0
+           @total_amount = 0
 
-         cartitems.each do |cartitem|
-          # 下はコメントアウトのまま
+          cartitems.each do |cartitem|
+            # 下はコメントアウトのまま
 
-          # (例)@total = @total + cartitem.product.product_price * purchase_quantity
-           @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
-           @total_amount += cartitem.purchase_quantity
-      end
-    end
+            # (例)@total = @total + cartitem.product.product_price * purchase_quantity
+             @total_price +=  cartitem.product.product_price * cartitem.purchase_quantity
+             @total_amount += cartitem.purchase_quantity
+          end
+        end
 end
-
-
