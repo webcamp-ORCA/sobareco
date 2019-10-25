@@ -20,10 +20,10 @@
       <!--  Orderモデル完成後に、変数@orderで書き換える。 -->
       <tbody>
         <tr>
-        <td><%= o.created_at %></td>
+        <td><%=h ((o.created_at).to_date).strftime('%Y年%m月%d日') %></td>
         <td><%= o.total_amount %></td>
-        <td><%#= @orders.total_price %></td>
-        <td><%= o.address %></td>
+        <td>円</td>
+        <td><%=# o.homeaddress %></td>
         </tr>
       </tbody>
 

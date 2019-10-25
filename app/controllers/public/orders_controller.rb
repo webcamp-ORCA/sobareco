@@ -84,7 +84,7 @@ class Public::OrdersController < ApplicationController
 
         # @order_detail.save
         #item.destroy （カートのアイテムを削除)
-
+end
 
 # 購入履歴詳細
   def show
