@@ -88,7 +88,7 @@ class Public::OrdersController < ApplicationController
 
 # 購入履歴詳細
   def show
-    @order = OrderDetail.find_by(id: params[:id])
+    @order = Order.find(params[:id])
   end
 
 #購入後画面
@@ -98,7 +98,8 @@ class Public::OrdersController < ApplicationController
 
 # 購入履歴
   def index
-    @order = Order.all
+    @orders = Order.all
+    # @order = Order.page(params[:page]).per(PER)
   end
 
   private

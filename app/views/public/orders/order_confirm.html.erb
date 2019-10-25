@@ -1,4 +1,4 @@
-<h1>注文確認画面</h1>
+<h1 class="text-success">注文確認画面</h1>
 
 <h2>注文内容の確認</h2>
 
@@ -54,6 +54,6 @@
     <%= f.hidden_field :total_amount, :value => @total_amount %>
     <%= f.hidden_field :addresses, :value => @address_id  %>
     <%= f.hidden_field :settlement_method, :value => @settlement_method %>
-    <%= f.submit '購入を確定する',class: "col-xs-4 btn btn-primary " %>
+    <%= f.submit '購入を確定する',class: "col-xs-4 btn btn btn-success " %>
    <% end %>
 <%= render 'footer'%>

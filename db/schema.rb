@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2019_10_26_101313) do
     t.string "telephone"
     t.integer "prefecture_code"
     t.datetime "deleted_at"
-    t.string "payuser_id"
     t.string "card_id"
     t.integer "prefecture_id"
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
@@ -101,7 +100,6 @@ ActiveRecord::Schema.define(version: 2019_10_26_101313) do
     t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id"
     t.integer "prefecture_id"
     t.index ["prefecture_id"], name: "index_deliveries_on_prefecture_id"
   end

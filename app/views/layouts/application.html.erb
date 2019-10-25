@@ -17,8 +17,6 @@
 <body>
 
 
-
-
 <div class="wrapper">
 <div class="container-fluid">
   <div class="row row-eq-height">
@@ -36,10 +34,10 @@
             <% if customer_signed_in? %>
            <!--  ユーザー側ヘッダー　ログイン時 -->
             <li class="listbar">
-　　　　　　　こんにちは<%= current_customer.name %>様
+　　　　      <p class="text-success">こんにちは<%= current_customer.name %>様</p>　
 　　　　　　　</li>
            <li class="listbar">
-            <%= link_to "マイページ"  %>
+            <%#= link_to "マイページ" ,customer_path(customer.id) %>
           </li>
             <li class="listbar">
             <%= link_to "購入履歴一覧", orders_path  %>
@@ -72,7 +70,7 @@
           </li>
 
 
- <%= yield %>
+
 
  <% end %>
 
@@ -83,5 +81,6 @@
 
     </div>
   </div>
+   <%= yield %>
   </body>
 </html>
