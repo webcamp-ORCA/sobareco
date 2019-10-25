@@ -70,7 +70,7 @@ class Public::OrdersController < ApplicationController
           order_detail.save
           #カートの中身を削除する
           f.destroy
-      end
+
     # もし配送先住所,支払い方法,合計金額の保存に成功したら購入完了画面に移動
         redirect_to order_purchase_complete_path(@order)
     else

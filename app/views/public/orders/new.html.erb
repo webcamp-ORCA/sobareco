@@ -63,12 +63,12 @@
 					    <td><%= d.telephone %></td>
 					</tr>
 			   </table>
-				<%= link_to "新しい住所を登録する", new_delivery_path , class: "col-xs-4 btn btn-success" %>
+
 			<% end %>
 		</div>
 
 		<div class="field">
-
+<%= link_to "新しい住所を登録する", new_delivery_path , class: "col-xs-4 btn btn-success" %>
 			 <table class="table table-hover">
 				<tr>
 				   <th>支払い方法を選択する</th>
@@ -112,4 +112,4 @@
   <% end %>
 </div>
 
-<%= render 'footer'%>
+<%#= render 'footer'%>
