@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
+
+
 Customer.create!(
 	id: 1,
 	last_name: '小林',
@@ -20,6 +24,9 @@ Customer.create!(
 	email: 'kobaba@hotmail.ppp',
 	password: '111111',
 	)
+
+
+
 
  Order.create!(
  	postage: '500',
