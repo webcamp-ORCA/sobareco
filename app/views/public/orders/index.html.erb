@@ -12,8 +12,8 @@
 	<tbody>
 		<tr>
 			<td>注文日</td>
-			<td>配送状況　<!-- <delivery_status> --></td>
-			<td><%#= link_to '購入履歴詳細リンク', root_path, class "col-xs-12 btn btn-primary " %></td>
+			<td>配送状況　<%= o.delivery_status %></td>
+			<td><%#= link_to '購入履歴詳細リンク', o.order_path, class "col-xs-12 btn btn-primary " %></td>
 		</tr>
 		<tr>
 			<td>商品画像</td>

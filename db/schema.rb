@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_10_26_094258) do
-=======
-
-ActiveRecord::Schema.define(version: 2019_10_24_070952) do
->>>>>>> master
-
+ActiveRecord::Schema.define(version: 2019_10_26_101313) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,12 +44,12 @@ ActiveRecord::Schema.define(version: 2019_10_24_070952) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.integer "user_id_id"
+    t.integer "user_id"
     t.string "customer_id"
     t.string "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_cards_on_user_id_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "cartitems", force: :cascade do |t|
@@ -157,14 +151,11 @@ ActiveRecord::Schema.define(version: 2019_10_24_070952) do
     t.datetime "updated_at", null: false
   end
 
-
-
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "products", force: :cascade do |t|
     t.string "product_name"
