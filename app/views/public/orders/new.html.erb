@@ -1,95 +1,167 @@
-<h2>購入画面</h2zs>
-<h4>お届け先・お支払い方法の選択</h4>
-<h5>お届け先</h5>
 
-<table class="table table-hover">
-	<%= check_box_tag :test1 %>
-	<%= label_tag :test1, "ログイン中のユーザー様のお届け先を使用" %>
-     <tr>
-		<td>名前</td>
-		<td><%= @customer.last_name %></td>
-	</tr>
-	<tr>
-		<td>住所</td>
-        <td><%= @customer.address %></td>
-	</tr>
-	<tr>
-		<td>郵便番号</td>
-		<td><%= @customer.post_code %></td>
-	</tr>
-		</table>
-	<%= check_box_tag :test1 %><%= label_tag :test1, "上記以外の登録済みのお届け先を使用" %>
-		<table class="table table-hover">
-		<!-- <   @customers.each do |d|  > -->
-	<tr>
-		<td>名前</td>
-	<td><!-- <d.customer.deliverie.name> --></td>
-	</tr>
-	<tr>
-		<td>住所</td>
-	<td><!-- < d.customer.deliverie.address > --></td>
-	</tr>
-	<tr>
-		<td>電話番号</td>
-	<td><!-- < d.customer.deliverie.telephone. > --></td>
-	</tr>
-</table>
+<div >
+<%# @order.errors.full_messages do | message| %>
+<%# if @order.errors.any? %>
+            <%#= @order.errors.count %> <!-- 件のerrorが発生しました -->
+            <%# @order.errors.full_messages.each do |message| %>
+                <%#= message %>
+            <%# end %>
+        <%# end %>
 
-<table class="table table-hover">
-<%= link_to "新しい住所を登録する", new_delivery_path , class: "col-xs-4 btn btn-primary" %>
-  <tr>
-  	<td>
-	<%= check_box_tag :test1 %><%= label_tag :test1, "銀行振込" %>
-    </td>
-	</tr>
-	<tr>
-    <td>
-	<%= check_box_tag :test1 %><%= label_tag :test1, "代引き" %>
-     </td>
-	</tr>
-	<tr>
-	<td>
-	<%= check_box_tag :test1 %><%= label_tag :test1, "クレジットカード" %>
-   </td>
-  </tr>
-</table>
-<!-- ユーザーに基づいた購入情報の表示 -->
-<div class="actions">
-	<table class="table table-hover">
-		<tr>
-			<td>商品合計</td>
-		<td><!-- <  商品合計　orders.customer. > --></td>
-		</tr>
-		<tr>
-			<td>送料</td>
-		<td><!-- < 送料　orders.order.postage > --></td>
-		</tr>
-		<tr>
-			<td>合計（税込）</td>
-		<td><!-- < 合計（税込)　orders.customer. > --></td>
-		</tr>
-		<tr>
-		<td><!-- < link_to '次に進む', order_confirm_order_path(order.id) > --></td>
-		</tr>
-		<tr>
-		<%= link_to "次に進む", class: "col-xs-4 btn btn-primary" %>
+</div>
 
-		</tr>
-	</table>
-<form action="cgi-bin/abc.cgi" method="post">
-  <p>
-    <input type="checkbox" name="riyu" value="1">選択肢 - 1
-  </p>
-  <p>
-    <input type="checkbox" name="riyu" value="2">選択肢 - 2
-  </p>
-  <p>
-    <input type="checkbox" name="riyu" value="3">選択肢 - 3
-  </p>
-  <p>
-    <input type="submit" value="送信する">
-  </p>
-</form>
+<div class="col-lg-5">
+		<h2>購入画面</h2>
+		<h4>お届け先・お支払い方法の選択</h4>
+		<h5>お届け先</h5>
 
+    <%= form_for @order, url:order_confirm_order_path(current_customer), method: :post do |f| %>
+	<div class="field">
+	　　<table class="table table-hover col-xs-3">
+		    <tr>
+		        <td>
+			        <label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
+		        </td>
+		   <!-- ログイン中のユーザー情報を表示 -->
+		    <tr>
+				<td>名前</td>
+				<td><%= @customer.name %></td>
+			</tr>
+			<tr>
+				<td>住所</td>
+			    <td><%= @customer.homeaddress %></td>
+			</tr>
+			<tr>
+				<td>郵便番号</td>
+				<td><%= @customer.post_code %></td>
+			</tr>
+	    </table>　
+	　　　
+	　　<% @customer.deliveries.each do |d| %>
+		    <table class="table table-hover col-xs-3">
+		      	<tr>
+		      		<td>
+						<label><%= f.radio_button :addresses, d.id %>登録済みのお届け先以外を使用</label>
+			　　　　　</td>
+		　　　　</tr>
+		　　<!-- 　ユーザー以外の住所をeach文で全表示 -->
+				<tr>
 
-</div><%= render 'footer'%>
+		<%= form_for (@order, url: "/orders/#{@order.id}/order_confirm") do |f| %>
+	        <table class="table table-hover col-xs-3">
+		         <td>
+					<label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
+				</td>
+			     <tr>
+
+					<td>名前</td>
+				    <td><%= d.name %></td>
+				</tr>
+				<tr>
+					<td>住所</td>
+					<td><%= d.address %></td>
+				</tr>
+				<tr>
+					<td>電話番号</td>
+				    <td><%= d.telephone %></td>
+				</tr>
+		   </table>
+			<%= link_to "新しい住所を登録する", new_delivery_path , class: "col-xs-4 btn btn-primary" %>
+		<% end %>
+	</div>
+
+		<div class="field">
+
+		 <table class="table table-hover">
+			<tr>
+			   <th>支払い方法を選択する</th>
+			</tr>
+			 <tr>
+				<td><label><%= f.radio_button :settlement_method, "銀行振り込み" %>銀行振込</label></td>
+				<td><label><%= f.radio_button :settlement_method, "代引き" %>代引き</label></td>
+				<td><label><%= f.radio_button :settlement_method, "クレジットカード" %>クレジットカード</label></td>
+			</tr>
+		  </table>
+		</div>
+		<div class="field">
+		     <table class="table table-hover">
+				<!--  purchase_quantity(購入希望数)と数量で計算 -->
+					<tr>
+						<td>商品合計</td>
+						<!-- カートの合計金額を表示 -->
+					    <td><%= @total_price %>円 </td>
+					</tr>
+					<tr>
+						<td>送料</td>
+					　　 <td><%= @order.postage %>円</td>
+					</tr>
+					<tr>
+						<td>合計（税込）</td>
+						<!-- 合計金額のフォームを送りたい -->
+					　　 <td><%= @total_price.to_i + @order.postage.to_i %>円</td>
+					<td><%= @total_amount %>点</td>
+					 <td><%= f.hidden_field :total_price, :value => @total_price.to_i + @order.postage.to_i %></td>
+					</tr>
+
+					<tr>
+						<td>
+				       </td>
+				    </tr>
+		     </table>
+		</div>
+	　　<%= f.submit '次に進む'  ,class: "col-xs-4 btn btn-primary "%>
+
+	<% end %>
+
+			   </table>
+			<% end %>
+		<% end %>
+		 <%= link_to "新しい住所を登録する", new_delivery_path , class: "col-xs-4 btn btn-primary" %>
+		    <%= form_for (@order, url: "/orders/#{@order.id}/order_confirm") do |f| %>
+			    <table class="table table-hover">
+				   <tr>
+			            <th>支払い方法を選択する</th>
+			        </tr>
+						 <tr>
+						  	<td>
+						      <label><%= f.radio_button :settlement_method, 1 %>銀行振込</label>
+						　　</td>
+						</tr>
+						<tr>
+						    <td>
+						      <label><%= f.radio_button :settlement_method, 2 %>代引き</label>
+						　　 </td>
+						</tr>
+						<tr>
+							<td>
+						      <label><%= f.radio_button :settlement_method, 3 %>クレジットカード</label>
+						   </td>
+						</tr>
+			             <tr>
+				</table>
+				<table class="table table-hover">
+						<!--  purchase_quantity(購入希望数)と数量で計算 -->
+						<tr>
+							<td>商品合計</td>
+						    <td><%= @total_price %>円 </td>
+						    <td><%= @total_amount %>点</td>
+						</tr>
+						<tr>
+							<td>送料</td>
+						　　 <td><%= @order.postage %>円</td>
+						</tr>
+						<tr>
+							<td>合計（税込）</td>
+						　　 <td><%= @total.to_i + @order.postage.to_i %>円</td>
+						</tr>
+						<tr>
+							<td>
+					          <%= f.submit '次に進む'  ,class: " btn btn-primary "%>
+					       </td>
+					    </tr>
+			   </table>
+		    <% end %>
+
+</div>
+
+<%= render 'footer'%>

@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<div class="col-lg-8">
 
+<h1>お届け先住所変更</h1>
 
-<h1>お届け先住所 編集</h1>
+<% if @deliveries.errors.any? %>
+            <%= @deliveries.errors.count %>件のerrorが発生しました
+            <% @deliveries.errors.full_messages.each do |message| %>
+                <%= message %>
+            <% end %>
+        <% end %>
+<h1>お届け先住所編集</h1>
 
 <%= form_for @deliveries do |f| %>
+
+
 <div class="field">
 <div class="col-log-3">
     <%= f.label :name, "名前" %>
@@ -42,9 +49,11 @@
 </div>
 
 <div class="actions">
-    <%= f.submit "登録する", class: "btn btn-primary" %>
+
+<%= f.submit '変更する', class: "btn btn-primary" %>
+<%= link_to "削除", delivery_path, method: :delete ,class: "label label-success" %>
+
 </div>
-
-<%=link_to '一覧に戻る', "/deliveries/", class: "btn btn-default" %>
-
 <% end %>
+
+

@@ -1,35 +1,30 @@
 <h1>購入履歴一覧画面</h1>
 
 
-<div class="col-lg-8">
-	<table class="table table-hover">
-   <!-- <   @order.each do |o|  > -->
+<div class="col-lg-6">
+	<table class="table table-hover col-lg-7 ">
+   <!-- <   @order_detail.oeder.each do |o|  > -->
 		<thead>
 			<tr>
-				<th>注文日</th>
+				<th><!-- 注文日 --></th>
 			</tr>
 		</thead>
 	<tbody>
 		<tr>
-			<td></td>
-			<td> <!-- o.order.delivery_status --></td>
-			<td class="label col-xs-4 label-danger">購入履歴詳細リンク</td>
+			<td>注文日</td>
+			<td>配送状況　<!-- <delivery_status> --></td>
+			<td><%#= link_to '購入履歴詳細リンク', root_path, class "col-xs-12 btn btn-primary " %></td>
 		</tr>
-         <tr>
-			 <th>タイトル</th>
-			 <td><!-- o.product_name --></td>
-	　　　</tr>
-　　　　　　　　<tr>
-			 <th>商品単価</th>
-			 <td><!-- o.product_price --></td>
-		 </tr>
-　　　　   <tr>
-			 <th>商品個数</th>
-			 <td><!-- o.product.arrival_count --></td>
+		<tr>
+			<td>商品画像</td>
+			 <td>商品名<!-- o.product_name --></td>
+			 <td>商品金額<!-- o.product_price --></td>ds
+			 <td>商品個数<!-- o.product.arrival_count --></td>
 		　</tr>
 
-</tbody>
+     </tbody>
     </table>
+</div>
 
 
 

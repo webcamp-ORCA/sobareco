@@ -7,7 +7,7 @@ before_action :ransack
   #   @name = "last_name" + "first_name"
   # end
 
-  PER = 8
+  PER = 3
   def index
     # name = "last_name" + "first_name"
     # @customer = Customer.where(id: params[:id])
@@ -24,6 +24,7 @@ before_action :ransack
 
   def purchase_history
     @customer = Customer.find_by(id: params[:id])
+    @orders = @customer.orders
     # @orders = @customer.orders Orderモデルが出来上がってから設定
   end
 
@@ -52,7 +53,7 @@ before_action :ransack
 
 private
   def customer_params
-  	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_name)
+  	params.require(:customer).permit(:last_name, :first_name, :lastname_kana, :firstname_kana, :post_code, :municipality, :address, :telephone, :prefecture_id)
   end
 
   def ransack
