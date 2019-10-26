@@ -23,21 +23,13 @@ class Public::DeliveriesController < ApplicationController
     end
 
 
-    @deliveries = Delivery.new
-        if @deliveries.save
-        redirect_to new_delivery_path(@deliveries)
-      else
-        @deliveries = Deliver.page(params[:page])
-        render :index
-    end
-
-    @deliveries = Delivery.new
-        if @deliveries.save
-        redirect_to new_delivery_path(@deliveries)
-      else
-        @deliveries = Deliver.page(params[:page])
-        render :index
-    end
+    #@deliveries = Delivery.new
+        #if @deliveries.save
+        #redirect_to new_delivery_path(@deliveries)
+      #else
+        #@deliveries = Deliver.page(params[:page])
+        #render :index
+    #end
 
   end
 
@@ -48,12 +40,11 @@ class Public::DeliveriesController < ApplicationController
   def update
     deliveries = Delivery.find(params[:id])
     deliveries.update
-  end
-
-  def destroy
-      deliveries = Delivery.find(params[:id])
     redirect_to deliveries_path
   end
+
+
+
 
   def destroy
     deliveries = Delivery.find(params[:id])
@@ -62,10 +53,12 @@ class Public::DeliveriesController < ApplicationController
   end
 
 
+
 private
     def deliveries_params
-      params.require(:deliveries).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone)
+      params.require(:delivery).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone)
     end
+
         def ransack
       @q = Product.ransack(params[:q])
         end
