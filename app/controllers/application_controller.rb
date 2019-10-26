@@ -9,12 +9,13 @@ class ApplicationController < ActionController::Base
     end
 
   add_flash_types :success, :info, :warning, :danger
-
-
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :lastname_kana, :firstname_kana, :post_code, :prefecture_id, :municipality, :address, :telephone, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :post_code, :prefecture_id, :municipality, :address, :email, :password, :password_confirmation])
+
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :post_code, :prefecture_id, :municipality, :address, :email, :password])
   end
 
 end
