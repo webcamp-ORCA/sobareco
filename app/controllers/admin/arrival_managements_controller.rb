@@ -12,7 +12,7 @@ before_action :ransack
   def create
         @arrival = ArrivalManagement.new(arrival_params)
         if @arrival.save
-           redirect_to admin_arrival_managements_path(arrival)
+           redirect_to admin_arrival_managements_path
         else
           render :new
 
@@ -21,7 +21,7 @@ end
 
 
   def index
-     @arrival = ArrivalManagement.page(params[:page]).per(PER)
+     @arrivals = ArrivalManagement.page(params[:page]).per(PER)
   end
 
 private
