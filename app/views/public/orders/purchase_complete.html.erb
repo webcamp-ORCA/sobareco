@@ -1,0 +1,18 @@
+<h1>ご注文完了</h1>
+
+
+<h2>お買い上げ<br>
+ありがとうございます</h2>
+
+<P>ご注文を承りました.<br>
+	発送の準備に取り掛からせていただきます<br>
+	到着まで少々お待ちください<br>
+	<table>
+		<tr>
+			<th><%= link_to '注文一覧', orders_path,class: "col-xs-12 btn btn-primary " %> </th>
+            <th><%= link_to 'トップに戻る', root_path,class: "col-xs-12 btn btn-primary " %> </th>
+	 </tr>
+
+</table>
+
+<%= render 'footer'%>

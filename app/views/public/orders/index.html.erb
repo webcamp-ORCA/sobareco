@@ -3,7 +3,7 @@
 
 <div class="col-lg-6">
 	<table class="table table-hover col-lg-7 ">
-   <!-- <   @order.each do |o|  > -->
+   <!-- <   @order_detail.oeder.each do |o|  > -->
 		<thead>
 			<tr>
 				<th><!-- 注文日 --></th>
@@ -11,23 +11,15 @@
 		</thead>
 	<tbody>
 		<tr>
-			<td></td>
-			<td class="label col-xs-1 btn btn-primary">商品ステータス</td>
-			<td class="label col-xs-1 label-danger">購入履歴詳細リンク</td>
-			<td></td>
-        </tr>
-	  <!-- link_to '購入履歴詳細リンク',  new_product_path ,class: "col-xs-7 btn btn-primary  -->
-         <tr>
-			 <th>タイトル</th>
-			 <td><!-- o.product_name --></td>
-	　　　</tr>
-　　　　　　　　<tr>
-			 <th>商品単価</th>
-			 <td><!-- o.product_price --></td>
-		 </tr>
-　　　　   <tr>
-			 <th>商品個数</th>
-			 <td><!-- o.product.arrival_count --></td>
+			<td>注文日</td>
+			<td>配送状況　<%= o.delivery_status %></td>
+			<td><%#= link_to '購入履歴詳細リンク', o.order_path, class "col-xs-12 btn btn-primary " %></td>
+		</tr>
+		<tr>
+			<td>商品画像</td>
+			 <td>商品名<!-- o.product_name --></td>
+			 <td>商品金額<!-- o.product_price --></td>ds
+			 <td>商品個数<!-- o.product.arrival_count --></td>
 		　</tr>
 
      </tbody>

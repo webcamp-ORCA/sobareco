@@ -1,34 +1,46 @@
 <%= render 'sidebar'%>
 
-<h1 class="">商品削除確認</h1>
-<h2>この商品を削除します。</h2>
+<h1 class="headline">商品削除確認</h1>
 
-<div class="col-lg-3">
-
-  <%= attachment_image_tag @product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'250x250' %>
-</div>
-
-<div class="col-lg-7">
-      <!-- 商品名 -->
-
-  商品名：<%= @product.product_name %><br>
+<div class="destroy-confirm-main">
 
 
 
-  アーティスト名：<%= @product.artist.artist_name %><br>
+<h3>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">この商品を削除します。</span>
+</h3>
 
 
 
-  ジャンル名：<%= @product.genre.genre_name %><br>
+  <div class="col-lg-3">
+    <%= attachment_image_tag @product, :product_image, :fill, 230, 230, fallback: "no_image.png", size:'230x230' %>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="product-name">
+      <%= @product.product_name %>
+    </div><br>
+
+    <div class="product-info">
+
+      <div class="info-name">
+        アーティスト名：<%= @product.artist.artist_name %>
+      </div>
 
 
-
-  レーベル名：<%= @product.label.label_name %><br>
-
-
-  <%= link_to "詳細ページに戻る", admin_product_path(@product.id),class: "btn btn-default " %>
-
-  <%= link_to "商品を削除する", admin_product_path(@product.id), method: :delete,class: "btn btn-danger " %>
+      <div class="info-name">
+        ジャンル名：<%= @product.genre.genre_name %>
+      </div>
 
 
+      <div class="info-name">
+        レーベル名：<%= @product.label.label_name %>
+      </div>
+    </div>
+
+
+    <%= link_to "詳細ページに戻る", admin_product_path(@product.id),class: "btn btn-default " %>
+
+    <%= link_to "商品を削除する", admin_product_path(@product.id), method: :delete,class: "btn btn-danger " %>
+  </div>
 </div>

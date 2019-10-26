@@ -12,17 +12,20 @@
 				<th>入荷個数</th>
 			</tr>
 		</thead>
-	<tbody>
-     <% @arrival.each do |arrival| %>
+		<tbody>
+	   <% @arrivals.each do |arrival| %>
 			<tr>
 				<td><%= arrival.product_id %></td>
 				<td><%= arrival.product.product_name %></td>
 				<td><%= arrival.product.artist.artist_name %></td>
 				<td><%= arrival.arrival_date %></td>
 				<td><%= arrival.arrival_count %></td>
-　　　　     </tr>
-<% end %>
-<%= paginate @arrival %>
+	　　　　</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<%= paginate @arrivals %>
 
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_222853) do
+ActiveRecord::Schema.define(version: 2019_10_26_101313) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 2019_10_22_222853) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
+    t.integer "user_id"
+    t.string "customer_id"
+    t.string "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_222853) do
     t.string "telephone"
     t.integer "prefecture_code"
     t.datetime "deleted_at"
+    t.string "payuser_id"
     t.string "card_id"
     t.integer "prefecture_id"
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
@@ -101,6 +102,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_222853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+    t.integer "prefecture_id"
+    t.index ["prefecture_id"], name: "index_deliveries_on_prefecture_id"
   end
 
   create_table "discs", force: :cascade do |t|
@@ -132,10 +135,10 @@ ActiveRecord::Schema.define(version: 2019_10_22_222853) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "settlement_method"
+    t.string "settlement_method"
     t.datetime "delivery_preferred_date"
     t.integer "postage", default: 500, null: false
-    t.integer "delivery_status"
+    t.integer "delivery_status", default: 1
     t.integer "total_amount"
     t.string "addresses"
     t.integer "customer_id"

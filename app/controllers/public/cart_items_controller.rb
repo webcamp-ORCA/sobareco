@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+
 before_action :ransack
 
 

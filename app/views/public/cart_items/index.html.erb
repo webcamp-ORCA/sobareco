@@ -1,5 +1,8 @@
+
+
 <div class="col-lg-8">
 	<h1><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>ショッピングカート</h1>
+
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
@@ -17,6 +20,7 @@
 	</tr>
 		<% current_customer.cartitems.each do |cart_item| %>
 		<tr>
+
             <td><%= attachment_image_tag cart_item.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
 
 			<td text-align:center;><font size="4"><%= cart_item.product.product_name %>
@@ -46,4 +50,17 @@
 </div>
 
 </div>
+=======
+			<td text-align:center;><img products.height="80" src="<%= cartitems.image_url %>"/></td>
+			<td text-align:center;><font size="4"><%= products.title %></font></td>
+			<td text-align:center;><font size="4"><%= (product_price).to_i %>円</font></td>
+		</tr>
+		<% end %>
+</table>
+<% end %>
+
+
+</div>
+
+
 

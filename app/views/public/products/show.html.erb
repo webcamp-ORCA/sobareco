@@ -1,27 +1,42 @@
-<h1>商品詳細</h1>
+<h1 class="headline">商品詳細</h1>
 
-<div class="col-lg-offset-2 col-lg-3">
-      <!-- 商品画像 -->
-      <%= attachment_image_tag @product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'250x250' %><br>
-</div>
-<div class="col-lg-7">
-    <!-- 商品名 -->
-      【<%= @product.product_name %>】<br>
+<div class="product-main">
+  <div class="col-lg-3">
+    <!-- 商品画像 -->
+    <%= attachment_image_tag @product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'250x250' %><br>
 
 
-      アーティスト名：<%= @product.artist.artist_name %><br>
+    <div class="product-content">
+        <% @discs.each do |disc| %>
+        <div class="disc-number">
+          <span class="mgl-10">Disc.<%= disc.disc_no %></span>
+        </div><br>
 
 
-      ジャンル名：<%= @product.genre.genre_name %><br>
+          <% disc.records.each do |record| %>
+            <div class="song-title">
+              <%= record.song_title %>
+            </div><br>
+          <% end %>
+
+        <% end %>
+    </div>
 
 
-      レーベル名：<%= @product.label.label_name %><br>
+  </div>
+  <div class="col-lg-7">
 
+      <div class="label label-info label-sm">
+        <%= @product.product_status_i18n %>
+      </div><br>
 
-      価格(税抜)：￥<%= @product.product_price %><br>
+      <!-- 商品名 -->
+      <div class="product-name">
+        <%= @product.product_name %>
+      </div><br>
 
+      <div class="product-info">
 
-      <%= @product.product_status_i18n %><br>
 
       <%= link_to "購入する", new_order_path %>
       <%= form_for @cart_item, url: cart_items_path do |f| %>
@@ -31,22 +46,33 @@
       <% end %>
 </div>
 
-<div class="col-lg-offset-2 col-lg-10">
+
+        <div class="info-name">
+          アーティスト：<%= @product.artist.artist_name %>
+        </div>
 
 
-      <% @discs.each do |disc| %>
-        ディスク<%= disc.disc_no %><br>
-        <% disc.records.each do |record| %>
-          <%= record.song_title %><br>
-        <% end %>
-      <% end %>
 
-    <!-- 編集ボタン -->
-      <%= link_to "編集", edit_admin_product_path, class: "btn btn-warning btn-sm" %>
+        <div class="info-name">
+          ジャンル：<%= @product.genre.genre_name %>
+        </div>
 
-    <!-- 削除ボタン -->
-      <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger btn-sm" %>
+
+        <div class="info-name">
+          レーベル：<%= @product.label.label_name %>
+        </div>
+
+      </div>
+
+      <div class="product-price">
+        <% @product.product_price =  @product.product_price * 1.1 %>
+        価格(税込)：￥<%= @product.product_price %>
+      </div><br>
+
+
+  </div>
 
 
 </div>
+
 

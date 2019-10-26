@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :ransack
-  
+
   def show
     @customer = Customer.find_by(id: params[:id])
   end
@@ -26,7 +26,10 @@ class Public::CustomersController < ApplicationController
   def destroy
     customer = Customer.find_by(id: params[:id])
     customer.destroy
+
+
     flash[:notice] = "退会手続きが完了しました。"
+
     redirect_to("/products")
   end
 
@@ -70,7 +73,7 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-  	params.require(:customer).permit(:name, :last_name, :first_name, :prefecture_id)
+  	params.require(:customer).permit(:last_name, :first_name, :lastname_kana, :firstname_kana, :post_code, :municipality, :address, :telephone, :prefecture_id)
   end
   
   def ransack
