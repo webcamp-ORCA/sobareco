@@ -1,14 +1,24 @@
 ja:
   activerecord:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   enums:
     product:
       product_name: 商品名
       product_status:
         on_sale: 販売中
-        sold_out: 品切れ
+        sold_out: 販売停止中
     artist:
       artist_name: アーティスト名
     label:
       label_name: レーベル名
     genre:
       genre_name: ジャンル名
+    orders:
+      delivery_status: 商品準備中
+      getting_ready: 配送中

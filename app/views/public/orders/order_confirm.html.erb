@@ -5,7 +5,9 @@
 
 <div class="col-lg-10">
 	<table class="table table-hover">
-	<%# @ouders.each do |o| %>
+	<%# @orders.puroduct.each do |o| %>
+	<!-- ユーザーのカートアイテムを表示させる -->
+	<% @customer.cartitems.each do |o| %>
 		<thead>
 			<tr>
 				<th>注文一覧</th>
@@ -14,42 +16,44 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>商品画像</td>
-				<td><%#=o.prodcut_name %></td>
-				<td><%#=o.prodcut.price %></td>
-				<td><%#=o.prodcut.artist.artist_name %></td>
-				<td><%#=o.prodcut.genre.genre_name %></td>
+				<td><%#=o.attachment_image_tag product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %></td>
+				<td><%=o.product.product_name %></td>
+				<td><%=o.product.product_price %></td>
+				<td><%=o.product.artist.artist_name %></td>
+				<td><%=o.product.genre.genre_name %></td>
 	　　　　  </tr>
 	   </tbody>
     </table>
-
-<%= link_to 'カートに戻る',  cart_items_path ,class: "col-xs-7 btn btn-primary " %>
-<table class="table table-hover">
-	<thead>
+<% end %>
+<%= link_to 'カートに戻る',  cart_items_path ,class: "col-xs-4 btn btn-primary " %>
+              <!--  viewに購入者の購入情報を再表示 -->
+	<table class="table table-hover">
+		 <tr>
+		    <td>お届け先</td>
+		    <td><%= @address %></td>
+		</tr>
 		<tr>
-	         <th>お届け先</th>
-　　    </tr>
-		<tr>
-			 <th>郵便番号</th>
-		     <td><%#= o.prodcut.cutomer.post_code %></td>
+		    <td>お支払い方法</td>
+		    <td><%= @settlement_method %></td>
 		</tr>
          <tr>
-			 <th>都道府県</th>
-			 <td><%#= o.prodcut.cutomer.prefecture %></td>
-		 </tr>
-		 <tr>
-			 <th>住所</th>
-			 <td><%#= o.prodcut.cutomer.address %></td>
-		 </tr>
-		 <tr>
-			 <th>名前</th>
-			 <td><%#= o.prodcut.cutomer.name %></td>
-		 </tr>
-		 <tr>
-			 <th>電話番号</th>
-			 <td><%#= o.prodcut.cutomer.telephone %></td>
-		 </tr>
-<%# end %>
-	</table>
- <%#= link_to '購入画面に戻って変更する', new_product_path(product_id) ,class: "col-xs-7 btn btn-primary " %>
+         <td>合計金額</td>
+         <td><%= @total_amount.to_i %></td>
+        </tr>
+    </table>
+
+
+    <%# @customer.cartitems.each do |f| %>
+      <!-- カートアイテム内の購入数 -->
+       <%#= f.hidden_field :purchase_quantity, :value => @order_quantity  %>
+      <%# end %>
+
+<%= link_to '購入画面に戻って変更する', new_order_path,class: "col-xs-4 btn btn-primary " %>
+<!-- 配送先 支払い方法の選択で決めたこと -->
+<%= form_for @order, url: "/orders" do |f| %>
+    <%= f.hidden_field :total_amount, :value => @total_amount %>
+    <%= f.hidden_field :addresses, :value => @address_id  %>
+    <%= f.hidden_field :settlement_method, :value => @settlement_method %>
+    <%= f.submit '購入を確定する',class: "col-xs-4 btn btn-primary " %>
+   <% end %>
 <%= render 'footer'%>
