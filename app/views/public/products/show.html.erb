@@ -23,6 +23,10 @@
 
       <%= @product.product_status_i18n %><br>
 
+
+      <%= link_to "購入する", new_order_path %>
+
+
       <%= link_to "カートに入れる", cart_items_path %>
 
 </div>
@@ -42,7 +46,5 @@
 
     <!-- 削除ボタン -->
       <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger btn-sm" %>
-
-
 </div>
 

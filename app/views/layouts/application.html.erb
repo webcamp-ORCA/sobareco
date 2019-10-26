@@ -56,19 +56,26 @@
            </li>
           <li class="">
             <%= link_to "ログイン（ユーザー)",new_customer_registration_path  %>
-
+          </li>
+　          <li class="listbar">
+            <%= link_to "購入画面", new_order_path  %>
           </li>
           <li class="listbar">
              <%= link_to "ログアウト(ユーザー)" %>
           </li>
 
- <% end %>
           <li class="">
             <%= link_to "ログイン(管理者）",  new_admin_user_registration_path %>
           </li>
           <li class="listbar">
             <%= link_to "ログアウト(管理者側)", admin_user_registration_path, method: :delete %>
           </li>
+
+
+
+
+ <% end %>
+
 
 
 

@@ -1,8 +1,13 @@
 <%= render 'sidebar'%>
 
+
+
+
+
 <h1 class="headline">商品削除確認</h1>
 
 <div class="destroy-confirm-main">
+
 
     <h3>
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">この商品を削除します。</span>
@@ -45,4 +50,8 @@
     </div>
 
 
-</div>
+
+        <td><%= link_to "商品を削除する", admin_product_path(@product.id), method: :delete %></td>
+      </tr>
+    </tbody>
+  </table>

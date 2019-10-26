@@ -1,6 +1,16 @@
+
+<div class="nested-fields ">
+  <%= f.text_field :disc_number, autocomplete: 'off', :value => "Disc.1" %>
+  <%= f.text_field :song_title, autocomplete: 'off', :placeholder => "入力してください" %><br>
+
+  <%= link_to_remove_association 'トラックを削除', f %>
+</div>
+
+
 <div class="nested-fields col-lg-offset-6 col-lg-6">
   <div class="form-group">
     <%= f.text_field :song_title, autocomplete: 'off', :placeholder => "(例)1.おさかな天国" %>
     <%= link_to_remove_association '曲を削除', f %>
   </div>
 </div>
+

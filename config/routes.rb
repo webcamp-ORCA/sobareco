@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+
+
+  
+  namespace :public do
+    get 'order_details/new'
+  end
+  get 'order_detail/new'
+
   root :to => 'public/products#index'
 
   namespace :admin do
@@ -43,7 +51,13 @@ devise_for :admin_users,controllers: {
     get 'address_index', :on => :member
     end
     resources :orders do
+
+     post 'order_confirm',:on => :member
+     # get 'purchase_complete',:on=>:member
+      get 'purchase_complete'
+
     get 'order_confirm',:on => :member
+
     end
     resources :products
     resources :deliveries
@@ -55,7 +69,21 @@ devise_for :admin_users,controllers: {
         post 'delete', to: 'cards#delete'
       end
     end
+
+
+
+
+ 
+
+
+
+
+
+
+
+
   end
+
 end
 
 

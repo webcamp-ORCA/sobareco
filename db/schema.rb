@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-
 ActiveRecord::Schema.define(version: 2019_10_24_070952) do
 
 
@@ -137,10 +136,10 @@ ActiveRecord::Schema.define(version: 2019_10_24_070952) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "settlement_method"
+    t.string "settlement_method"
     t.datetime "delivery_preferred_date"
     t.integer "postage", default: 500, null: false
-    t.integer "delivery_status"
+    t.integer "delivery_status", default: 1
     t.integer "total_amount"
     t.string "addresses"
     t.integer "customer_id"

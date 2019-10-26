@@ -80,4 +80,4 @@ gem 'select2-rails'
 gem 'haml-rails'
 gem 'dotenv-rails'
 gem 'seed-fu'
-
+gem 'simple_form'
