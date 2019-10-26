@@ -34,7 +34,7 @@ before_action :ransack
 
   def show
     @product = Product.find(params[:id])
-    @discs = @product.discs
+    @discs = @product.discs 
   end
 
   def edit
