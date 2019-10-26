@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_214159) do
+ActiveRecord::Schema.define(version: 2019_10_26_101313) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2019_10_23_214159) do
     t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "customer_id"
+    t.string "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "cartitems", force: :cascade do |t|
@@ -74,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_214159) do
     t.string "telephone"
     t.integer "prefecture_code"
     t.datetime "deleted_at"
+    t.string "payuser_id"
     t.string "card_id"
     t.integer "prefecture_id"
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
@@ -91,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_214159) do
     t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
     t.integer "prefecture_id"
     t.index ["prefecture_id"], name: "index_deliveries_on_prefecture_id"
   end
