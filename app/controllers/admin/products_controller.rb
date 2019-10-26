@@ -34,6 +34,7 @@ before_action :ransack
   def show
     @product = Product.find(params[:id])
     @discs = @product.discs
+    # @stock = ArrivalManagement.find(:arrival_count params[:id]).sum - OrderDetails.find(:order_quantity params[:id]).sum
   end
 
   def edit
@@ -52,7 +53,6 @@ before_action :ransack
 
   def destroy_confirm
     @product = Product.find(params[:id])
-
   end
 
   def destroy

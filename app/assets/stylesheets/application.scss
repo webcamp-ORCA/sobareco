@@ -26,6 +26,23 @@
       font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, 'Open Sans', sans-serif;
 
     }
+.body{
+  padding-bottom: 200px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.wrapper {
+   width: 100%;
+  position: relative;
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
+}
 
     a {
   color: green;
@@ -88,8 +105,12 @@
 
 .btn-group{
   margin-left: 70px;
-  padding: 15px 0 30px 0;
+  padding-top: 15px;
   width: 250px;
+}
+
+.product-content{
+  margin-top: 30px;
 }
 
 .product-name{
@@ -151,6 +172,36 @@ h3{
 
 
 
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  background-color: green;
+  color: white;
+
+}
+
+.dot{
+  text-emphasis: filled;
+  -webkit-text-emphasis: filled;
+
+}
+
+.footer-main{
+  text-align: center;
+  display: inline-block;
+  margin-left: 588px;
+  margin-bottom: 30px;
+
+}
+
+.footer-info{
+  display: inline-block;
+  margin: 0 50px;
+  margin-left: 350px;
+
+}
 
 
 

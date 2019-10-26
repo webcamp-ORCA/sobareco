@@ -1,6 +1,6 @@
 <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name %>">
-    <%= msg.html_safe %>
+    <span class="glyphicon glyphicon-ok" style="font-size: 20px" aria-hidden="true"></span>&nbsp;<%= msg.html_safe %>
   </div>
 <% end %>
 
@@ -21,6 +21,7 @@
               <%= attachment_image_tag product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %><br>
               <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;<%= product.product_name %><br>
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%= product.artist.artist_name %><br>
+
               <i class="fas fa-yen-sign fa-lg"></i>&nbsp;<%= product.product_price %><br>
 
             <% end %>

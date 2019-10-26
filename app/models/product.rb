@@ -14,8 +14,6 @@ class Product < ApplicationRecord
   has_many :discs, dependent: :destroy
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 
-    def stock
-      return 0
-    end
+  
 
 end
