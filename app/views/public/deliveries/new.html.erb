@@ -26,8 +26,8 @@
 
 <div class="field">
 <div class="col-log-3">
-    <%= f.label :email, "住所（都道府県）" %>
-    <%= f.text_field :prefecture %>
+    <%= f.label :prefecture_id, "住所（都道府県）" %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
 </div>
 
 <div class="field">

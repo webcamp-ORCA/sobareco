@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
    before_action :ransack
 
 
+
 # 購入画面
   def new
     #お届け先住所と
@@ -83,7 +84,6 @@ class Public::OrdersController < ApplicationController
        
         # @order_detail.save
         #item.destroy （カートのアイテムを削除)
-  end
 
 
 # 購入履歴詳細
@@ -100,6 +100,7 @@ class Public::OrdersController < ApplicationController
   def index
     @order = Order.all
   end
+
 
 
 

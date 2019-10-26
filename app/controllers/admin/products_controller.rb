@@ -14,8 +14,7 @@ before_action :ransack
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:notice] = "#{@product.product_name}を登録しました。"
-       redirect_to admin_product_path(@product.id)
+       redirect_to admin_product_path(@product.id), success: "#{@product.product_name}を登録しました。"
     else
       render 'new'
     end
@@ -52,8 +51,7 @@ before_action :ransack
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-       flash[:notice] = "#{@product.product_name}の情報を変更しました。"
-       redirect_to admin_product_path(@product.id)
+       redirect_to admin_product_path(@product.id), success: "#{@product.product_name}の情報を変更しました。"
     else
       render 'edit'
     end
@@ -67,8 +65,7 @@ before_action :ransack
   def destroy
     product = Product.find(params[:id])
     product.destroy
-    flash[:notice] = "商品を削除しました。"
-    redirect_to admin_products_path
+    redirect_to admin_products_path, danger: "商品を削除しました。"
   end
 
 

@@ -3,7 +3,9 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
+  has_many :cartitems
+  has_many :products, through: :cartitems
   has_many :orders, dependent: :destroy
   has_many :deliveries, dependent: :destroy
 
@@ -13,11 +15,11 @@ class Customer < ApplicationRecord
   belongs_to :prefecture, optional:true
 
   validates :first_name, presence: true
-  # validates :post_code, presence: true
-  # validates :prefecture, presence: true
-  # validates :municipality, presence: true
-  # validates :address, presence: true
-  # validates :email, presence: true
+  validates :post_code, presence: true
+  validates :prefecture_id, presence: true
+  validates :municipality, presence: true
+  validates :address, presence: true
+  validates :email, presence: true
 
   acts_as_paranoid
 
@@ -26,7 +28,7 @@ class Customer < ApplicationRecord
   end
 
   def homeaddress
-    municipality + address
+    prefecture_id + municipality + address
   end
 
 

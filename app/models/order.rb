@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
-	has_many :order_detail
+	has_many :order_details
 	belongs_to :customer
+  
 	# accepts_nested_attributes_for :customer
      enum delivery_status: {getting_ready: 0, on_passage: 1}
      #チェックボックスが空だったらセーブ
