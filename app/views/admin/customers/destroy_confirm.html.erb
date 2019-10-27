@@ -2,26 +2,40 @@
 
 
 
-<div class="col-lg-10">
+<div class="col-lg-12">
   <div class="text-center">
     <h1>ユーザー削除確認</h1>
+
     <h2>このユーザー会員情報を削除します。</h2>
     <h2>よろしいですか？</h2>
   </div>
-    <h2>名前</h2>
-    <h3>姓:<%= @customer.last_name %></h3>
-    <h3>名:<%= @customer.first_name %></h3>
-    <h3>姓（カナ):<%= @customer.lastname_kana %></h3>
-    <h3>名（カナ）:<%= @customer.firstname_kana %></h3>
-    
-    <h2>郵便番号: <%= @customer.post_code %></h2>
-    <h2>住所:<%= @customer.address %></h2>
-    <h2>電話番号:<%= @customer.telephone %></h2>
-    <h2>メールアドレス:<%= @customer.email %></h2>
-    
-    <div class="row">
-      <div class="col-lg-3"></div>
-   
-    <%= link_to '詳細ページに戻る', admin_customer_path(@customer), class: "btn btn-primary" %>
+</div>
+    <div class="col-lg-12">
+    <div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>顧客ID:<span class="col-lg-1"></span><%= @customer.id %></h3></div>
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>名前:<span class="col-lg-1"></span><%= @customer.name %></h3></div>
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>名前（カナ）:<span class="col-lg-1"></span><%= @customer.name_kana %></h3></div>
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>郵便番号:<span class="col-lg-1"></span> <%= @customer.post_code %></h3></div>
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>住所:<span class="col-lg-1"></span><%= @customer.homeaddress %></h3></div>
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>電話番号:<span class="col-lg-1"></span><%= @customer.telephone %></h3></div>
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+<h3>メールアドレス:<span class="col-lg-1"></span><%= @customer.email %></h3></div>
 
-    <%= link_to '削除する', "/admin/customers/#{@customer.id}", method: :delete, class: "btn btn-primary" %>
+   <div class="col-lg-12">
+  <div class="text-center">
+   
+    <%= link_to '詳細ページに戻る', admin_customer_path(@customer), class: "btn btn-success" %>
+
+    <%= link_to '削除する', "/admin/customers/#{@customer.id}", method: :delete, class: "btn btn-danger" %>
