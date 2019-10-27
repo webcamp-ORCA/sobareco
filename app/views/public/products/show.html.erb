@@ -3,7 +3,7 @@
 <div class="product-main">
   <div class="col-lg-3">
     <!-- 商品画像 -->
-    <%= attachment_image_tag @product, :product_image, :fill, 220, 220, fallback: "no_image.png", size:'220x220' %><br>
+    <%= attachment_image_tag @product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'250x250' %><br>
 
 
     <div class="product-content">
@@ -61,8 +61,11 @@
   </div>
 
   <div class="col-lg-4">
-    <%= link_to "カートに入れる", cart_items_path,class: "btn btn-default btn-sm " %>
-
+    <div class="product-cart-btn">
+      <button type="button" class="btn btn-default" >
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;<%= link_to "カートに入れる", cart_items_path %>
+      </button>
+    </div>
   </div>
 
 

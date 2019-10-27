@@ -24,5 +24,8 @@ Customer.create!(
  	postage: '500',
  )
 
-
+AdminUser.create!(
+	email: 'kobatatsu@tmail.com',
+	password: '00000000',
+	)
 
