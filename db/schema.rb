@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(version: 2019_10_27_052208) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cards", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "customer_id"
-    t.string "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
   create_table "cartitems", force: :cascade do |t|
     t.integer "purchase_quantity"
     t.integer "customer_id"
@@ -83,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_10_27_052208) do
     t.string "telephone"
     t.integer "prefecture_code"
     t.datetime "deleted_at"
+    t.string "payuser_id"
     t.string "card_id"
     t.integer "prefecture_id"
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"

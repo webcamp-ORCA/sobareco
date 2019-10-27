@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  
   namespace :public do
     get 'order_details/new'
   end
@@ -69,19 +68,6 @@ devise_for :admin_users,controllers: {
         post 'delete', to: 'cards#delete'
       end
     end
-
-
-
-
- 
-
-
-
-
-
-
-
-
   end
 
 end
