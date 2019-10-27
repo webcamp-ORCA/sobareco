@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
-
+#管理者のみアクセス権を持っている。
+# before_action :authenticate_admin!
 
 before_action :ransack
 
@@ -18,13 +19,13 @@ before_action :ransack
 
   def show
 
-    @customer = Customer.find_by(id: params[:id])
+    @customer = Customer.find(params[:id])
 
   end
 
   def purchase_history
-    @customer = Customer.find_by(id: params[:id])
-    @orders = @customer.orders
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.find(params[:id])
     # @orders = @customer.orders Orderモデルが出来上がってから設定
   end
 

@@ -37,9 +37,19 @@
       <div class="product-info">
 
 
+      <%= link_to "購入する", new_order_path %>
+      <%= form_for @cart_item, url: cart_items_path do |f| %>
+        <%= f.number_field :purchase_quantity, min:"1"%>
+        <%= f.hidden_field :product_id, :value => @product.id %>        <%#= button_to 'カートに入れる', {controller: 'cart_items', action: 'create'}, {method: :post} %>
+        <%= f.submit 'カートに入れる' %>
+      <% end %>
+</div>
+
+
         <div class="info-name">
           アーティスト：<%= @product.artist.artist_name %>
         </div>
+
 
 
         <div class="info-name">

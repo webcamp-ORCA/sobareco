@@ -7,12 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Customer.create!(
+	id: 1,
 	last_name: '小林',
 	first_name: '勃也',
 	lastname_kana: 'コバヤシ',
 	firstname_kana: 'タツヤ',
 	post_code: '000-0000',
-	prefecture: '長野県',
+	prefecture_id: 1,
 	municipality: '千曲市横田町',
 	address: '1-2-2',
 	telephone: 'xxx-xxxx-xxxx',

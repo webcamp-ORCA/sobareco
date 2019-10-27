@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_26_101313) do
+ActiveRecord::Schema.define(version: 2019_10_27_052208) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 2019_10_26_101313) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "user_id"
+    t.integer "user_id"
+    t.string "customer_id"
     t.string "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -147,6 +148,8 @@ ActiveRecord::Schema.define(version: 2019_10_26_101313) do
     t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
+    t.index ["prefecture_id"], name: "index_orders_on_prefecture_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
