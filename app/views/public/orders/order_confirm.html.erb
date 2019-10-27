@@ -6,7 +6,7 @@
 <div class="col-lg-10">
 	<table class="table table-hover">
 	<!-- ユーザーのカートアイテムを表示させる -->
-	<% @customer.cartitems.each do |o| %>
+	   <% @customer.cartitems.each do |o| %>
 		<thead>
 			<tr>
 				<th></th>
@@ -19,7 +19,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><%= attachment_image_tag o.product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %></td>
+				<td><%= attachment_image_tag o.product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'100x100' %></td>
 				<td><%=o.product.product_name %></td>
 				<td><%=o.purchase_quantity %></td>
 				<td><%=o.product.product_price %></td>

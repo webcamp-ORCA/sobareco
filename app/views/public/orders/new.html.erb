@@ -1,12 +1,4 @@
 
-<div >
-            <%= @order.errors.count %> 配送先住所　支払い方法を選択をしてください
-            <% @order.errors.full_messages.each do |message| %>
-                <%= message %>
-            <% end %>
-
-
-</div>
 
 <div class="col-lg-5">
 		<h2 class="text-success">購入画面</h2>
@@ -14,6 +6,7 @@
 		<h5>お届け先</h5>
 
  <%= form_for @order, url:order_confirm_order_path(current_customer), method: :post do |f| %>
+
 		<div class="field">
 		　　<table class="table table-hover col-xs-3">
 			    <tr>
@@ -45,12 +38,12 @@
 			　　<!-- 　ユーザー以外の住所をeach文で全表示 -->
 					<tr>
 
+
 		        <table class="table table-hover col-xs-3">
 			         <td>
 						<label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
 					</td>
 				     <tr>
-
 						<td>名前</td>
 					    <td><%= d.name %></td>
 					</tr>

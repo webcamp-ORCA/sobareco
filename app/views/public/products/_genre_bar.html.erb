@@ -1,14 +1,7 @@
 <div class="col-lg-2">
   <table class="table table-bordered">
     <tbody>
-      <tr>
-        <td>
-          <%= search_form_for @q, url: admin_products_path do |f| %>
-            <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
-            <%= f.submit "検索" %>
-          <% end %>
-        </td>
-      </tr>
+      
       <% @genres.each do |genre| %>
           <tr>
             <td><%=link_to genre.genre_name, products_path(genre_id: genre.id)%></td>

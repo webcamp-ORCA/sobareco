@@ -28,12 +28,20 @@ class Customer < ApplicationRecord
   	last_name + first_name
   end
 
+  def name_kana
+    lastname_kana + firstname_kana
+  end
+
   def homeaddress
     Prefecture.find(prefecture_id).name + municipality + address
 
-    # prefecture_id.to_s + municipality + address
 
   end
+
+
+    # prefecture_id.to_s + municipality + address
+
+
 
 
 

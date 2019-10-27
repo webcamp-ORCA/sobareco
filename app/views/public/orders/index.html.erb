@@ -1,48 +1,36 @@
-<h1 class="text-success">購入履歴一覧画面</h1>
 
 
-
-
-<div class="container">
-  <div class="row">
-　　<div class="col-lg-12">
-	    <p class="text-center">
-		   <% @orders.each do |o|  %>
-				   <%# @order.customer.cartitem.each do |o| %>
-			<table class="table table-hover col-lg-11 ">
-				<thead>
-					<tr>
-						<th class="col-xs-1">注文日</th>
-						<th class="col-xs-1">配送状況</th>
-						<th class="col-xs-1"></th>
-					</tr>
-				</thead>
-					<tbody>
-						<tr>
-							<td class="col-xs-1"><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
-							<td class="col-xs-1 label label-primary" ><%= o.delivery_status_i18n %></td>
-							<td class="col-xs-1 label label-success"><%= link_to '購入履歴詳細リンク', order_path(o.id) %></td>
-						</tr>
-						<% o.order_details.each do |f| %>
-						 <tr>
-							　<td class="col-xs-3"><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'100x100' %></td>
-							 <td class="col-xs-3">商品名<%= f.product.product_name %></td>
-
-							 <td class="col-xs-3">商品個数<%= f.product.product_name %>点</td>
-						　</tr>
-						<% end %>
-			       </tbody>
-			</table>
-		  <% end %>
-	       <%= paginate @orders %>
-	     </p>
-     </div>
-  </div>
+<div class="main-visual">
+   <h1 class="text-success">購入履歴一覧画面</h1>
+   <% @orders.each do |o|  %>
+	<table class="table table-hover col-lg-7 ">
+		<thead>
+			<tr>
+				<th class="create_day">注文日</th>
+				<th class="">配送状況</th>
+				<th class=""></th>
+			</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td class="order_day"><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
+					<td class="delivery_status" ><%= o.delivery_status_i18n %></td>
+					<td class=""><%= link_to '購入履歴詳細リンク', order_path(o.id) %></td>
+				</tr>
+				<% o.order_details.each do |f| %>
+				   <tr class="table">
+					　<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
+					 <td><div class="product_font">商品名: <%= f.product.product_name %><br></div>
+					 <div class="price_font">金額: <%= f.product.product_price %>円<br></div>
+					 <div class="genre_font">点数: <%= f. order_quantity %>点</td></div>
+				　</tr>
+				<% end %>
+	       </tbody>
+		</table>
+	<% end %>
+       <%= paginate @orders %>
 </div>
 
-
-
-<%= render 'footer'%>
 
 
 

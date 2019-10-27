@@ -1,58 +1,50 @@
-<h1 class="text-success">購入履歴詳細</h1>
-
-
-<div class="container">
-  <div class="row">
-　　<div class="col-lg-12">
-		<p class="text-center">
-			<table class="table table-hover col-lg-10">
+<div class="main-visual">
+    <h1 class="text-success">購入履歴詳細</h1>
+	<div class="container">
+		<div class="row">
+		　<div class="col-lg-8">
+			<table class="table table-hover col-lg-2">
 					<tr>
-				         <th>注文日時</th>
+				         <th class="small_titel-2">注文日時</th>
 				         <td><%= @order.created_at.strftime("%Y月%m日%d %H:%M") %></td>
 			　　    </tr>
 					<tr>
-						 <th>注文状況</th>
-					     <td><%=  @order.delivery_status_i18n %></td>
+						 <th class="small_titel-2">注文状況</th>
+					     <td class="genre_font"><%=  @order.delivery_status_i18n %></td>
 					</tr>
 			         <tr>
-						 <th>お届け先住所</th>
-						 <td><%=  @order.addresses %></td>
+						 <th class="small_titel-2">お届け先住所</th>
+						 <td class="genre_font"><%=  @order.addresses %></td>
 					 </tr>
-					<!--  <tr>
-						 <th>住所</th>
-						 <td><%#= %></td>
-					 </tr>
-					 <tr>
-						 <th>名前</th>
-						 <td><%#= %></td>
-					 </tr>
-					 <tr>
-						 <th>電話番号</th>
-						 <td><%#= %></td>
-					 </tr> -->
 			</table>
 			　　<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>商品情報</th>
+							<th class="small_titel">商品情報</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% @order.order_details.each do |f| %>
 						 <tr>
-							<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'100x100' %></td>
-							<td>商品名<%= f.product.product_name %></td>
-							<td>アーティスト名<%= f.product.artist.artist_name %></td>
-							<td>ジャンル名<%= f.product.genre.genre_name %></td>
-                            <td>合計金額<%=  f.order.total_amount %>円</td></td>
-							<td>商品個数<%= f.product.product_name %>点</td>
+							<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
+                             <%= link_to product_path(f.id) do %>
+                            <td><div class="product_font">商品名   :<%= f.product.product_name %><br></div>
+                             <div class="price_font">金額 :<%=  f.price %>円<br></div>
+                            <div class="genre_font">アーティスト名   :<%= f.product.artist.artist_name %><br></div>
+                            <div class="genre_font">ジャンル名   :<%= f.product.genre.genre_name %><br></div>
+                            <div class="genre_font">商品個数    :<%= f.product.product_name %>点</td></div>
+                            <% end %>
 						</tr>
+
 						<% end %>
+
+
 				   </tbody>
-         </table>
+               </table>
+           </div>
+       </div>
+    </div>
 </div>
-</div>
-</p>
 
 
 

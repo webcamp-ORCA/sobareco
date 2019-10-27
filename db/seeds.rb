@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+customer = Customer.create!(
 
 
-
-Customer.create!(
 	id: 1,
 	last_name: '小林',
 	first_name: '勃也',
@@ -21,16 +20,28 @@ Customer.create!(
 	municipality: '千曲市横田町',
 	address: '1-2-2',
 	telephone: 'xxx-xxxx-xxxx',
-	email: 'kobaba@hotmail.ppp',
-	password: '111111',
+	email: 'koba@hotmail.ssp',
+	password: 'password',
 	)
 
 
+
+delivery = customer.deliveries.create!(
+name: '名前',
+prefecture_id: 2,
+municipality: '市区町村',
+address: '番地',
+telephone: '111-1111',
+customer_id: 1,
+)
 
 
  Order.create!(
  	postage: '500',
  )
 
-
+AdminUser.create!(
+	email: 'kobatatsu@tmail.com',
+	password: '00000000',
+	)
 
