@@ -47,7 +47,6 @@
 		　　<!-- 　ユーザー以外の住所をeach文で全表示 -->
 				<tr>
 
-		<%= form_for (@order, url: "/orders/#{@order.id}/order_confirm") do |f| %>
 	        <table class="table table-hover col-xs-3">
 		         <td>
 					<label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
@@ -115,4 +114,4 @@
   <% end %>
 </div>
 
-<%= render 'footer'%>
+<%#= render 'footer'%>

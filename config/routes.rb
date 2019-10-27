@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  
   namespace :public do
     get 'order_details/new'
   end
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :arrival_managements
     resources :customers do
+      get :destroy_complete
       member do
         get :purchase_history
         get :destroy_confirm
@@ -69,7 +69,6 @@ devise_for :admin_users,controllers: {
         post 'delete', to: 'cards#delete'
       end
     end
-
 
 
 
