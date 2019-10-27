@@ -1,130 +1,70 @@
-<!-- <div class="row"> -->
-<div class="col-md-2"></div>
-<div class="col-md-8">
+<%#= stylesheet_link_tag "/public/customers.scss", :media => "all" %>
 
-    <!-- <div class="form-row">
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="name">名前</label>
-         <input class="col-sm-9 form-control" id="name" />
-        </div>
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="mail">メール</label>
-         <input class="col-sm-9 form-control" id="mail" type="email" />
-        </div>
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="age">年齢</label>
-         <input class="col-sm-9 form-control" id="age" />
-        </div>
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="address">住所</label>
-         <input class="col-sm-9 form-control" id="address" />
-        </div>
-       </div> -->
+<!-- <div class="row"> -->
+
+<!-- <div class="container-fluid image"> -->
+ <!--  <img class="registration-image" src="<%#= asset_path "CD_registration.png" %>" /> -->
+<%#= image_tag '/assets/CD_registration.png' %>
+
+<div class="col-lg-12">
+  <div class="text-center">
 <h2>アカウントを作成</h2>
+  </div>
+</div>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="form-row">
+    
+    <div class="form-row">
     <div class="col-md-6 form-group">
-      <label class="col-sm-3" for="last_name">姓</label>
+      <label class="col-sm-2" for="last_name">姓</label>
       <!-- <input class="col-sm-9 form-control" id="last_name" /> -->
-      <div class="col-sm-9">
+      <div class="col-sm-10">
       <%= f.text_field :last_name, autofocus: true, placeholder: "小林", class: "form-control" %>
     </div>
   </div>
 
     <div class="col-md-6 form-group">
-      <label class="col-sm-3" for="first_name">名</label>
+      <label class="col-sm-2" for="first_name">名</label>
       <!-- <input class="col-sm-9 form-control" id="first_name"> -->
-      <div class="col-sm-9">
-      <%= f.text_field :first_name, placeholder: "勃也", class:"form-control" %>
+      <div class="col-sm-10">
+      <%= f.text_field :first_name, placeholder: "勃也", class:"form-control" %><br>
       </div>
     </div>
 
 
     <div class="col-md-6 form-group">
-      <label class="col-sm-3" for="lastname_kana">姓（カナ）</label>
+      <label class="col-sm-2" for="lastname_kana">姓（カナ）</label>
       <!-- <input class="col-sm-9 form-control" id="lastname_kana" /> -->
-      <div class="col-sm-9">
+      <div class="col-sm-10">
       <%= f.text_field :lastname_kana, placeholder: "コバヤシ", class:"form-control" %>
       </div>
       </div>
 
       <div class="col-md-6 form-group">
-        <label class="col-sm-3" for="firstname_kana">名（カナ）</label>
-        <div class="col-sm-9">
-        <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %>
+        <label class="col-sm-2" for="firstname_kana">名（カナ）</label>
+        <div class="col-sm-10">
+        <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %><br>
         </div>
       </div>
     
 
     <div class="form-row">
       <div class="col-md-6 form-group">
-        <label class="col-sm-3" for="post_code">郵便番号</label>
+        <label class="col-sm-2" for="post_code">郵便番号</label>
         <div class="col-sm-5">
           <%= f.text_field :post_code, placeholder:"000-0000", class:"form-control" %>
         </div>
       </div>
     </div>
-      
-    
-      
+
       <div class="col-md-12 form-group">
           <label class="col-sm-1">住所</label>
             
             <div class="col-sm-3">
-            <%#= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
-            <%= f.collection_select :prefecture_id, [["北海道", "北海道"],["青森県","青森県"]] %>
-
-            { :id => 0, :name => "北海道" },
-  { :id => 1, :name => "青森県" },
-  { :id => 2, :name => "岩手県" },
-  { :id => 3, :name => "宮城県" },
-  { :id => 4, :name => "秋田県" },
-  { :id => 5, :name => "山形県" },
-  { :id => 6, :name => "福島県" },
-  { :id => 7, :name => "茨城県" },
-  { :id => 8, :name => "栃木県" },
-  { :id => 9, :name => "群馬県" },
-  { :id => 10, :name => "埼玉県" },
-  { :id => 11, :name => "千葉県" },
-  { :id => 12, :name => "東京都" },
-  { :id => 13, :name => "神奈川県" },
-  { :id => 14, :name => "新潟県" },
-  { :id => 15, :name => "富山県" },
-  { :id => 16, :name => "石川県" },
-  { :id => 17, :name => "福井県" },
-  { :id => 18, :name => "山梨県" },
-  { :id => 19, :name => "長野県" },
-  { :id => 20, :name => "岐阜県" },
-  { :id => 21, :name => "静岡県" },
-  { :id => 22, :name => "愛知県" },
-  { :id => 23, :name => "三重県" },
-  { :id => 24, :name => "滋賀県" },
-  { :id => 25, :name => "京都府" },
-  { :id => 26, :name => "大阪府" },
-  { :id => 27, :name => "兵庫県" },
-  { :id => 28, :name => "奈良県" },
-  { :id => 29, :name => "和歌山県" },
-  { :id => 30, :name => "鳥取県" },
-  { :id => 31, :name => "島根県" },
-  { :id => 32, :name => "岡山県" },
-  { :id => 33, :name => "広島県" },
-  { :id => 34, :name => "山口県" },
-  { :id => 35, :name => "徳島県" },
-  { :id => 36, :name => "香川県" },
-  { :id => 37, :name => "愛媛県" },
-  { :id => 38, :name => "高知県" },
-  { :id => 39, :name => "福岡県" },
-  { :id => 40, :name => "佐賀県" },
-  { :id => 41, :name => "長崎県" },
-  { :id => 42, :name => "熊本県" },
-  { :id => 43, :name => "大分県" },
-  { :id => 44, :name => "宮崎県" },
-  { :id => 45, :name => "鹿児島県" },
-  { :id => 46, :name => "沖縄県" }
-)
+            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
+            
             <%= f.text_field :municipality, placeholder: "市区町村", class:"form-control" %><br>
             <%= f.text_field :address, placeholder: "丁目、番地、建物名", class:"form-control" %>
             </div>
@@ -166,15 +106,16 @@
 
       <div class="col-md-12 form-group">
       <div class="actions">
-        <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary"%>
+        <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary" %>
       </div> 
       </div>
     </div>
-  </div>
 
-  
+
 <% end %>
 
+</div>
+</div>
 <%= render "public/customers/shared/links" %>
 </div>
-<div class="col-lg-3"></div>
+
