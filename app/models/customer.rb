@@ -38,6 +38,11 @@ class Customer < ApplicationRecord
 
   end
 
+  def prefecture
+    Prefecture.find(prefecture_id).name
+  end
+
+
 
     # prefecture_id.to_s + municipality + address
 

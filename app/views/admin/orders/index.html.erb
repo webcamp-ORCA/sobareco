@@ -1,6 +1,7 @@
 <%= render 'sidebar'%>
 
 
+
 <div class="container">
   <div class="row">
 　　<div class="col-lg-9">
@@ -25,8 +26,8 @@
 							<td class="col-xs-1"></td>
 							<td class="col-xs-1"><</td>
 							<td class="col-xs-1"><%= o.address %></td>
-							<td class="col-xs-1"> <%#= o.select :delivery_status,  Order.delivery_statuses.keys.map {|k| [I18n.t("enums.order.delivery_status.#{k}"), k]} %></td>
-							                      <%#= f.select :product_status,  Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %>
+							<td class="col-xs-1"> <%= o.select :delivery_status,  Order.delivery_statuses.keys.map {|k| [I18n.t("enums.order.delivery_status.#{k}"), k]} %></td>
+							                      <%= f.select :product_status,  Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %>
 							<td class="col-xs-2 label label-primary" ><%= o.delivery_status_i18n %></td>
 						</tr>
 						<% o.order_details.each do |f| %>

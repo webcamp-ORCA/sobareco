@@ -1,14 +1,17 @@
-    <div class="main-visual">
+    <div class="main-visual-complete">
 	   <h1 class="text-success">ご注文完了</h1>
-			<h2>お買い上げ<br>
+			<h2 class="main-text">お買い上げ<br>
 			ありがとうございます!</h2>
 
-			<div class="main-text">ご注文を承りました.<br>
+			<div class="main-text2">ご注文を承りました.<br>
 				発送の準備に取り掛からせていただきます<br>
 				到着まで少々お待ちください<br></div>
-				<div class="link-content">
-			    <%= link_to '注文一覧', orders_path,class: "col-xs-4 btn btn-success " %>
-                <%= link_to 'トップに戻る', root_path,class: "col-xs-4 btn btn-primary " %>
-            </div>
-     </div>
+			</div>
+
+			<div class="list-bar">
+			    <%= link_to '注文一覧', orders_path,class: "col-xs-3 btn btn-success " %>
+		    </div>
+
+                <%= link_to 'トップに戻る', root_path,class: "col-xs-3 btn btn-primary " %>
+    </div>
 
