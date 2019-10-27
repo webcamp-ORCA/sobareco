@@ -39,6 +39,10 @@ before_action :ransack
 
     @discs = @product.discs
 
+    # @stock = Product.arrival_managements.sum(:arrival_count) - Product.order_details.sum(:order_quantity)
+
+    @discs = @product.discs
+
     
   end
 

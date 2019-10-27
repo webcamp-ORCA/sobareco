@@ -1,47 +1,44 @@
-<h1>購入履歴詳細</h1>
+<h1 class="text-success">購入履歴詳細</h1>
 
-<table class="table table-hover">
-		<tr>
-	         <th>注文日時</th>
-	         <td></td>
-　　    </tr>
-		<tr>
-			 <th>注文状況</th>
-		     <td>< ></td>
-		</tr>
-         <tr>
-			 <th>お届け先住所</th>
-		 </tr>
-		 <tr>
-			 <th>住所</th>
-			 <td>< ></td>
-		 </tr>
-		 <tr>
-			 <th>名前</th>
-			 <td>< ></td>
-		 </tr>
-		 <tr>
-			 <th>電話番号</th>
-			 <td>< ></td>
-		 </tr>
-</table>
-　　<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>商品情報</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>商品画像</td>
-				<td>商品名</td>
-				<td>商品金額</td>
-				<td>アーティスト名</td>
-				<td>ジャンル名</td>
-	　　　　  </tr>
-	   </tbody>
-　　</table>
+
+<div class="container">
+  <div class="row">
+　　<div class="col-lg-12">
+		<p class="text-center">
+			<table class="table table-hover col-lg-10">
+					<tr>
+				         <th>注文日時</th>
+				         <td><%= @order.created_at.strftime("%Y月%m日%d %H:%M") %></td>
+			　　    </tr>
+					<tr>
+						 <th>注文状況</th>
+					     <td><%=  @order.delivery_status_i18n %></td>
+					</tr>
+			         <tr>
+						 <th>お届け先住所</th>
+						 <td><%=  @order.addresses %></td>
+					 </tr>
+			</table>
+			　　<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>商品情報</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>商品画像<%#= %></td>
+							<td>商品名<%#= @order.product.product_name %></td>
+							<td>合計金額<%=  @order.total_amount %>円</td></td>
+							<td>アーティスト名<%#= o.product.artist.artist_name %></td>
+							<td>ジャンル名<%#=o.product.genre.genre_name %></td>
+				　　　　  </tr>
+				   </tbody>
+         </table>
+</div>
+</div>
+</p>
 
 
 
-<%= render 'footer'%>
+<%#= render 'footer'%>

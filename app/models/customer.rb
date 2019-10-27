@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :cartitems
   has_many :products, through: :cartitems
   has_many :orders, dependent: :destroy
@@ -34,9 +34,11 @@ class Customer < ApplicationRecord
 
   def homeaddress
     Prefecture.find(prefecture_id).name + municipality + address
+
   end
 
 
+ 
 
 
 

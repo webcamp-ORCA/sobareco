@@ -12,7 +12,6 @@
           <span class="mgl-10">Disc.<%= disc.disc_no %></span>
         </div><br>
 
-
           <% disc.records.each do |record| %>
             <div class="song-title">
               <%= record.song_title %>
@@ -24,7 +23,7 @@
 
 
   </div>
-  <div class="col-lg-7">
+  <div class="col-lg-3">
 
       <div class="label label-info label-sm">
         <%= @product.product_status_i18n %>
@@ -69,8 +68,16 @@
         価格(税込)：￥<%= @product.product_price %>
       </div><br>
 
-
   </div>
+
+  <div class="col-lg-4">
+    <div class="product-cart-btn">
+      <button type="button" class="btn btn-default" >
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;<%= link_to "カートに入れる", cart_items_path %>
+      </button>
+    </div>
+  </div>
+
 
 
 </div>

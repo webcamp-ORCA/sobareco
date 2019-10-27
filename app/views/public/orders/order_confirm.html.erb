@@ -1,4 +1,4 @@
-<h1>注文確認画面</h1>
+<h1 class="text-success">注文確認画面</h1>
 
 <h2>注文内容の確認</h2>
 
@@ -16,7 +16,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><%#=o.attachment_image_tag product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %></td>
+				<td><%#=o.attachment_image_tag order, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %></td>
 				<td><%=o.product.product_name %></td>
 				<td><%=o.product.product_price %></td>
 				<td><%=o.product.artist.artist_name %></td>
@@ -54,6 +54,6 @@
     <%= f.hidden_field :total_amount, :value => @total_amount %>
     <%= f.hidden_field :addresses, :value => @address_id  %>
     <%= f.hidden_field :settlement_method, :value => @settlement_method %>
-    <%= f.submit '購入を確定する',class: "col-xs-4 btn btn-primary " %>
+    <%= f.submit '購入を確定する',class: "col-xs-4 btn btn btn-success " %>
    <% end %>
-<%= render 'footer'%>
+<%#= render 'footer'%>
