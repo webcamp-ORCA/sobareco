@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 customer = Customer.create!(
+
 	id: 1,
 	last_name: '小林',
 	first_name: '勃也',
@@ -21,7 +23,8 @@ customer = Customer.create!(
 	password: 'password',
 	)
 
-delivery = customer.deliveries.new(
+
+delivery = customer.deliveries.create!(
 name: '名前',
 prefecture_id: 2,
 municipality: '市区町村',
@@ -30,8 +33,15 @@ telephone: '111-1111',
 customer_id: 1,
 )
 
-delivery.valid?
-p delivery.errors
 
 
+
+ Order.create!(
+ 	postage: '500',
+ )
+
+AdminUser.create!(
+	email: 'kobatatsu@tmail.com',
+	password: '00000000',
+	)
 

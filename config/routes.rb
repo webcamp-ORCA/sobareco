@@ -70,17 +70,6 @@ devise_for :admin_users,controllers: {
       end
     end
 
-
-
- 
-
-
-
-
-
-
-
-
   end
 
 end
