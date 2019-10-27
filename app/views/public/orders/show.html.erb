@@ -18,6 +18,18 @@
 						 <th>お届け先住所</th>
 						 <td><%=  @order.addresses %></td>
 					 </tr>
+					<!--  <tr>
+						 <th>住所</th>
+						 <td><%#= %></td>
+					 </tr>
+					 <tr>
+						 <th>名前</th>
+						 <td><%#= %></td>
+					 </tr>
+					 <tr>
+						 <th>電話番号</th>
+						 <td><%#= %></td>
+					 </tr> -->
 			</table>
 			　　<table class="table table-hover">
 					<thead>
@@ -26,13 +38,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>商品画像<%#= %></td>
-							<td>商品名<%#= @order.product.product_name %></td>
-							<td>合計金額<%=  @order.total_amount %>円</td></td>
-							<td>アーティスト名<%#= o.product.artist.artist_name %></td>
-							<td>ジャンル名<%#=o.product.genre.genre_name %></td>
-				　　　　  </tr>
+						<% @order.order_details.each do |f| %>
+						 <tr>
+							<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'100x100' %></td>
+							<td>商品名<%= f.product.product_name %></td>
+							<td>アーティスト名<%= f.product.artist.artist_name %></td>
+							<td>ジャンル名<%= f.product.genre.genre_name %></td>
+                            <td>合計金額<%=  f.order.total_amount %>円</td></td>
+							<td>商品個数<%= f.product.product_name %>点</td>
+						</tr>
+						<% end %>
 				   </tbody>
          </table>
 </div>

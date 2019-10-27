@@ -22,7 +22,9 @@
        </div> -->
 <h2>アカウントを作成</h2>
 
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-row">
@@ -57,7 +59,7 @@
         <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %>
         </div>
       </div>
-    
+
 
     <div class="form-row">
       <div class="col-md-6 form-group">
@@ -67,12 +69,10 @@
         </div>
       </div>
     </div>
-      
-    
-      
+
       <div class="col-md-12 form-group">
           <label class="col-sm-1">住所</label>
-            
+
             <div class="col-sm-3">
             <%#= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
             <%= f.collection_select :prefecture_id, [["北海道", "北海道"],["青森県","青森県"]] %>
@@ -138,7 +138,7 @@
           <%= f.text_field :telephone, placeholder:"000-0000", class:"form-control" %>
         </div>
       </div>
-      
+
       <div class="col-md-12 form-group">
         <label class="col-sm-2">メールアドレス</label><br>
         <div class="col-sm-5">
@@ -162,7 +162,7 @@
           <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用", class:"form-control" %>
         </div>
       </div>
-      
+
 
       <div class="col-md-12 form-group">
       <div class="actions">
@@ -172,7 +172,7 @@
     </div>
   </div>
 
-  
+
 <% end %>
 
 <%= render "public/customers/shared/links" %>
