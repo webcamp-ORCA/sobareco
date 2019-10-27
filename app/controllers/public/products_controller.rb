@@ -18,6 +18,7 @@ before_action :ransack
   def show
     @product = Product.find(params[:id])
     @discs = @product.discs
+    @cart_item = Cartitem.new
   end
 
 
