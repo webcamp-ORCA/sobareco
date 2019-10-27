@@ -19,7 +19,9 @@
 
   @import "bootstrap-sprockets";
    @import "bootstrap";
-
+   html{
+    height: 100%;
+   }
 
    body {
 
@@ -154,6 +156,10 @@
 
 .btn-success {
     margin: 30px 0;
+}
+
+.product-cart-btn{
+  
 }
 
 
