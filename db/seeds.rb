@@ -9,6 +9,7 @@
 
 customer = Customer.create!(
 
+
 	id: 1,
 	last_name: '小林',
 	first_name: '勃也',
@@ -24,6 +25,7 @@ customer = Customer.create!(
 	)
 
 
+
 delivery = customer.deliveries.create!(
 name: '名前',
 prefecture_id: 2,
@@ -32,8 +34,6 @@ address: '番地',
 telephone: '111-1111',
 customer_id: 1,
 )
-
-
 
 
  Order.create!(
