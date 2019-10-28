@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
 
    before_action :ransack
 
-
+  PER = 6
 
 # 購入画面
   def new
@@ -10,17 +10,14 @@ class Public::OrdersController < ApplicationController
       @order = Order.new
     #下でログイン中のユーザーの住所を表示と配送先住所一覧を表示
       @customer = current_customer
-       @carts = @customer.cartitems
+      @carts = @customer.cartitems
      # 下で定義したtotal_priceメソッドを呼びだす
      total_price(@carts)
-
-
       # @customers = Order.all
   end
 
 # 注文確認画面
   def order_confirm
-    # binding.pry
      # @customer = current_customer.id
      #もし注文したユーザーのアドレスがユーザー自身のアドレスだったら
     if params[:order][:addresses] == "user_address"
@@ -39,6 +36,8 @@ class Public::OrdersController < ApplicationController
     # 支払い方法を保存
     @settlement_method = params[:order][:settlement_method]
     # 合計金額を保存
+    @total_price = params[:order][:total_price]
+    # 合計数量を保存
     @toatal_amount = params[:order][:total_amount]
     #カートアイテムの購入数を保存
     # @order_quantity =params[:orere_detail][:order_quantity]
@@ -49,7 +48,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    #binding.pry
+    # binding.pry
     @order = Order.new
     @order.customer_id = current_customer.id
     @order.settlement_method = params[:order][:settlement_method]
@@ -72,13 +71,12 @@ class Public::OrdersController < ApplicationController
           f.destroy
 
     # もし配送先住所,支払い方法,合計金額の保存に成功したら購入完了画面に移動
-        redirect_to order_purchase_complete_path(@order)
+          redirect_to order_purchase_complete_path(@order) and return
     else
        #失敗したら購入画面に戻る
-          # @customer = current_customer
+          @customer = current_customer
           render :new
     end
-
   end
 
 
@@ -89,6 +87,7 @@ end
 # 購入履歴詳細
   def show
     @order = Order.find(params[:id])
+    # @orders = Order.all
   end
 
 #購入後画面
@@ -98,8 +97,9 @@ end
 
 # 購入履歴
   def index
-    @orders = Order.all
-    # @order = Order.page(params[:page]).per(PER)
+    #@orders = Order.all
+
+    @orders = Order.page(params[:page]).per(PER)
   end
 
   private

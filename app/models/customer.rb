@@ -34,15 +34,14 @@ class Customer < ApplicationRecord
 
   def homeaddress
     Prefecture.find(prefecture_id).name + municipality + address
-<<<<<<< HEAD
+
 
   end
-=======
->>>>>>> master
+
 
     # prefecture_id.to_s + municipality + address
 
-  end
+
 
 
 

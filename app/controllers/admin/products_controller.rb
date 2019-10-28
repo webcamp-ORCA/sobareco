@@ -36,14 +36,9 @@ before_action :ransack
   def show
     @product = Product.find(params[:id])
 
-
     @discs = @product.discs
+    #@stock = Product.arrival_managements.sum(:arrival_count) - Product.order_details.sum(:order_quantity)
 
-    # @stock = Product.arrival_managements.sum(:arrival_count) - Product.order_details.sum(:order_quantity)
-
-    @discs = @product.discs
-
-    
   end
 
   def edit
