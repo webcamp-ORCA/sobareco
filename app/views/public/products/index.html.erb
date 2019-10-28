@@ -1,24 +1,40 @@
-<%= render 'genre_bar' %>
 
-<h1 class="headline">商品一覧</h1>
-<div class="col-lg-8">
-  <% @products.each do |product| %>
-    <div class="col-lg-3">
-      <div class="product-index">
-        <%= link_to product_path(product.id) do %>
-          <%= attachment_image_tag product, :product_image, :fill, 180, 180, fallback: "no_image.png", size:'180x180' %><br>
-          <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;<%= product.product_name %><br>
+<style type="text/css" media="screen">
+ .wrapper{
+  background-image:url('assets/zarusoba.jpg');
+  background-size: cover;
+  box-shadow: 4px 4px;
+}
+ a {
+  color: white;
+}
+.headline{
+  color: white;
+}
+</style>
 
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%= product.artist.artist_name %><br>
+  <%= render 'genre_bar' %>
 
-          <% product.product_price =  product.product_price * 1.1 %>
-          <i class="fas fa-yen-sign fa-lg"></i>&nbsp;<%= product.product_price %><br>
-        <% end %>
+  <h1 class="headline">商品一覧</h1>
+  <div class="col-lg-8">
+    <% @products.each do |product| %>
+      <div class="col-lg-3">
+        <div class="product-index">
+          <%= link_to product_path(product.id) do %>
+            <%= attachment_image_tag product, :product_image, :fill, 180, 180, fallback: "no_image.png", size:'180x180' %><br>
+            <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;<%= product.product_name %><br>
+
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%= product.artist.artist_name %><br>
+
+            <% product.product_price =  product.product_price * 1.1 %>
+            <i class="fas fa-yen-sign fa-lg"></i>&nbsp;<%= product.product_price %><br>
+          <% end %>
+        </div>
+
       </div>
-
+    <% end %>
+    <div class="text-center col-lg-12">
+      <%= paginate @products %>
     </div>
-  <% end %>
-  <div class="text-center col-lg-12">
-    <%= paginate @products %>
   </div>
-</div>
+

@@ -78,8 +78,10 @@ class Public::OrdersController < ApplicationController
        #失敗したら購入画面に戻る
           @customer = current_customer
           render :new
+
     end
   end
+
 
 
         # @order_detail.save
@@ -97,9 +99,13 @@ end
   end
 
   def update
-     @order = Order.find(params[:id])
-     @order.update(order_params)
-     redirect_to admin_orders  success: "#{@product.product_name}の情報を変更しました。"
+      @order = Order.find(params[:id])
+   if @order.update(order_params)
+      flash[:notice] = "登録しました"
+      redirect_to admin_orders_path
+    else
+      render :index
+    end
   end
 
 # 購入履歴

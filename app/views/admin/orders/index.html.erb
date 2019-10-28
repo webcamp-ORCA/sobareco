@@ -25,7 +25,10 @@
 						<td><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
 						<td><%= o.address %></td>
 						<td>
-						 <%= form_for (o) do |f| %>
+
+
+	                   <%= form_for o, url:admin_order_path(o), method: :patch do |f| %>
+						 <%#= form_for (o) do |f| %>
 						<td><%= f.select :delivery_status, Order.delivery_statuses.keys.map {|k| [I18n.t("enums.order.delivery_status.#{k}"), k]} %></td>
 						<td><%= f.submit "配送情報の変更をする" %></td>
 						<% end %>

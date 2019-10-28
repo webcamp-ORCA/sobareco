@@ -18,9 +18,8 @@
 			             <tr>
 			                <td><%= attachment_image_tag o.product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %>
 							<td text-align:center;><div class="product_name"><%=o.product.product_name %></div>
-				               
 				                <br><div class="genre_font">アーティスト:<%=o.product.artist.artist_name %></div>
-				                
+
 				                <br><div class="genre_font">ジャンル:<%=o.product.genre.genre_name %>
 					        </td>
 							 <td text-align:center;><font size="4"><%=o.product.product_price %>円</font></td>
