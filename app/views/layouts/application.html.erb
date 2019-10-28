@@ -6,10 +6,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track':'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.full.min.js" defer></script>
     <script src="https://js.pay.jp/" type="text/javascript"></script>
+
 
 
   </head>
@@ -19,9 +21,9 @@
     <div class="wrapper">
       <div class="container-fluid">
         <div class="row row-eq-height">
-          <div class="col-lg-12" style="background-color: ghostwhite;">
+          <div class="col-lg-12" style="background-color: #cbb994;">
             <nav class="navbar-left">
-      　　　　 <h2><%= link_to "Sobareco'", admin_products_path %></h2>
+      　　　　 <h2><%= link_to "Sobareco'", products_path %></h2>
 
               <%= search_form_for @q, url: admin_products_path do |f| %>
                 <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
@@ -34,7 +36,7 @@
               <% if customer_signed_in? %>
              <!--  ユーザー側ヘッダー　ログイン時 -->
               <li class="listbar">
-  　　　　　　　 こんにちは<%= current_customer.name %>様
+  　　　　　　　 こんにちは、<%= current_customer.name %>様
   　　　　　　　</li>
               <li class="listbar">
                 <%= link_to "マイページ"  ,customer_path(current_customer.id)%>
@@ -42,11 +44,13 @@
               <li class="listbar">
                 <%= link_to "購入履歴一覧", orders_path  %>
               </li>
-  　　　　　　　<li class="listbar">
-                <%= link_to "購入画面", new_order_path  %>
-              </li>
+
               <li class="listbar">
-                <%= link_to "カート" %>
+                <%= link_to "カート",cart_items_path %>
+              </li>
+
+              <li class="listbar">
+                <%= link_to "ログアウト", customer_registration_path, method: :delete %>
               </li>
 
               <li class="listbar">
@@ -64,21 +68,17 @@
             <% else %>
 
               <li class="listbar">
-                <%= link_to "新規登録 (ユーザー)", new_customer_registration_path %>
+                <%= link_to "新規登録", new_customer_registration_path %>
               </li>
               <li class="listbar">
-                <%= link_to "ログイン（ユーザー)",new_customer_session_path  %>
+                <%= link_to "ログイン",new_customer_session_path  %>
               </li>
-  　          <li class="listbar">
-                <%= link_to "購入画面", new_order_path  %>
-              </li>
-              <li class="listbar">
-                <%= link_to "ログアウト(ユーザー)" %>
-              </li>
+
 
             <% end %>
             </ul>
           </div>
+
 
       <%= yield %>
 
@@ -86,11 +86,13 @@
         </div>
       </div>
 
+
       <footer >
         <div class="container-fluid">
 
           <div class="col-lg-12">
-        <div class="footer-main"> 
+        <div class="footer-main">
+
           <h4>あなたの<span class="dot">そば</span>に</h4>
           <h2>SobaReco'</h2>
           <p>©︎ sobareco inc. All Rights Reserved.</p>
@@ -110,3 +112,4 @@
     </div>
   </body>
 </html>
+
