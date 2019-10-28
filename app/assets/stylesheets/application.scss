@@ -42,7 +42,7 @@
 
 
     a {
-  color: green;
+  color: #00552e;
 }
 
 
@@ -69,11 +69,16 @@
     margin-bottom: 5px;
 }
 
+.search-form{
+  padding-top: 13px;
+}
 .search-btn{
   background:#5fad35;
   color:#FFF;
 }
-
+.login-name{
+  padding-top: 13px;
+}
 
 
 .pagination>li>a {
@@ -82,7 +87,7 @@
 }
 
 .pagination>.active>a {
-  background: #008000;
+  background: #cbb994;
   border-radius: 15px;
 }
 
@@ -178,7 +183,7 @@
 
 
 footer{
-  background-color: green;
+  background-color: #00552e;
   color: white;
 
 }
