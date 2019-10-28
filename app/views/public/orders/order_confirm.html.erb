@@ -5,19 +5,23 @@
 
 <div class="col-lg-10">
 	<table class="table table-hover">
-	<%# @orders.puroduct.each do |o| %>
 	<!-- ユーザーのカートアイテムを表示させる -->
-	<% @customer.cartitems.each do |o| %>
+	   <% @customer.cartitems.each do |o| %>
 		<thead>
 			<tr>
-				<th>注文一覧</th>
+				<th></th>
+				<th>商品名</th>
+				<th>数量</th>
 				<th>価格</th>
+				<th>アーティスト</th>
+				<th>ジャンル</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><%#=o.attachment_image_tag order, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %></td>
+				<td><%= attachment_image_tag o.product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'100x100' %></td>
 				<td><%=o.product.product_name %></td>
+				<td><%=o.purchase_quantity %></td>
 				<td><%=o.product.product_price %></td>
 				<td><%=o.product.artist.artist_name %></td>
 				<td><%=o.product.genre.genre_name %></td>
@@ -38,15 +42,10 @@
 		</tr>
          <tr>
          <td>合計金額</td>
-         <td><%= @total_amount.to_i %></td>
+         <td><%= @total_price %></td>
         </tr>
     </table>
 
-
-    <%# @customer.cartitems.each do |f| %>
-      <!-- カートアイテム内の購入数 -->
-       <%#= f.hidden_field :purchase_quantity, :value => @order_quantity  %>
-      <%# end %>
 
 <%= link_to '購入画面に戻って変更する', new_order_path,class: "col-xs-4 btn btn-primary " %>
 <!-- 配送先 支払い方法の選択で決めたこと -->

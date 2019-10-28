@@ -40,6 +40,7 @@ before_action :ransack
 
     @stock = @product.arrival_managements.sum(:arrival_count) - @product.order_details.sum(:order_quantity)
 
+
   end
 
   def edit

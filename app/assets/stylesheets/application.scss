@@ -76,8 +76,6 @@
 
 
 
-
-
 .pagination>li>a {
   border: none;
   color: #333333;
@@ -110,6 +108,10 @@
   margin-top: 30px;
 }
 
+.product-index{
+  color: white;
+}
+
 .product-name{
   font-size: 30px;
   font-weight: bold;
@@ -127,6 +129,7 @@
 .headline{
   font-weight: bold;
   margin: 20px 0 30px 265px;
+  
 }
 
 .product-price{

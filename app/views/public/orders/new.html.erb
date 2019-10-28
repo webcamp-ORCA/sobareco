@@ -1,12 +1,4 @@
 
-<div >
-            <%= @order.errors.count %> 配送先住所　支払い方法を選択をしてください
-            <% @order.errors.full_messages.each do |message| %>
-                <%= message %>
-            <% end %>
-
-
-</div>
 
 <div class="col-lg-5">
 		<h2 class="text-success">購入画面</h2>
@@ -14,15 +6,12 @@
 		<h5>お届け先</h5>
 
  <%= form_for @order, url:order_confirm_order_path(current_customer), method: :post do |f| %>
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 		<div class="field">
 		　　<table class="table table-hover col-xs-3">
 			    <tr>
 			        <td>
-				        <label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
+				        <label><%= f.radio_button :addresses, "user_address", {:checked => true} %>ログイン中のユーザーのお届け先を使用</label>
 			        </td>
 			   <!-- ログイン中のユーザー情報を表示 -->
 			    <tr>
@@ -48,23 +37,13 @@
 			　　　　</tr>
 			　　<!-- 　ユーザー以外の住所をeach文で全表示 -->
 					<tr>
-<<<<<<< HEAD
+
 
 		        <table class="table table-hover col-xs-3">
 			         <td>
 						<label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
 					</td>
 				     <tr>
-
-=======
-
-		        <table class="table table-hover col-xs-3">
-			         <td>
-						<label><%= f.radio_button :addresses, "user_address" %>ログイン中のユーザーのお届け先を使用</label>
-					</td>
-				     <tr>
-
->>>>>>> master
 						<td>名前</td>
 					    <td><%= d.name %></td>
 					</tr>
@@ -88,7 +67,7 @@
 				   <th>支払い方法を選択する</th>
 				</tr>
 				 <tr>
-					<td><label><%= f.radio_button :settlement_method, "銀行振り込み" %>銀行振込</label></td>
+					<td><label><%= f.radio_button :settlement_method, "銀行振り込み", {:checked => true} %>銀行振込</label></td>
 					<td><label><%= f.radio_button :settlement_method, "代引き" %>代引き</label></td>
 					<td><label><%= f.radio_button :settlement_method, "クレジットカード" %>クレジットカード</label></td>
 				</tr>
@@ -112,7 +91,6 @@
 							<!-- 合計金額のフォームを送りたい -->
 						　　 <td><%= @total_price.to_i + @order.postage.to_i %>円</td>
 						<td><%= @total_amount %>点</td>
-						 <td><%= f.hidden_field :total_price, :value => @total_price.to_i + @order.postage.to_i %></td>
 						</tr>
 
 						<tr>
@@ -120,7 +98,9 @@
 					       </td>
 					    </tr>
 			     </table>
-			</div>
+			     <%= f.hidden_field :total_price, :value => @total_price.to_i + @order.postage.to_i %>
+
+			</div><%= f.hidden_field :total_amount, :value => @total_amount %>
 	　　<%= f.submit '次に進む'  ,class: "col-xs-4 btn btn-success "%>
 
   <% end %>
