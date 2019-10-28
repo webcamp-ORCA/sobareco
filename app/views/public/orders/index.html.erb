@@ -22,13 +22,13 @@
 					　<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
 					 <td><div class="product_font">商品名: <%= f.product.product_name %><br></div>
 					 <div class="price_font">金額: <%= f.product.product_price %>円<br></div>
-					 <div class="genre_font">点数: <%= f. order_quantity %>点</td></div>
+					 <div class="count_font">点数: <%= f. order_quantity %>点</td></div>
 				　</tr>
 				<% end %>
 	       </tbody>
 		</table>
 	<% end %>
-       <%= paginate @orders %>
+ <%= paginate @orders %>
 </div>
 
 

@@ -5,10 +5,22 @@
 	<table class="table table-hover">
 		<tbody>
 			 <% @deliveries.each do |d| %>
+                <tr>
+                	<th>名前</th>
+                	<th></th>
+                	<th></th>
+                	<th></th>
+                	<th></th>
+                	<th></th>
+                </tr>
+
+
+
+
 				<tr>
 					<td><%= d.name %></td>
 					<td><%= d.post_code %></td>
-					<td><%= d.prefecture %></td>
+					<td><%= d.customer.prefecture %></td>
 					<td><%= d.municipality %></td>
 					<td><%= d.address %></td>
 					<td><%= d.telephone%></td>
