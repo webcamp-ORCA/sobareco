@@ -48,12 +48,12 @@
             <%= link_to "購入画面", new_order_path  %>
           </li>
           <li class="listbar">
-           <%= link_to "カート" %>
-           </li>
+          <%= link_to "カート", cart_items_path %>
+          </li>
           <% else %>
-           <li class="listbar">
-           <%= link_to "新規登録 (ユーザー)", new_customer_registration_path %>
-           </li>
+          <li class="listbar">
+          <%= link_to "新規登録 (ユーザー)", new_customer_registration_path %>
+          </li>
           <li class="">
             <%= link_to "ログイン（ユーザー)",new_customer_registration_path  %>
           </li>
@@ -61,7 +61,7 @@
             <%= link_to "購入画面", new_order_path  %>
           </li>
           <li class="listbar">
-             <%= link_to "ログアウト(ユーザー)" %>
+            <%= link_to "ログアウト(ユーザー)" %>
           </li>
 
           <li class="">
@@ -79,9 +79,11 @@
 
 
 
+
        </ul>
 
     </div>
   </div>
+    <%= yield %>
   </body>
 </html>

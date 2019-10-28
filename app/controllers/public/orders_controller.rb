@@ -79,7 +79,9 @@ class Public::OrdersController < ApplicationController
        #失敗したら購入画面に戻る
           # @customer = current_customer
           render :new
-  end
+       end
+      end
+
 
 
         # @order_detail.save

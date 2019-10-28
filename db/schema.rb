@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2019_10_26_101313) do
     t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id"
     t.integer "prefecture_id"
     t.index ["prefecture_id"], name: "index_deliveries_on_prefecture_id"
   end

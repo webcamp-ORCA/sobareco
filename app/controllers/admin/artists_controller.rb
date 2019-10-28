@@ -5,7 +5,7 @@ before_action :ransack
    PER = 8
   def index
       @artist = Artist.new
-      @artists = Artist.page(params[:page]).per(PER)
+      @artists = Artist.all.page(params[:page]).per(PER)
   end
 
   def create
