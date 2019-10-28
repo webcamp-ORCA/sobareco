@@ -57,13 +57,17 @@
                 <% end %>
 
 
-             <% elsif admin_user_signed_in? %>
+            <% elsif admin_user_signed_in? %>
               <li class="listbar">
-                <%= link_to "ログイン(管理者）",  new_admin_user_registration_path %>
+                <%= link_to "ログアウト(管理者側)",  destroy_admin_user_session_path, method: :delete %>
               </li>
-              <li class="listbar">
-                <%= link_to "ログアウト(管理者側)", admin_user_registration_path, method: :delete %>
-              </li>
+
+              <li class="search-form">
+                <%= search_form_for @q, url: admin_products_path do |f| %>
+                  <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
+                  <%= f.submit "検索" , class: "search-btn" %>
+                <% end %>
+
 
             <% else %>
 

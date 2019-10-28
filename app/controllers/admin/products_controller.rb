@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
 before_action :ransack
+before_action :authenticate_admin_user!
 
   PER = 12
 

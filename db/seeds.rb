@@ -9,8 +9,6 @@
 
 customer = Customer.create!(
 
-
-	id: 1,
 	last_name: '小林',
 	first_name: '勃也',
 	lastname_kana: 'コバヤシ',
@@ -20,27 +18,24 @@ customer = Customer.create!(
 	municipality: '千曲市横田町',
 	address: '1-2-2',
 	telephone: 'xxx-xxxx-xxxx',
-	email: 'koba@hotmail.ssp',
+	email: 'koba@hotmail.ooo',
 	password: 'password',
 	)
 
 
+# delivery = customer.deliveries.create!(
+# name: '名前',
+# prefecture_id: 2,
+# municipality: '市区町村',
+# address: '番地',
+# telephone: '111-1111',
+# customer_id: 1,
+# )
 
-delivery = customer.deliveries.create!(
-name: '名前',
-prefecture_id: 2,
-municipality: '市区町村',
-address: '番地',
-telephone: '111-1111',
-customer_id: 1,
-)
 
 
- Order.create!(
- 	postage: '500',
- )
 
-AdminUser.create!(
+adminuser = AdminUser.create!(
 	email: 'kobatatsu@tmail.com',
 	password: '00000000',
 	)

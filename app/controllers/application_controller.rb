@@ -4,16 +4,9 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   before_action :ransack
 
-#before_action :if_not_admin
-   # def if_not_admin
-   #   redirect_to root_path unless current_user.admin?
-   # end
-
     def ransack
       @q = Product.ransack(params[:q])
     end
-
-
 
 
 
@@ -26,6 +19,23 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :post_code, :prefecture_id, :municipality, :address, :email, :password])
   end
+
+
+  # ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource)
+    case resource
+    when AdminUser
+      admin_products_path
+    when Customer
+      root_path
+    end
+  end
+
+  # ログアウト後のリダイレクト先
+  def after_sign_out_path_for(resource)
+      root_path
+ end
+
 
 end
 
