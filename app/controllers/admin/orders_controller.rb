@@ -1,16 +1,29 @@
 class Admin::OrdersController < ApplicationController
 
+
+PER = 6
 before_action :ransack
 
-
   def index
-  	@orders = Order.all
+    @order = Order.new
+  	@orders = Order.page(params[:page])
   end
+
+   def create
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to admin_orders
+
+
+   end
 
   def update
+     @order = Order.find(params[:id])
+     @order.update(order_params)
+     redirect_to admin_orders
+
   end
 
-private
 
 private
     def order_params

@@ -8,7 +8,6 @@ before_action :ransack
   end
 
   def create
-    #binding.pry
     @cartitem = Cartitem.new
     @cartitem.product_id  = params[:cartitem][:product_id].to_i
     @cartitem.purchase_quantity = params[:cartitem][:purchase_quantity].to_i
