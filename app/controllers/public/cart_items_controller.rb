@@ -33,7 +33,7 @@ before_action :ransack
   end
 
   private
-    
+
     def update_items_params
       params.require(:cartitem).permit(:purchase_quantity)
     end
