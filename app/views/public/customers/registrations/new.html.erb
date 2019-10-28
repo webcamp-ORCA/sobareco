@@ -1,80 +1,72 @@
-<!-- <div class="row"> -->
-<div class="col-md-2"></div>
-<div class="col-md-8">
+<%#= stylesheet_link_tag "/public/customers.scss", :media => "all" %>
 
-    <!-- <div class="form-row">
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="name">名前</label>
-         <input class="col-sm-9 form-control" id="name" />
-        </div>
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="mail">メール</label>
-         <input class="col-sm-9 form-control" id="mail" type="email" />
-        </div>
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="age">年齢</label>
-         <input class="col-sm-9 form-control" id="age" />
-        </div>
-        <div class="col-md-6 form-row form-group form-inline">
-         <label class="col-sm-3" for="address">住所</label>
-         <input class="col-sm-9 form-control" id="address" />
-        </div>
-       </div> -->
+<!-- <div class="row"> -->
+
+<!-- <div class="container-fluid image"> -->
+ <!--  <img class="registration-image" src="<%#= asset_path "CD_registration.png" %>" /> -->
+<%#= image_tag '/assets/CD_registration.png' %>
+
+<div class="col-lg-12">
+  <div class="text-center">
 <h2>アカウントを作成</h2>
+  </div>
+</div>
+
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-row">
+  <%= render "devise/shared/error_messages", resource: resource %>
+    
+    <div class="form-row">
     <div class="col-md-6 form-group">
-      <label class="col-sm-3" for="last_name">姓</label>
+      <label class="col-sm-2" for="last_name">姓</label>
       <!-- <input class="col-sm-9 form-control" id="last_name" /> -->
-      <div class="col-sm-9">
+      <div class="col-sm-10">
       <%= f.text_field :last_name, autofocus: true, placeholder: "小林", class: "form-control" %>
     </div>
   </div>
 
     <div class="col-md-6 form-group">
-      <label class="col-sm-3" for="first_name">名</label>
+      <label class="col-sm-2" for="first_name">名</label>
       <!-- <input class="col-sm-9 form-control" id="first_name"> -->
-      <div class="col-sm-9">
-      <%= f.text_field :first_name, placeholder: "勃也", class:"form-control" %>
+      <div class="col-sm-10">
+      <%= f.text_field :first_name, placeholder: "勃也", class:"form-control" %><br>
       </div>
     </div>
 
 
     <div class="col-md-6 form-group">
-      <label class="col-sm-3" for="lastname_kana">姓（カナ）</label>
+      <label class="col-sm-2" for="lastname_kana">姓（カナ）</label>
       <!-- <input class="col-sm-9 form-control" id="lastname_kana" /> -->
-      <div class="col-sm-9">
+      <div class="col-sm-10">
       <%= f.text_field :lastname_kana, placeholder: "コバヤシ", class:"form-control" %>
       </div>
       </div>
 
       <div class="col-md-6 form-group">
-        <label class="col-sm-3" for="firstname_kana">名（カナ）</label>
-        <div class="col-sm-9">
-        <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %>
+        <label class="col-sm-2" for="firstname_kana">名（カナ）</label>
+        <div class="col-sm-10">
+        <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %><br>
         </div>
       </div>
-    
+
 
     <div class="form-row">
       <div class="col-md-6 form-group">
-        <label class="col-sm-3" for="post_code">郵便番号</label>
+        <label class="col-sm-2" for="post_code">郵便番号</label>
         <div class="col-sm-5">
           <%= f.text_field :post_code, placeholder:"000-0000", class:"form-control" %>
         </div>
       </div>
     </div>
-      
-    
-      
+
       <div class="col-md-12 form-group">
           <label class="col-sm-1">住所</label>
-            
+
             <div class="col-sm-3">
             <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
+            
             <%= f.text_field :municipality, placeholder: "市区町村", class:"form-control" %><br>
             <%= f.text_field :address, placeholder: "丁目、番地、建物名", class:"form-control" %>
             </div>
@@ -88,7 +80,7 @@
           <%= f.text_field :telephone, placeholder:"000-0000", class:"form-control" %>
         </div>
       </div>
-      
+
       <div class="col-md-12 form-group">
         <label class="col-sm-2">メールアドレス</label><br>
         <div class="col-sm-5">
@@ -112,64 +104,20 @@
           <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用", class:"form-control" %>
         </div>
       </div>
-      
+
 
       <div class="col-md-12 form-group">
       <div class="actions">
-        <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary"%>
+        <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary" %>
       </div> 
       </div>
     </div>
-  </div>
-
-    
-  
-
-  
-
-  </div>
-
-  
- 
-  
-  <!-- <div class="field">
-      <%= f.label :住所 %>
-      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
-      <%= f.text_field :municipality, placeholder: "市区町村" %><br>
-      <%= f.text_field :address, placeholder: "丁目、番地、建物名" %>
-  </div>
-
-  <div class="field">
-      <%= f.label :電話番号 %><br>
-      <%= f.text_field :telephone, placeholder: "090-****-****" %>
-  </div>
 
 
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autocomplete: "メールアドレス", placeholder:"tatsuya@****" %>
-  </div> 
-
-  
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "パスワード" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認用） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary"%>
-  </div> -->
 <% end %>
 
+</div>
+</div>
 <%= render "public/customers/shared/links" %>
 </div>
-<div class="col-lg-3"></div>
-</div> -->
+

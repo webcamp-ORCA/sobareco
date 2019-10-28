@@ -14,8 +14,9 @@ class Product < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   belongs_to :genre
-  has_many :arrival_management
+  has_many :arrival_managements
   has_many :cartitems
+  has_many :order_details
 
 
   has_many :discs, dependent: :destroy

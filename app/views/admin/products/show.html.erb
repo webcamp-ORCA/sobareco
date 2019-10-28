@@ -22,7 +22,12 @@
       <!-- 削除ボタン -->
       <%= link_to "削除", destroy_confirm_admin_product_path, class: "btn btn-danger " %>
 
-    </div><br>
+
+    </div>
+
+    <div class="product-status">
+      在庫数: <%= @stock %>
+    </div>
 
     <div class="product-content">
         <% @discs.each do |disc| %>
@@ -60,24 +65,19 @@
           アーティスト名：<%= @product.artist.artist_name %>
         </div>
 
-
         <div class="info-name">
           ジャンル名：<%= @product.genre.genre_name %>
         </div>
-
 
         <div class="info-name">
           レーベル名：<%= @product.label.label_name %>
         </div>
 
-
-
-
       <div class="product-price">
         価格(税抜)：￥<%= @product.product_price %>
       </div><br>
 
-      <!-- 在庫数: <%#= @stock.arrival_management.arrival_count %> -->
+
 
   </div>
 

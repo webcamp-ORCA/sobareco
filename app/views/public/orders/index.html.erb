@@ -1,34 +1,36 @@
-<h1>購入履歴一覧画面</h1>
 
 
-<div class="col-lg-6">
+<div class="main-visual">
+   <h1 class="text-success">購入履歴一覧画面</h1>
+   <% @orders.each do |o|  %>
 	<table class="table table-hover col-lg-7 ">
-   <!-- <   @order_detail.oeder.each do |o|  > -->
 		<thead>
 			<tr>
-				<th><!-- 注文日 --></th>
+				<th class="create_day">注文日</th>
+				<th class="">配送状況</th>
+				<th class=""></th>
 			</tr>
 		</thead>
-	<tbody>
-		<tr>
-			<td>注文日</td>
-			<td>配送状況　<%= o.delivery_status %></td>
-			<td><%#= link_to '購入履歴詳細リンク', o.order_path, class "col-xs-12 btn btn-primary " %></td>
-		</tr>
-		<tr>
-			<td>商品画像</td>
-			 <td>商品名<!-- o.product_name --></td>
-			 <td>商品金額<!-- o.product_price --></td>ds
-			 <td>商品個数<!-- o.product.arrival_count --></td>
-		　</tr>
-
-     </tbody>
-    </table>
+			<tbody>
+				<tr>
+					<td class="order_day"><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
+					<td class="delivery_status" ><%= o.delivery_status_i18n %></td>
+					<td class=""><%= link_to '購入履歴詳細リンク', order_path(o.id) %></td>
+				</tr>
+				<% o.order_details.each do |f| %>
+				   <tr class="table">
+					　<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
+					 <td><div class="product_font">商品名: <%= f.product.product_name %><br></div>
+					 <div class="price_font">金額: <%= f.product.product_price %>円<br></div>
+					 <div class="count_font">点数: <%= f. order_quantity %>点</td></div>
+				　</tr>
+				<% end %>
+	       </tbody>
+		</table>
+	<% end %>
+ <%= paginate @orders %>
 </div>
 
-
-
-<%= render 'footer'%>
 
 
 
