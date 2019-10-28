@@ -104,7 +104,7 @@ end
 
   private
     def order_params
-      params.require(:order).permit(:settlement_method,:postage,:delivery_status,:total_amount,:total_price,:addresses,:customer_id,:name,:post_code,:prefectures,:municipality,:address,:address)
+      params.require(:order).permit(:settlement_method,:postage,:delivery_status,:total_amount,:total_price,:addresses,:customer_id,:name,:post_code,:prefecture_id,:municipality,:address,:address)
     end
 
     def order_detail_params

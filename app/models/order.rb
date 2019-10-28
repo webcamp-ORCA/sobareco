@@ -7,14 +7,15 @@ class Order < ApplicationRecord
      #チェックボックスが空だったらセーブ
       # validates :settlement_method, acceptance: true
       # validates :addresses, acceptance: true
-    def name
-  	last_name + first_name
-    end
+   #  def name
+  	# last_name + first_name
+   #  end
 
 
-  def homeaddress
-  	 Prefecture.find(prefecture_id).name + municipality + address
-  end
+
+  # def homeaddress
+  # 	 Prefecture.find(prefecture_id).name + municipality + address
+  # end
 
 end
 

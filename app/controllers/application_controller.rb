@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   before_action :ransack
 
+#before_action :if_not_admin
+   # def if_not_admin
+   #   redirect_to root_path unless current_user.admin?
+   # end
+
     def ransack
       @q = Product.ransack(params[:q])
     end
