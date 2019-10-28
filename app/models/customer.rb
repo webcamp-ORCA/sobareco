@@ -34,27 +34,9 @@ class Customer < ApplicationRecord
 
   def homeaddress
     Prefecture.find(prefecture_id).name + municipality + address
-<<<<<<< HEAD
 
-  end
-=======
->>>>>>> master
-
-    # prefecture_id.to_s + municipality + address
 
   end
 
-
-
-  # include JpPrefecture
-  # jp_prefecture :prefecture_code
-
-  # def prefecture_name
-  #   JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-  # end
-
-  # def prefecture_name=(prefecture_name)
-  #   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
-  # end
 
 end
