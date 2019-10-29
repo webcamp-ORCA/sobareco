@@ -94,10 +94,12 @@ input[type="search"] {
 .search-btn{
   background:#5fad35;
   color:#FFF;
+  height: 30px;
+  margin-right: 20px;
 }
 .login-name{
   padding-top: 31px;
-  width: 260px;
+  width: 280px;
 }
 
 .navbar-nav > li > a {
@@ -106,13 +108,16 @@ input[type="search"] {
 }
 
 .container {
-    width: 1400px;
+  width: 1400px;
+  padding: 0;
 }
 
 .col-lg-8 {
     width: 75%;
 }
-
+.col-lg-2 {
+    width: 15%;
+}
 
 
 
@@ -234,7 +239,7 @@ footer{
 .footer-main{
   text-align: center;
   display: inline-block;
-  margin-left: 590px;
+  margin-left: 530px;
   margin-bottom: 30px;
 
 }
