@@ -3,19 +3,16 @@
 <div class="col-lg-10">
 
 <h1>会員一覧</h1>
-  <div class="row">
-<table class="table table-bordered">
+  
+<table class="table table-border">
   <thead>
-    <tr>
-      <div class="col-lg-8">
-      <th>ユーザー名</th>
-      </div>
-      <div class="col-lg-2">
-      <th>ユーザー情報</th>
-      </div>
-      <div class="col-lg-2">
-      <th>購入履歴</th>
-    </div>
+    <tr class="well well-lg">
+      <!-- <div class="col-md-8"> -->
+      <th class="col-md-4">ユーザー名</th>
+      <th class="col-md-4">E-mail</th>
+     <!--  <div class="col-md-2"> -->
+
+   
     </tr>
   </thead>
 
@@ -24,23 +21,20 @@
   <tbody>
     <tr>
 
-     <div class="col-lg-8">
-        <td>
+        <td class="col-md-4">
           <%= link_to customer.name, admin_customer_path(customer.id) %>
         </td>
 
-    </div>
-    <div class="col-lg-2">
+        <td class="col-md-4">
+          <%= customer.email %>
 
-        <td>
-      <%= link_to '編集', edit_admin_customer_path(customer.id), class: "btn btn-success" %>
+        <td class="col-md-2">
+      <%= link_to '編集', edit_admin_customer_path(customer.id), class: "btn btn-primary btn-xs" %>
         </td>
 
-      </div>
-
-      <div class="col-lg-2">
-      <td>
-        <%= link_to '購入履歴', purchase_history_admin_customer_path(customer.id), class: "btn btn-success" %>
+      
+      <td class="col-md-2">
+        <%= link_to '購入履歴', purchase_history_admin_customer_path(customer.id), class: "btn btn-primary btn-xs" %>
 
         </td>
       </div>

@@ -33,7 +33,7 @@
                         <tr>
 					     <td><%= link_to 'カートに戻る',  cart_items_path ,class: " btn btn-primary col-lg-4 btn-sm" %></td>
                          <div class="col-lg-4"></div>
-					    <td><%= link_to '購入画面に戻って変更する', new_order_path,class: " btn btn-primary col-lg-4 btn-sm" %></td>
+					     <td><%= link_to '購入画面に戻って変更する', new_order_path,class: " btn btn-primary col-lg-4 btn-sm" %></td>
 					   </tr>
 
 					              <!--  viewに購入者の購入情報を再表示 -->
@@ -47,8 +47,13 @@
 							    <td><%= @settlement_method %></td>
 							</tr>
 					         <tr>
+
 					         <td>合計金額</td>
 					         <td><%= @total_price * 1.1 %>円</td>
+
+
+					         	<td>合計金額</td>
+					         	<td><%= @total_price %>円</td>
 
 					        </tr>
                        </table>

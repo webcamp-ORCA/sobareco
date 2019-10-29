@@ -61,17 +61,17 @@
 					</tr>
 
 
+
               <h3 class="titel">支払い方法を選択する</h3>
 				 <table class="table table-hover ">
 					 <tr>
+					 	<td></td><td></td><td></td><td></td><td></td>
 						<td><label><%= f.radio_button :settlement_method, "銀行振り込み", {:checked => true} %>銀行振込</label></td>
-					</tr>
-					<tr>
+				<!-- 	</tr>
+					<tr> -->
 						<td><label><%= f.radio_button :settlement_method, "代引き" %>代引き</label></td>
 
 						<td><label><%= f.radio_button :settlement_method, "クレジットカード" %>クレジットカード</label><br><%= link_to "クレジットカードを登録する", new_card_path %></td>
-
-
 					</tr>
 				  </table>
 			     <table class="table table-hover ">
@@ -79,7 +79,11 @@
 						<tr>
 							<!-- カートの合計金額を表示 -->
 							<td>商品合計</td>
+
 						    <td><%= @total_price *1.1 %>円  +  送料500円</td>
+
+						    <td><%= (@total_price *1.1).floor %>円 </td>
+
 						</tr>
 						<!-- <tr>
 							<td>送料</td>

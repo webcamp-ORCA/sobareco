@@ -1,11 +1,13 @@
 <h2><span class="glyphicon glyphicon-credit-card"></span>クレジットカードの登録</h2>
 
+<div class="row">
+	<!-- <div class="form-group">
+		<div class="form-row"> -->
+	<div class="col-lg-3"></div>
+			<div class="col-lg-6">
 <%= form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do %>
 
-<div class="row">
-	<div class="form-group">
-		<div class="form-row">
-			<div class="col-md-6">
+
 <label>カード番号</label>
 <%= text_field_tag :number, "", class: "number form-control", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number" %>
 <br>
@@ -44,12 +46,15 @@
 </select>
 <span>/年</span>
 <br>
-<%= text_field_tag :cvc, "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %>
-<div id="card_token"></div>
+<br>
+<!-- cvc番号エリア -->
+<label>セキュリティコード</label>
+<%= text_field_tag :cvc, "", class: "cvc form-control", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %>
+<div id="card_token"></div><br>
 <%= submit_tag "追加する", id: "token_submit" %>
-
+<br>
 <% end %>
 </div>
+<div class="col-lg-3"></div>
 </div>
-</div>
-</div>
+<br>
