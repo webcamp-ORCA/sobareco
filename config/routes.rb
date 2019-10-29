@@ -48,7 +48,6 @@ devise_for :admin_users,controllers: {
 
     resources :customers do
     get 'destroy_confirm',:on => :member
-    get 'destroy_complete', :on => :collection
     get 'address_index', :on => :member
     end
     resources :orders do

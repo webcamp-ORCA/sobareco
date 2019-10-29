@@ -12,6 +12,7 @@
           <span class="mgl-10">Disc.<%= disc.disc_no %></span>
         </div><br>
 
+
           <% disc.records.each do |record| %>
             <div class="song-title">
               <%= record.song_title %>
@@ -23,11 +24,18 @@
 
 
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-7">
 
       <div class="label label-info label-sm">
         <%= @product.product_status_i18n %>
-      </div><br>
+      </div>
+
+      <div class="product-cart-btn ">
+       <%= form_for @cart_item, url: cart_items_path do |f| %>
+       <%= f.hidden_field :product_id, :value => @product.id %>
+       <%= f.submit 'カートに入れる' %>
+     <% end %>
+    </div>
 
       <!-- 商品名 -->
       <div class="product-name">
@@ -36,40 +44,29 @@
 
       <div class="product-info">
 
-
         <div class="info-name">
-          アーティスト：<%= @product.artist.artist_name %>
+          アーティスト名：<%= @product.artist.artist_name %>
         </div>
 
-
-
         <div class="info-name">
-          ジャンル：<%= @product.genre.genre_name %>
+          ジャンル名：<%= @product.genre.genre_name %>
         </div>
 
-
         <div class="info-name">
-          レーベル：<%= @product.label.label_name %>
+          レーベル名：<%= @product.label.label_name %>
         </div>
-
-      </div>
 
       <div class="product-price">
         <% @product.product_price =  @product.product_price * 1.1 %>
         価格(税込)：￥<%= @product.product_price %>
       </div><br>
 
+
+
   </div>
-
-  <div class="col-lg-4">
-    <%= form_for @cart_item, url: cart_items_path do |f| %>
-       <%= f.hidden_field :product_id, :value => @product.id %>
-       <%= f.submit 'カートに入れる' %>
-     <% end %>
-  </div>
-
-
 
 </div>
+
+
 
 

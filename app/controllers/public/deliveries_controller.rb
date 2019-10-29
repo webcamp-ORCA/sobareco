@@ -15,7 +15,6 @@ class Public::DeliveriesController < ApplicationController
 
 # (deliveries_params)
   def create
-     
     @delivery = Delivery.new(deliveries_params)
     @delivery.customer_id = current_customer.id
       if @delivery.save
