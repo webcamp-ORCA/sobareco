@@ -44,7 +44,7 @@
 					</tr>
 					<tr>
 						<td>住所</td>
-						<td><%= d.customer.homeaddress %></td>
+						<td><%= d.homeaddress %></td>
 					</tr>
 					<tr>
 						<td>電話番号</td>
@@ -79,27 +79,27 @@
 						<tr>
 							<!-- カートの合計金額を表示 -->
 							<td>商品合計</td>
-						    <td><%= @total_price %>円 </td>
+						    <td><%= @total_price *1.1 %>円  +  送料500円</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td>送料</td>
-						　　 <td><%= @order.postage %>円</td>
-						</tr>
+						　　 <td><%#= @order.postage %>円</td>
+						</tr> -->
 						<tr>
 							<!-- 合計金額のフォームを送りたい -->
 							<td>合計金額</td>
-						　　 <td><%= @total_price.to_i + @order.postage.to_i %>円</td>
+						　　 <td><%= @total_price *1.1 + @order.postage.to_i %>円</td>
 						    <td><%#= @total_amount %></td>
 						</tr>
 				 </table>
 						 <tr><%= f.submit '購入画面に進む'  ,class: " btn btn-success btn-lg col-xs-12"%></tr>
 
        </div>
-        <div class="col-xs-3">
-        </div>
+           <div class="col-xs-3"> </div>
    </div>
 </div>
 				　　　_
 			<%= f.hidden_field :total_price, :value => @total_price.to_i + @order.postage.to_i %>
 		　　<%= f.hidden_field :total_amount, :value => @total_amount %>
 	 <% end %>
+
