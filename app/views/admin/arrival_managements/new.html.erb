@@ -9,8 +9,8 @@
             <% end %>
         <% end %>
 		  <%= form_for(@arrival, url: '/admin/arrival_managements') do |f|%>
-		  <label class="control-label" for="">商品登録</label>
-		   <%=  f.collection_select :product_id, Product.all, :id, :product_name, :prompt => "選択してください" %>
+		  <label class="control-label" for="">商品登録</label><br>
+		   <%=  f.collection_select :product_id, Product.all, :id, :product_name, {prompt: "選択してください"}, class: "mySelect2 form-control" %><br>
 
 			    <label class="control-label" for="">入荷日時</label>
 			 <%= f.date_field :arrival_date, class: 'form-control' %>

@@ -3,6 +3,7 @@ class Public::DeliveriesController < ApplicationController
   before_action :ransack
 
   def index
+    @customer = current_customer.id
     @deliveries = Delivery.page(params[:page])
 
   end
@@ -14,7 +15,6 @@ class Public::DeliveriesController < ApplicationController
 
 # (deliveries_params)
   def create
-     
     @delivery = Delivery.new(deliveries_params)
     @delivery.customer_id = current_customer.id
       if @delivery.save

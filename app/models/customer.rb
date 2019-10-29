@@ -13,7 +13,6 @@ class Customer < ApplicationRecord
   has_many :cartitems, dependent: :destroy
   has_many :cards, dependent: :destroy, foreign_key: 'user_id'
   belongs_to :prefecture, optional:true
-  has_many :order_details, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
