@@ -19,80 +19,84 @@
   <body>
 
     <div class="wrapper">
-      <div class="container-fluid">
-        <div class="row row-eq-height">
-          <div class="col-lg-12" style="background-color: #cbb994;">
-      　　　　 <h1><i class="fas fa-compact-disc "></i><%= link_to "Sobareco'", products_path %></h1>
+      <header>
+        <div class="container-fluid">
+          <div class="row row-eq-height">
+            <div class="col-lg-12" style="background-color: #cbb994;">
+        　　　　 <h1 class="logo">
+                  <i class="fas fa-compact-disc "></i><%= link_to "Sobareco'", products_path %>
+                </h1>
 
 
-            <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+              <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
               <% if customer_signed_in? %>
-             <!--  ユーザー側ヘッダー　ログイン時 -->
-              <li class="login-name">
-  　　　　　　　 こんにちは、<%= current_customer.name %>様
-  　　　　　　　</li>
 
-              <li class="listbar">
+               <!--  ユーザー側ヘッダー　ログイン時 -->
+                <li class="login-name">
+    　　　　　　　 こんにちは、<%= current_customer.name %>様
+    　　　　　　　</li>
 
-                <%= link_to "マイページ"  ,customer_path(current_customer.id)%>
-              </li>
+                <li class="listbar">
+                  <%= link_to "マイページ"  ,customer_path(current_customer.id)%>
+                </li>
 
-              <li class="listbar">
-                <%= link_to "購入履歴一覧", orders_path  %>
-              </li>
+                <li class="listbar">
+                  <%= link_to "購入履歴一覧", orders_path  %>
+                </li>
 
-              <li class="listbar">
-                <%= link_to "カート",cart_items_path %>
-              </li>
+                <li class="listbar">
+                  <%= link_to "カート",cart_items_path %>
+                </li>
 
-              <li class="listbar">
-                <%= link_to "ログアウト", customer_registration_path, method: :delete %>
-              </li>
+                <li class="listbar">
+                  <%= link_to "ログアウト", customer_registration_path, method: :delete %>
+                </li>
 
+                <li class="search-form">
+                  <%= search_form_for @q, url: products_path do |f| %>
+                    <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont,placeholder:"商品名、アーティスト、レーベルなどキーワードを入力" %>
+                    <%= f.submit "検索" , class: "search-btn" %>
+                  <% end %>
+                </li>
 
-              <li class="search-form">
-                <%= search_form_for @q, url: products_path do |f| %>
-                  <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
-                  <%= f.submit "検索" , class: "search-btn" %>
-                <% end %>
+              <% elsif admin_user_signed_in? %>
 
+                <li class="listbar">
+                  <%= link_to "ログアウト(管理者側)",  destroy_admin_user_session_path, method: :delete %>
+                </li>
 
-            <% elsif admin_user_signed_in? %>
-              <li class="listbar">
-                <%= link_to "ログアウト(管理者側)",  destroy_admin_user_session_path, method: :delete %>
-              </li>
+                <li class="search-form">
+                  <%= search_form_for @q, url: admin_products_path do |f| %>
+                    <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont,placeholder:"商品名、アーティスト、レーベルなどキーワードを入力" %>
+                    <%= f.submit "検索" , class: "search-btn" %>
+                  <% end %>
+                </li>
 
-              <li class="search-form">
-                <%= search_form_for @q, url: admin_products_path do |f| %>
-                  <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
-                  <%= f.submit "検索" , class: "search-btn" %>
-                <% end %>
+              <% else %>
 
+                <li class="listbar">
+                  <%= link_to "新規登録", new_customer_registration_path %>
+                </li>
 
-            <% else %>
+                <li class="listbar">
+                  <%= link_to "ログイン",new_customer_session_path  %>
+                </li>
 
-              <li class="listbar">
-                <%= link_to "新規登録", new_customer_registration_path %>
-              </li>
-              <li class="listbar">
-                <%= link_to "ログイン",new_customer_session_path  %>
-              </li>
+                <li class="search-form">
+                  <%= search_form_for @q, url: products_path do |f| %>
+                    <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont,placeholder:"商品名、アーティスト、レーベルなどキーワードを入力" %>
+                    <%= f.submit "検索" , class: "search-btn" %>
+                  <% end %>
+                </li>
 
+              <% end %>
+              </ul>
+            </div>
+        </header>
 
-              <li class="search-form">
-                <%= search_form_for @q, url: products_path do |f| %>
-                  <%= f.search_field :product_name_or_artist_artist_name_or_label_label_name_or_genre_genre_name_cont %>
-                  <%= f.submit "検索" , class: "search-btn" %>
-                <% end %>
-              </li>
-
-
-            <% end %>
-            </ul>
-          </div>
-
-
+<div class="container">
       <%= yield %>
+    </div>
 
 
         </div>
