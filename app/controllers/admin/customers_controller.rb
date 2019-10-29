@@ -50,7 +50,7 @@ before_action :ransack
     @customer = Customer.find(params[:id])
     @customer.destroy
     # redirect_to admin_customers_path
-    redirect_to admin_customer_destroy_complete_path
+    redirect_to admin_customer_destroy_complete_path(@customer)
   end
 
   def destroy_complete
