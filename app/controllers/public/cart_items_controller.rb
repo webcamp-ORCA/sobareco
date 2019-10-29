@@ -8,11 +8,21 @@ before_action :ransack
   end
 
   def create
-    @cartitem = Cartitem.new
-    @cartitem.product_id  = params[:cartitem][:product_id].to_i
-    @cartitem.purchase_quantity = 1
-    @cartitem.customer_id = current_customer.id
-    
+    carts = current_customer.cartitems
+    #条件式　左辺：「カートに商品が入っているか。」右辺：「カートに入れる商品がすでにカートにあるか。」
+    #左辺と右辺を 論理演算子&&(かつ)で結ぶ。
+    unless carts != nil && carts.find_by(product_id: params[:cartitem][:product_id].to_i).blank?
+      #条件式がfalseの場合、こちらの処理を行う
+      @cartitem = carts.find_by(product_id: params[:cartitem][:product_id].to_i)
+      @cartitem.purchase_quantity += 1
+    else
+      #条件式がtrueの場合、こちらの処理を行う
+      @cartitem = Cartitem.new
+      @cartitem.product_id  = params[:cartitem][:product_id].to_i
+      @cartitem.purchase_quantity = 1
+      @cartitem.customer_id = current_customer.id
+    end
+
     if @cartitem.save
       redirect_to cart_items_path(@cartitem.id)
     else
