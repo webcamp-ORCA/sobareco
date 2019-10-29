@@ -26,14 +26,14 @@ customer = Customer.create!(
 
 
 
-delivery = customer.deliveries.create!(
-name: '名前',
-prefecture_id: 2,
-municipality: '市区町村',
-address: '番地',
-telephone: '111-1111',
-customer_id: 1,
-)
+# delivery = customer.deliveries.create!(
+# name: '名前',
+# prefecture_id: 2,
+# municipality: '市区町村',
+# address: '番地',
+# telephone: '111-1111',
+# customer_id: 1,
+# )
 
 
  Order.create!(

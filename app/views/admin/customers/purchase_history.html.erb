@@ -3,7 +3,7 @@
 <h1>購入履歴</h1>
 <h2>ユーザー名:<%= @customer.name %></h2>
 
-<%= @orders.each do |o| %>
+<% @orders.each do |o| %>
 <div class="col-lg-10">
   <table class="table table-striped">
     <thead>
@@ -22,8 +22,8 @@
         <tr>
         <td><%=h ((o.created_at).to_date).strftime('%Y年%m月%d日') %></td>
         <td><%= o.total_amount %></td>
-        <td>円</td>
-        <td><%=# o.homeaddress %></td>
+        <td><%= o.order_details.sum(:order_quantity) %></td>
+        <td><%= o.addresses %></td>
         </tr>
       </tbody>
 
@@ -35,11 +35,37 @@
       <img src="/assets/no_image.png">
     </div>
 
-    <div class="col-lg-9">
+<% o.order_details.each do |f| %>
+<%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
+<h2><font color="blue"><%= f.product.product_name %></font></h2>
+<%= link_to product_path(f.id) do %>
+<h2><font color="blue"><%= f.product.product_price %></font></h2>
+<h2><font color="blue"><%= f.product.artist.artist_name %></font></h2>
+<h2><font color="blue"><%= f.product.genre.genre_name %></font></h2>
+<% end %>
+<% end %>
+<% end %>
+<!-- <div class="col-lg-9">
       <h2><font color="blue">TATSUYA 〜今宵は長い〜</font></h2>
       <h3><font color="orange">3,000円</font></h3>
       <p>アーティスト：小林タツヤ</p>
-      <p>ジャンル：演歌</p>
+      <p>ジャンル：演歌</p> -->
+<%# @order.order_details.each do |f| %>
+             <tr>
+             <!--  <td><%#= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
+                             <%#= link_to product_path(f.id) do %>
+                            <td><div class="product_font">商品名   :<%#= f.product.product_name %><br></div>
+                             <div class="price_font">金額 :<%#=  f.price %>円<br></div>
+                            <div class="genre_font">アーティスト名   :<%#= f.product.artist.artist_name %><br></div>
+                            <div class="genre_font">ジャンル名   :<%#= f.product.genre.genre_name %><br></div>
+                            <div class="genre_font">商品個数    :<%#= f.product.product_name %>点</td></div>
+            </tr>
+
+    <!- <div class="col-lg-9">
+      <h2><font color="blue">TATSUYA 〜今宵は長い〜</font></h2>
+      <h3><font color="orange">3,000円</font></h3>
+      <p>アーティスト：小林タツヤ</p>
+      <p>ジャンル：演歌</p> -->
 
 
     </div>
@@ -47,7 +73,7 @@
   </div>
 
 </div>
-<% end %>
+
 </div>
 </div>
 </div>
