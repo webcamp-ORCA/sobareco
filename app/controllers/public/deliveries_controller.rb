@@ -4,6 +4,7 @@ class Public::DeliveriesController < ApplicationController
 
   def index
     @deliveries = Delivery.page(params[:page])
+
   end
 
   def new
@@ -40,7 +41,7 @@ class Public::DeliveriesController < ApplicationController
 
   def update
     deliveries = Delivery.find(params[:id])
-    deliveries.update
+    deliveries.update(deliveries_params)
     redirect_to deliveries_path
   end
 
@@ -57,7 +58,9 @@ class Public::DeliveriesController < ApplicationController
 
 private
     def deliveries_params
+
       params.require(:delivery).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone,:prefecture_id)
+
     end
 
         def ransack

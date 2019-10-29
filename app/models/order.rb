@@ -11,6 +11,9 @@ class Order < ApplicationRecord
   	# last_name + first_name
    #  end
 
+def prefecture
+    Prefecture.find(prefecture_id).name
+  end
 
 
   # def homeaddress

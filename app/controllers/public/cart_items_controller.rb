@@ -8,11 +8,11 @@ before_action :ransack
   end
 
   def create
-    #binding.pry
     @cartitem = Cartitem.new
     @cartitem.product_id  = params[:cartitem][:product_id].to_i
-    @cartitem.purchase_quantity = params[:cartitem][:purchase_quantity].to_i
+    @cartitem.purchase_quantity = 1
     @cartitem.customer_id = current_customer.id
+    
     if @cartitem.save
       redirect_to cart_items_path(@cartitem.id)
     else
@@ -23,7 +23,7 @@ before_action :ransack
   def update
     @cartitem = Cartitem.find(params[:id])
     @cartitem.update(update_items_params)
-        redirect_to cart_items_path
+    redirect_to cart_items_path, notice: "数量を変更しました"
   end
 
   def destroy
