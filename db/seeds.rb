@@ -9,8 +9,6 @@
 
 customer = Customer.create!(
 
-
-	id: 1,
 	last_name: '小林',
 	first_name: '勃也',
 	lastname_kana: 'コバヤシ',
@@ -20,10 +18,9 @@ customer = Customer.create!(
 	municipality: '千曲市横田町',
 	address: '1-2-2',
 	telephone: 'xxx-xxxx-xxxx',
-	email: 'koba@hotmail.ssp',
+	email: 'koba@hotmail.ooo',
 	password: 'password',
 	)
-
 
 
 # delivery = customer.deliveries.create!(
@@ -36,11 +33,10 @@ customer = Customer.create!(
 # )
 
 
- Order.create!(
- 	postage: '500',
- )
 
-AdminUser.create!(
+
+
+adminuser = AdminUser.create!(
 	email: 'kobatatsu@tmail.com',
 	password: '00000000',
 	)

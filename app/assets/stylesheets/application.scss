@@ -19,7 +19,9 @@
 
   @import "bootstrap-sprockets";
    @import "bootstrap";
-
+   html{
+    height: 100%;
+   }
 
    body {
 
@@ -40,7 +42,7 @@
 
 
     a {
-  color: green;
+  color: #00552e;
 }
 
 
@@ -67,13 +69,16 @@
     margin-bottom: 5px;
 }
 
+.search-form{
+  padding-top: 13px;
+}
 .search-btn{
   background:#5fad35;
   color:#FFF;
 }
-
-
-
+.login-name{
+  padding-top: 13px;
+}
 
 
 .pagination>li>a {
@@ -82,7 +87,7 @@
 }
 
 .pagination>.active>a {
-  background: #008000;
+  background: #cbb994;
   border-radius: 15px;
 }
 
@@ -99,13 +104,17 @@
 }
 
 .btn-group{
-  margin-left: 70px;
+
   padding-top: 15px;
-  width: 250px;
+  display: inline-block;
 }
 
 .product-content{
   margin-top: 30px;
+}
+
+.product-index{
+  color: white;
 }
 
 .product-name{
@@ -125,6 +134,7 @@
 .headline{
   font-weight: bold;
   margin: 20px 0 30px 265px;
+  
 }
 
 .product-price{
@@ -156,14 +166,24 @@
     margin: 30px 0;
 }
 
+.product-status{
+  display: inline-block;
+}
+
+.product-cart-btn{
+  
+}
+
+
 
 .destroy-confirm-main{
   margin-left:350px;
 }
 
 
+
 footer{
-  background-color: green;
+  background-color: #00552e;
   color: white;
 
 }

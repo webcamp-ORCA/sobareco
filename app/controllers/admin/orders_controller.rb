@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-
+before_action :authenticate_admin_user!
 before_action :ransack
 
 

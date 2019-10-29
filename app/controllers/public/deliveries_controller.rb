@@ -14,6 +14,7 @@ class Public::DeliveriesController < ApplicationController
 
 # (deliveries_params)
   def create
+     
     @delivery = Delivery.new(deliveries_params)
     @delivery.customer_id = current_customer.id
       if @delivery.save
@@ -57,7 +58,9 @@ class Public::DeliveriesController < ApplicationController
 
 private
     def deliveries_params
-      params.require(:delivery).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone, :prefecture_id)
+
+      params.require(:delivery).permit(:name, :post_code, :prefecture, :municipality, :address, :telephone,:prefecture_id)
+
     end
 
         def ransack

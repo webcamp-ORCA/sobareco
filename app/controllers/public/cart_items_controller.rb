@@ -23,7 +23,7 @@ before_action :ransack
   def update
     @cartitem = Cartitem.find(params[:id])
     @cartitem.update(update_items_params)
-        redirect_to cart_items_path
+    redirect_to cart_items_path, notice: "数量を変更しました"
   end
 
   def destroy
@@ -33,7 +33,7 @@ before_action :ransack
   end
 
   private
-    
+
     def update_items_params
       params.require(:cartitem).permit(:purchase_quantity)
     end

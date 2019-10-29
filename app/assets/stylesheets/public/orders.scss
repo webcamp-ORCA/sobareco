@@ -4,17 +4,55 @@
 
 
 
+.main-visual-complete{
+	width:980px;
+     margin: 0 auto;
+      text-align: center;
+      width: 90%;
+	   height:450px;
+       background-image: url(publicdomainq-0023741zmr.jpg);
+       background-size:cover;
+	   background-position: center;
+
+}
+
 .main-visual{
 	width:980px;
      margin: 0 auto;
+      text-align: center;
+      width: 90%;
+	   height:650px;
+       background-image: url('publicdomainq-0023741zmr.jpg');
+       background-size:cover;
+	   background-position: center;
 
 }
+
+
+
 
 
 .main-text{
-	font-size: 20px;
+    padding-top:50px;
+	font-size: 40px;
 
 }
+
+
+
+.main-text2{
+	font-size: 40px;
+	padding-top:50px;
+}
+
+.list-bar{
+	width: 90%;
+	height:650px;
+	margin: 0 auto;
+}
+
+
+
 
 .link-content{
     margin: 0 auto;
@@ -43,6 +81,7 @@ text-align: center;
 }
 
 
+
 .delivery_status{
 	font-size: 15px;
 }
@@ -62,4 +101,8 @@ font-size: 15px;
 .price_font{
 font-size: 20px;
 color: orange;
+}
+
+.count_font{
+	font-size: 20px;
 }
