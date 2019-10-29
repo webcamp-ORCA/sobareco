@@ -7,29 +7,43 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 
 
+<div class="container">
 <div class="row">
-<div class="col-lg-12">
-
+<div class="col-lg-3"></div>
+<div class="col-lg-6">
+	<div class="text-center">
+	<h2>登録情報</h2>
 
 <table>
-<tbody>
-<!-- <h2>購入履歴</h2> -->
-
-<!-- </div> -->
-
-<div class="row">
+	<tbody>
 <tr>
-	<div class="col-lg-3">
-<th>登録情報</th>
-</div>
-<td>
-	<p>名前　<%= @customer.name %></p>
-	<p>住所　<%= @customer.homeaddress %></p>
-	<p>電話番号　<%= @customer.telephone %></p>
-</td>
+	<th><font size="5">名前</font></th>
+	<td><font size="5"><%= @customer.name %></font></td>
 </tr>
+
+<tr>
+	<th><font size="5">住所</font></th>
+	<td><font size="5"><%= @customer.homeaddress %></font></td>
+</tr>
+
+<tr>
+	<th><font size="5">電話番号</font></th>
+	<td><font size="5"><%= @customer.telephone %></font></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="col-lg-3"></div>
+</div>
+</div>
+
 
 
 <p><%= link_to '退会する・・・', destroy_confirm_customer_path %></p>
@@ -38,7 +52,7 @@
 <%= link_to 'お届け先住所一覧', deliveries_path, class: "btn btn-success btn-lg" %>
 <%= link_to '購入履歴の確認', orders_path, class: "btn btn-success btn-lg" %>
 <h2>クレジット情報</h2>
-<p>下４桁:xxxx</p>
+
 <%= link_to '登録・編集する', new_card_path %>
 </tbody>
 </table>
