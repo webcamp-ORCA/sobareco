@@ -3,6 +3,7 @@ class Public::DeliveriesController < ApplicationController
   before_action :ransack
 
   def index
+    @customer = current_customer.id
     @deliveries = Delivery.page(params[:page])
 
   end
