@@ -88,36 +88,15 @@
 
 <div class="form-row">
       <div class="col-md-12 form-group">
-        <div class="col-sm-3"></div>
-        <label class="col-sm-1">メールアドレス</label>
+        <div class="col-sm-2"></div>
+        <label class="col-sm-2 text-right">メールアドレス</label>
         <div class="col-sm-5">
         <%= f.text_field :email, placeholder:"kobaba@kokoko", class: "form-control" %>
         </div>
       </div>
     </div>
 
-<div class="form-row">
-      <div class="col-md-12 form-group">
-        <div class="col-sm-3"></div>
-        <label class="col-sm-1">パスワード</label>
-        <div class="col-sm-5">
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "パスワード", class:"form-control" %><br>
-        </div>
-      </div>
-    </div>
 
-<div class="form-row">
-      <div class="col-md-12 form-group">
-        <div class="col-sm-3"></div>
-        <label class="col-sm-1">パスワード<br>（確認用）</label>
-        <div class="col-sm-5">
-          <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用", class:"form-control" %>
-        </div>
-      </div>
-    </div>
 
 <div class="form-row">
       <div class="col-md-12 form-group">

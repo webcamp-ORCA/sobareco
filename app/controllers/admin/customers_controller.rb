@@ -39,7 +39,7 @@ before_action :ransack
   def update
     customer = Customer.find(params[:id])
     customer.update(customer_params)
-    redirect_to admin_customer_path(customer)
+    redirect_to admin_customer_path
   end
 
   def destroy_confirm
