@@ -1,6 +1,6 @@
-<!-- <style type="text/css" media="screen">
+<style type="text/css" media="screen">
  .wrapper{
-  background-image:url('assets/zarusoba.jpg');
+  background-image:url('../assets/zarusoba.jpg');
   background-size: cover;
   box-shadow: 4px 4px;
 }
@@ -10,7 +10,7 @@
 .headline{
   color: white;
 }
-</style> -->
+</style>
 
 
 <% flash.each do |name, msg| %>
@@ -26,11 +26,10 @@
 ​
 <h1 class="headline">商品一覧</h1>
 ​
-  <div class="product-index col-lg-8">
+  <div class="col-lg-8">
     <% @products.each do |product| %>
       <div class="col-lg-3">
-
-        <div class="">
+        <div class="product-index">
           <%= link_to admin_product_path(product.id) do %>
 
             <%= attachment_image_tag product, :product_image, :fill, 160, 160, fallback: "no_image.png", size:'160x160' %><br>
@@ -38,12 +37,11 @@
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%= product.artist.artist_name %><br>
 
             <i class="fas fa-yen-sign fa-lg"></i>&nbsp;<%= product.product_price %><br>
-
           <% end %>
         </div>
       </div>
     <% end %>
-    <div class="text-center col-lg-12">
+    <div class="text-center col-lg-11">
       <%= paginate @products %>
     </div>
   </div>
