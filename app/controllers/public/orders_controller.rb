@@ -76,8 +76,10 @@ class Public::OrdersController < ApplicationController
        #失敗したら購入画面に戻る
           @customer = current_customer
           render :new
+
     end
   end
+
 
 
         # @order_detail.save
@@ -99,7 +101,7 @@ end
   def index
     #@orders = Order.all
 
-    @orders = Order.page(params[:page]).per(PER)
+    @orders = current_customer.orders.page(params[:page]).per(PER)
   end
 
   private
