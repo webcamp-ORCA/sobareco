@@ -26,6 +26,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def destroy
+
     customer = Customer.find(params[:id])
     customer.destroy
 
