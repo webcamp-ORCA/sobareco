@@ -101,7 +101,7 @@ end
   def index
     #@orders = Order.all
 
-    @orders = Order.page(params[:page]).per(PER)
+    @orders = current_customer.orders.page(params[:page]).per(PER)
   end
 
   private
