@@ -1,16 +1,37 @@
 class Admin::OrdersController < ApplicationController
+
+
 before_action :authenticate_admin_user!
 before_action :ransack
 
 
+
+PER = 6
+before_action :ransack
+
   def index
-  	@orders = Order.all
+    @order = Order.new
+  	@orders = Order.page(params[:page])
   end
+
+   def create
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to admin_orders
+
+
+   end
 
   def update
+     @order = Order.find(params[:id])
+    if @order.update(order_params)
+      flash[:notice] = "登録しました"
+     redirect_to admin_orders_path
+    else
+      render :index
+end
   end
 
-private
 
 private
     def order_params

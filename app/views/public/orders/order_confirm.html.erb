@@ -1,73 +1,68 @@
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+			<h1 class="text-success">注文確認画面</h1>
+			<h2 class="titel">注文内容の確認</h2>
+			     <table class="table table-hover ">
+			     	<tr class="well  well-lg">
+				        <th>商品画像</th>
+						<th>商品名</th>
+						<th>数量</th>
+						<th>価格</th>
+				        <th>合計</th>
+				    </tr>
+				    <% @customer.cartitems.each do |o| %>
+			             <tr>
+			                <td><%= attachment_image_tag o.product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %>
+							<td text-align:center;><div class="product_name"><%=o.product.product_name %></div>
+				                <br><div class="genre_font">アーティスト:<%=o.product.artist.artist_name %></div>
 
-<div class="main-visual">
-		<h1 class="text-success">注文確認画面</h1>
+				                <br><div class="genre_font">ジャンル:<%=o.product.genre.genre_name %>
+					        </td>
+							 <td text-align:center;><font size="4"><%=o.product.product_price %>円</font></td>
+								<td text-align:center;><font size="4"><%=o.purchase_quantity%>個</font></td>
+					            <td text-align:center;><font size="4"><%= o.product.product_price * o.purchase_quantity %>円</font></td>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+                     <tr></tr>
+                        <tr>
+					     <td><%= link_to 'カートに戻る',  cart_items_path ,class: " btn btn-primary col-lg-4 btn-sm" %></td>
+                         <div class="col-lg-4"></div>
+					    <td><%= link_to '購入画面に戻って変更する', new_order_path,class: " btn btn-primary col-lg-4 btn-sm" %></td>
+					   </tr>
 
-		<h2>注文内容の確認</h2>
-
-
-
-     <table class="table table-hover ">
-     	<tr>
-	        <th>商品画像</th>
-			<th>商品名</th>
-			<th>数量</th>
-			<th>価格</th>
-	        <th class="text-right">合計</th>
-	    </tr>
-	    <% @customer.cartitems.each do |o| %>
-             <tr>
-                <td><%= attachment_image_tag o.product, :product_image, :fill, 150, 150, fallback: "no_image.png", size:'150x150' %>
-				<td text-align:center;><font size="4"><%=o.product.product_name %>
-	                <br>
-	                <br>アーティスト:<font size="3"><%=o.product.artist.artist_name %></font>
-	                <br>
-	                <br >ジャンル:<font size="3"><br><%=o.product.genre.genre_name %></font>
-		        </td>
-				 <td text-align:center;><font size="4">個</font></td>
-					<td text-align:center;><font size="4"><%=o.purchase_quantity %>円</font></td>
-		            <td text-align:center;><font size="4"><%= o.product.product_price * o.purchase_quantity %>円</font></td>
-				</td>
-			</tr>
-		<% end %>
-	</table>
-
-	<div class="col-xs-12">
-		<div class="center-block">
-		     <%= link_to 'カートに戻る',  cart_items_path ,class: " btn btn-primary " %>
-		</div>
-	</div>
-		              <!--  viewに購入者の購入情報を再表示 -->
-		<table class="table table-hover">
-				 <tr>
-				    <td>お届け先</td>
-				    <td><%= @address %></td>
-				</tr>
-				<tr>
-				    <td>お支払い方法</td>
-				    <td><%= @settlement_method %></td>
-				</tr>
-		         <tr>
-		         <td>合計金額</td>
-		         <td><%= @total_price %>円</td>
-		        </tr>
-		    </table>
-
-<div class="col-xs-12">
-		<div class="center-block">
-		<%= link_to '購入画面に戻って変更する', new_order_path,class: " btn btn-primary " %>
-	</div>
-</div>
-		<!-- 配送先 支払い方法の選択で決めたこと -->
+					              <!--  viewに購入者の購入情報を再表示 -->
+					<table class="table table-hover">
+							 <tr>
+							    <td>お届け先</td>
+							    <td><%= @address %></td>
+							</tr>
+							<tr>
+							    <td>お支払い方法</td>
+							    <td><%= @settlement_method %></td>
+							</tr>
+					         <tr>
+					         <td>合計金額</td>
+					         <td><%= @total_price %>円</td>
+					        </tr>
+                       </table>
+<!-- 配送先 支払い方法の選択で決めたこと -->
 		<%= form_for @order, url: "/orders" do |f| %>
 		    <%= f.hidden_field :total_amount, :value => @total_amount %>
 		    <%= f.hidden_field :addresses, :value => @address_id  %>
 		    <%= f.hidden_field :settlement_method, :value => @settlement_method %>
-	<div class="col-xs-12">
-		<div class="center-block">
-		    <%= f.submit '購入を確定する',class: " btn btn btn-success " %>
+		    <tr>
+		    <%= f.submit '購入を確定する',class: " btn btn btn-success btn-lg col-lg-12" %>
+		   </tr>
+        <% end %>
 		</div>
-	</div>
-<% end %>
+		 <div class="col-lg-2">
+        </div>
+    </div>
 </div>
-		<%#= render 'footer'%>
+

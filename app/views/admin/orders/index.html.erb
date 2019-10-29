@@ -5,44 +5,47 @@
 <div class="container">
   <div class="row">
 　　<div class="col-lg-9">
-	<h1>全てのユーザーの注文一覧</h1>
-   <% @orders.each do |o|  %>
-	    <p class="text-center">
-			<table class="table table-hover col-lg-9 ">
-						<thead>
-				             <tr>
-								<th>ユーザー名</th>
-								<th>購入日</th>
-								<th>数量</th>
-								<th>合計金額</th>
-								<th>お届け先住所</th>
-								<th>出荷状況</th>
-							</tr>
-						</thead>
-					<tbody>
-						<tr>
-							<td class="col-xs-1"><%= Customer.with_deleted.find(o.customer_id).name %></td>
-							<td class="col-xs-1"><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
-							<td class="col-xs-1"></td>
-							<td class="col-xs-1"><</td>
-							<td class="col-xs-1"><%= o.address %></td>
-							<td class="col-xs-1"> <%= o.select :delivery_status,  Order.delivery_statuses.keys.map {|k| [I18n.t("enums.order.delivery_status.#{k}"), k]} %></td>
-							                      <%= f.select :product_status,  Product.product_statuses.keys.map {|k| [I18n.t("enums.product.product_status.#{k}"), k]} %>
-							<td class="col-xs-2 label label-primary" ><%= o.delivery_status_i18n %></td>
-						</tr>
-						<% o.order_details.each do |f| %>
-						 <tr>
-							　<td class="col-xs-3"><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
-							 <td class="col-xs-3">商品名<%= f.product.product_name %></td>
+	<h1>ユーザーの注文一覧</h1>
+	   <% @orders.each do |o|  %>
+			<table class="table table-hover col-lg-12 ">
+				<thead>
+		             <tr class="well  well-lg">
+						<th>ユーザー名</th>
+						<th>購入日</th>
+						<th>お届け先住所</th>
+						<th></th>
+						<th>出荷状況</th>
+						<th></th>
+					</tr>
+				</thead>
 
-							 <td class="col-xs-3">商品個数<%#= f.product.product_name %>点</td>
-						　</tr>
+				<tbody>
+					<tr class="panel panel-default">
+						<td><%= Customer.with_deleted.find(o.customer_id).name %></td>
+						<td><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
+						<td><%= o.address %></td>
+						<td>
+
+
+	                   <%= form_for o, url:admin_order_path(o), method: :patch do |f| %>
+						 <%#= form_for (o) do |f| %>
+						<td><%= f.select :delivery_status, Order.delivery_statuses.keys.map {|k| [I18n.t("enums.order.delivery_status.#{k}"), k]} %></td>
+						<td><%= f.submit "配送情報の変更をする" %></td>
 						<% end %>
-			       </tbody>
+					</tr>
+					<% o.order_details.each do |f| %>
+						 <tr>
+							　<td class="col-xs-3"><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
+							  <td text-align:center;><font size="3">商品名 :<%= f.product.product_name %><br>
+							   商品個数<%= f.order_quantity %>点<br>
+						</tr>
+					<% end %>
+			    </tbody>
 			</table>
-		  <% end %>
-	       <%#= paginate @order %>
-	     </p>
+			<%= paginate @orders %>
+
+		<% end %>
      </div>
   </div>
 </div>
+

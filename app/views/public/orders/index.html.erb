@@ -1,43 +1,34 @@
-
-
-<div class="main-visual">
-   <h1 class="text-success">購入履歴一覧画面</h1>
-   <% @orders.each do |o|  %>
-	<table class="table table-hover col-lg-7 ">
-		<thead>
-			<tr>
-				<th class="create_day">注文日</th>
-				<th class="">配送状況</th>
-				<th class=""></th>
-			</tr>
-		</thead>
-			<tbody>
-				<tr>
-					<td class="order_day"><%= o.created_at.strftime("%Y年%m月%d %H:%M") %></td>
-					<td class="delivery_status" ><%= o.delivery_status_i18n %></td>
-					<td class=""><%= link_to '購入履歴詳細リンク', order_path(o.id) %></td>
-				</tr>
-				<% o.order_details.each do |f| %>
-				   <tr class="table">
-					　<td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %></td>
-					 <td><div class="product_font">商品名: <%= f.product.product_name %><br></div>
-					 <div class="price_font">金額: <%= f.product.product_price %>円<br></div>
-					 <div class="count_font">点数: <%= f. order_quantity %>点</td></div>
-				　</tr>
-				<% end %>
-	       </tbody>
-		</table>
-	<% end %>
- <%= paginate @orders %>
+<div class="container">
+    <div class="row">
+    	 <div class="col-lg-2">
+    	 </div>
+        <div class="col-lg-8">
+	    <h1 class="text-success">購入履歴一覧画面</h1>
+		<table class="table table-hover">
+			 <% @orders.each do |o|  %>
+					 <tr class="well  well-lg">
+					 	<td><div class="small_titel-2">注文日</div><%= o.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+			          　<br><td><div class="small_titel-2">配送状況:</div><%= o.delivery_status_i18n %></font>
+			              <td><font size="5"><%= link_to '購入履歴詳細', order_path(o.id) %><br></font>
+			            </td>
+			        </tr>
+		        <% o.order_details.each do |f| %>
+			        <tr class="panel panel-default">
+		                <td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
+		                <td><div class=""><font size="5">商品名:<%= f.product.product_name %></div></font>
+		                <br>
+		                <br><font size="4">商品個数:<%= f.order_quantity %>個</font>
+		                <br>
+					    <br><font size="4">金額:<%= f.product.product_price %>円<br></font>
+			           <!--  <td text-align:center;><font size="4"><%#= f.product.product_price * f.purchase_quantity %>円</font></td> -->
+		               </td>
+			       </tr>
+			    <% end %>
+			<% end %>
+	    </table>
+	     <%= paginate @orders %>
+	    </div>
+	    <div class="col-lg-2">
+      </div>
+   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
