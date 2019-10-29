@@ -33,10 +33,7 @@ class Public::CustomersController < ApplicationController
 
     flash[:notice] = "退会手続きが完了しました。"
 
-    redirect_to("/products")
   end
-
- 
 
   private
   def customer_params
