@@ -24,8 +24,9 @@ before_action :ransack
   end
 
   def purchase_history
+
     @customer = Customer.find(params[:id])
-    @orders = @customer.orders.find(params[:id])
+    @orders = @customer.orders
     # @orders = @customer.orders Orderモデルが出来上がってから設定
   end
 

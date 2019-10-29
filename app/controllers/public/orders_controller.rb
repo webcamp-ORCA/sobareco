@@ -28,7 +28,9 @@ class Public::OrdersController < ApplicationController
       # ユーザー以外のアドレスだったら
       delivery = Delivery.find(params[:order][:addresses].to_i)
       #ユーザー以外の指定した配送先を表示
-      @address = delivery.name + delivery.post_code + delivery.prefecture + delivery.address
+      @address = delivery.name + delivery.post_code + delivery.prefecture.name# @order = Order.find(params[:id])
+    # @order.update(order_params)
+    # redirect_to admin_orders + delivery.address
       @address_id = delivery.id
     end
     # 決済方法を保存
@@ -96,12 +98,21 @@ end
   def purchase_complete
   end
 
+  def update
+      @order = Order.find(params[:id])
+   if @order.update(order_params)
+      flash[:notice] = "登録しました"
+      redirect_to admin_orders_path
+    else
+      render :index
+    end
+  end
 
 # 購入履歴
   def index
     #@orders = Order.all
 
-    @orders = Order.page(params[:page]).per(PER)
+    @orders = current_customer.orders.page(params[:page]).per(PER)
   end
 
   private
