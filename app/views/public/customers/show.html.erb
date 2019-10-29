@@ -1,24 +1,22 @@
 <div class="container-fluid">
 	<div class="row">
-<div class="col-lg-12">
-	<div class="text-center">
-	<div class="bg-success">
-<h1>マイページ</h1>
-</div>
-</div>
+<div class="col-lg-8 col-lg-offset-2">
+<h1><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>マイページ</h1><br>
 </div>
 </div>
 </div>
 
 
-<div class="container">
-<div class="row">
+<div class="col-lg-2"></div>
+<div class="col-lg-8">
+	<div class="panel panel-default">
+	<div class="well well-md">
+		<div class="text-center">
+			<font size="5">登録情報</font></div>
+		</div>
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
-	<div class="text-center">
-	<h2>登録情報</h2>
-
-<table>
+		<table>
 	<tbody>
 <tr>
 	<th><font size="5">名前</font></th>
@@ -38,26 +36,48 @@
 </tbody>
 </table>
 </div>
-</div>
+<div class="col-lg-3"></div>
 
+<div class="col-lg-12">
+	<div class="col-lg-3"></div>
+	<div class="col-lg-6">
+<%= link_to '会員情報の変更', edit_customer_path, class: "btn btn-success btn-md" %>
+<%= link_to 'お届け先住所一覧', deliveries_path, class: "btn btn-success btn-md" %>
+<%= link_to '購入履歴の確認', orders_path, class: "btn btn-success btn-md" %>
+<p><%= link_to '退会する・・・', destroy_confirm_customer_path %></p>
+</div>
 <div class="col-lg-3"></div>
 </div>
 </div>
+</div>
+
+<div class="col-lg-2"></div>
+<!-- <div class="row">
+	<div class="panel panel-default">
+		<div class="well well-md">
+			<font size="5">クレジット情報</font>
+		</div> -->
 
 
 
-<p><%= link_to '退会する・・・', destroy_confirm_customer_path %></p>
+<div class="col-lg-3"></div>
 
-<%= link_to '会員情報の変更', edit_customer_path, class: "btn btn-success btn-lg" %>
-<%= link_to 'お届け先住所一覧', deliveries_path, class: "btn btn-success btn-lg" %>
-<%= link_to '購入履歴の確認', orders_path, class: "btn btn-success btn-lg" %>
-<h2>クレジット情報</h2>
 
+<div class="row">
+	<div class="col-lg-12">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="well well-md">
+		<div class="text-center">
+<font size="5">クレジット情報</font>
+</div>
+</div>
+<div class="text-center">
 <%= link_to '登録・編集する', new_card_path %>
-</tbody>
-</table>
 </div>
 </div>
+<div class="col-lg-2"></div>
 </div>
 
 

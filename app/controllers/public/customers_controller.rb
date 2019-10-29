@@ -30,13 +30,10 @@ class Public::CustomersController < ApplicationController
     customer = Customer.find(params[:id])
     customer.destroy
 
-
+    
     flash[:notice] = "退会手続きが完了しました。"
-
-    redirect_to("/products")
+    redirect_to ('/products')
   end
-
- 
 
   private
   def customer_params

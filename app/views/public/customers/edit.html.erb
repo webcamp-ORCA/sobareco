@@ -1,123 +1,131 @@
-
-<div class="col-lg-10">
+<div class="col-lg-12">
+  <div class="text-center">
 <h1>会員情報の変更</h1>
+</div>
 
 <%= form_for(@customer, url: customer_path) do |f| %>
 
-  <!-- 姓名 -->
-    <div class="row">
-        <div class="col-lg-3"></div>
-  <div class="col-lg-3">
-      <%= f.label(:last_name, "姓") %>
-      <%= f.text_field :last_name, class:'form-control' %>
-    </div>
-  
-    
-    
-    <div class="col-lg-3">
-      <%= f.label(:first_name, "名") %>
-      <%= f.text_field :first_name, class: 'form-control' %>
+<div class="form-row">
+    <div class="col-md-12 form-group">
+      <div class="col-sm-3"></div>
+      <label class="col-sm-1" for="last_name">姓</label>
+      <!-- <input class="col-sm-9 form-control" id="last_name" /> -->
+      <div class="col-sm-5">
+      <%= f.text_field :last_name, autofocus: true, placeholder: "小林", class: "form-control" %>
     </div>
   </div>
-  
+</div>
 
-  <!-- 姓名（カナ） -->
-  <div class="row">
-    <div class="col-lg-3"></div>
 
-    <div class="col-lg-3">
-        <%= f.label(:lastname_name, "姓（カナ）") %>
-        <%= f.text_field :lastname_kana, class:'form-control' %>
+    <div class="col-md-12 form-group">
+      <div class="col-sm-3"></div>
+      <label class="col-sm-1" for="first_name">名</label>
+      <!-- <input class="col-sm-9 form-control" id="first_name"> -->
+      <div class="col-sm-5">
+      <%= f.text_field :first_name, placeholder: "勃也", class:"form-control" %><br>
       </div>
-      
-      <div class="col-lg-3">
-        <%= f.label(:firstname_kana, "名（カナ）") %>
-        <%= f.text_field :firstname_kana, class: 'form-control' %>
-      </div>
-    
     </div>
-  
-    
-    <!--郵便番号 -->
 
-    <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-3">
-          <%= f.label(:post_code, "郵便番号") %>
-          <%= f.text_field :post_code, class:'form-control' %>
+
+    <div class="form-row">
+    <div class="col-md-12 form-group">
+      <div class="col-sm-3"></div>
+      <label class="col-sm-1" for="lastname_kana">姓（カナ）</label>
+      <!-- <input class="col-sm-9 form-control" id="lastname_kana" /> -->
+      <div class="col-sm-5">
+      <%= f.text_field :lastname_kana, placeholder: "コバヤシ", class:"form-control" %>
+      </div>
+      </div>
+    </div>
+
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1" for="firstname_kana">名（カナ）</label>
+        <div class="col-sm-5">
+        <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %><br>
         </div>
       </div>
-  
-    <!-- 都道府県 -->
-    <div class="row">
-      <div class="col-lg-3"></div>
-   
-      <div class="col-lg-6">
-        <%= f.label(:address, "住所") %>
-           <div class="col-sm-3">
+
+
+
+    <div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1" for="post_code">郵便番号</label>
+        <div class="col-sm-5">
+          <%= f.text_field :post_code, placeholder:"000-0000", class:"form-control" %><br>
+        </div>
+      </div>
+    </div>
+
+<div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+          <label class="col-sm-1">住所</label>
+
+            <div class="col-sm-5">
             <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
-            <%= f.text_field :municipality, placeholder: "市区町村", class:"form-control" %><br>
-            <%= f.text_field :address, placeholder: "丁目、番地、建物名", class:"form-control" %>
-            </div>
-        <!-- f.select :prefecture_code, as: :select, collection: JpPrefecture::Prefecture.all {|prefecture| [prefecture.name, prefecture.code]} -->
 
+
+            <%= f.text_field :municipality, placeholder: "市区町村", class:"form-control" %><br>
+            <%= f.text_field :address, placeholder: "丁目、番地、建物名", class:"form-control" %><br>
+            </div>
+
+          </div>
+        </div>
+        <br>
+
+
+<div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">電話番号</label>
+        <div class="col-sm-5">
+          <%= f.text_field :telephone, placeholder:"000-0000", class:"form-control" %><br>
+        </div>
       </div>
     </div>
 
-    <!-- 市区町村 -->
-      <div class="row">
-        <div class="col-lg-3"></div>
-
-        <div class="col-lg-3">
-          <%= f.text_field :municipality, class: 'form-control' %> 市区郡を入力してください
+<div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">メールアドレス</label>
+        <div class="col-sm-5">
+        <%= f.text_field :email, placeholder:"kobaba@kokoko", class: "form-control" %>
         </div>
       </div>
-  
-      <!-- 町名・番地 -->
-      <div class="row">
-        <div class="col-lg-3"></div>
+    </div>
 
-        <div class= "col-lg-3">
-          <%= f.text_field :address, class: 'form-control' %> 町名・番地を入力してください
+<div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">パスワード</label>
+        <div class="col-sm-5">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "パスワード", class:"form-control" %><br>
         </div>
       </div>
+    </div>
 
-    <!-- 電話番号 -->
-    <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-3">
-          <%= f.label(:telephone, "電話番号") %>
-          <%= f.text_field :telephone, class:'form-control' %>
+<div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">パスワード<br>（確認用）</label>
+        <div class="col-sm-5">
+          <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用", class:"form-control" %>
         </div>
       </div>
+    </div>
 
-    <!-- メールアドレス -->
-    <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-6">
-          <%= f.label(:email, "メールアドレス") %>
-          <%= f.text_field :email, class:'form-control' %>
-        </div>
+<div class="form-row">
+      <div class="col-md-12 form-group">
+        <div class="col-xs-5"></div>
+      <div class="actions">
+        <%= f.submit "編集完了" , class: "col-xs-2 btn btn-success" %>
+      </div> 
       </div>
-
-
-  <div class="row"></div>  
-  
-  <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="text-center">
-
-      <!-- f.submit '変更する', class: "btn btn-primary" -->
-<br>
-<br>
- <%= f.submit '変更する', class: "btn btn-primary" %>
-  
- <!-- admin_customer_path(@customer.id) -->
-</div>
-</div>
-  </div>
+    </div>
   </div>
   <% end %>
-
-
-
