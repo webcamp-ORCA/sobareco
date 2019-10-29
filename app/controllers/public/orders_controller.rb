@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
      #もし注文したユーザーのアドレスがユーザー自身のアドレスだったら
     if params[:order][:addresses] == "user_address"
        # ユーザーの郵便番号と住所を表示
-      @address = current_customer.post_code + current_customer.address
+      @address = post_code.prefecture + current_customer.address
       @addresses = "user_address"
     else
       # ユーザー以外のアドレスだったら

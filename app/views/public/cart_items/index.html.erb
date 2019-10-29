@@ -13,8 +13,8 @@
 	        <th>商品画像</th>
 			<th>商品名</th>
 			<th>数量</th>
-			<th>価格</th>
-	        <th class="text-center">合計</th>
+			<th>価格（税込）</th>
+	        <th class="text-center">合計（税込）</th>
 	    </tr>
 		<% current_customer.cartitems.each do |cart_item| %>
 		     <tr>
@@ -23,11 +23,13 @@
 	                <br>
 	                <br>アーティスト:<font size="3"><%= cart_item.product.artist.artist_name %></font>
 	                <br>
-	                <br >ジャンル:<font size="3"><%= cart_item.product.genre.genre_name %><br></font>
+	                <br >ジャンル:<font size="3"><%= cart_item.product.genre.genre_name %></font>
 		        </td>
+				<br>
 				<td text-align:center;>
-					<font size="4"><%= cart_item.purchase_quantity %>個</font>
-				</td>
+					<font size="4"><%= cart_item.purchase_quantity %>個</font></td>
+				<br>
+				<% cart_item.product.product_price = cart_item.product.product_price * 1.1 %>
 				<td text-align:center;><font size="4"><%= cart_item.product.product_price %>円</font></td>
 		        <td text-align:center; class="text-center">
 					<font size="4"><%= cart_item.product.product_price * cart_item.purchase_quantity %>円</font>

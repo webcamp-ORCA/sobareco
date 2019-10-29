@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
 before_action :ransack
+before_action :authenticate_customer!
 
 
   def index
