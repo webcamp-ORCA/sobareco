@@ -17,101 +17,130 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
   <%= render "devise/shared/error_messages", resource: resource %>
-    
+
     <div class="form-row">
-    <div class="col-md-6 form-group">
-      <label class="col-sm-2" for="last_name">姓</label>
+    <div class="col-md-12 form-group">
+      <div class="col-sm-3"></div>
+      <label class="col-sm-1" for="last_name">姓</label>
       <!-- <input class="col-sm-9 form-control" id="last_name" /> -->
-      <div class="col-sm-10">
+      <div class="col-sm-5">
       <%= f.text_field :last_name, autofocus: true, placeholder: "小林", class: "form-control" %>
     </div>
   </div>
+</div>
 
-    <div class="col-md-6 form-group">
-      <label class="col-sm-2" for="first_name">名</label>
+    
+    <div class="col-md-12 form-group">
+      <div class="col-sm-3"></div>
+      <label class="col-sm-1" for="first_name">名</label>
       <!-- <input class="col-sm-9 form-control" id="first_name"> -->
-      <div class="col-sm-10">
+      <div class="col-sm-5">
       <%= f.text_field :first_name, placeholder: "勃也", class:"form-control" %><br>
       </div>
     </div>
 
 
-    <div class="col-md-6 form-group">
-      <label class="col-sm-2" for="lastname_kana">姓（カナ）</label>
+    <div class="form-row">
+    <div class="col-md-12 form-group">
+      <div class="col-sm-3"></div>
+      <label class="col-sm-1" for="lastname_kana">姓（カナ）</label>
       <!-- <input class="col-sm-9 form-control" id="lastname_kana" /> -->
-      <div class="col-sm-10">
+      <div class="col-sm-5">
       <%= f.text_field :lastname_kana, placeholder: "コバヤシ", class:"form-control" %>
       </div>
       </div>
+    </div>
 
-      <div class="col-md-6 form-group">
-        <label class="col-sm-2" for="firstname_kana">名（カナ）</label>
-        <div class="col-sm-10">
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1" for="firstname_kana">名（カナ）</label>
+        <div class="col-sm-5">
         <%= f.text_field :firstname_kana, placeholder: "タツヤ", class:"form-control" %><br>
         </div>
       </div>
 
 
+
     <div class="form-row">
-      <div class="col-md-6 form-group">
-        <label class="col-sm-2" for="post_code">郵便番号</label>
+      <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1" for="post_code">郵便番号</label>
         <div class="col-sm-5">
-          <%= f.text_field :post_code, placeholder:"000-0000", class:"form-control" %>
+          <%= f.text_field :post_code, placeholder:"000-0000", class:"form-control" %><br>
         </div>
       </div>
     </div>
 
+<div class="form-row">
       <div class="col-md-12 form-group">
+        <div class="col-sm-3"></div>
           <label class="col-sm-1">住所</label>
 
-            <div class="col-sm-3">
+            <div class="col-sm-5">
             <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
-            
+
+
             <%= f.text_field :municipality, placeholder: "市区町村", class:"form-control" %><br>
-            <%= f.text_field :address, placeholder: "丁目、番地、建物名", class:"form-control" %>
+            <%= f.text_field :address, placeholder: "丁目、番地、建物名", class:"form-control" %><br>
             </div>
 
           </div>
         </div>
+        <br>
 
+
+<div class="form-row">
       <div class="col-md-12 form-group">
-        <label class="col-sm-2">電話番号</label><br>
-        <div class="col-sm-3">
-          <%= f.text_field :telephone, placeholder:"000-0000", class:"form-control" %>
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">電話番号</label>
+        <div class="col-sm-5">
+          <%= f.text_field :telephone, placeholder:"000-0000", class:"form-control" %><br>
         </div>
       </div>
+    </div>
 
+<div class="form-row">
       <div class="col-md-12 form-group">
-        <label class="col-sm-2">メールアドレス</label><br>
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">メールアドレス</label>
         <div class="col-sm-5">
         <%= f.text_field :email, placeholder:"kobaba@kokoko", class: "form-control" %>
         </div>
       </div>
+    </div>
 
+<div class="form-row">
       <div class="col-md-12 form-group">
-        <label class="col-sm-2">パスワード</label><br>
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">パスワード</label>
         <div class="col-sm-5">
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "パスワード", class:"form-control" %>
+          <%= f.password_field :password, autocomplete: "パスワード", class:"form-control" %><br>
         </div>
       </div>
+    </div>
 
+<div class="form-row">
       <div class="col-md-12 form-group">
-        <label class="col-sm-2">パスワード<br>（確認用）</label>
+        <div class="col-sm-3"></div>
+        <label class="col-sm-1">パスワード<br>（確認用）</label>
         <div class="col-sm-5">
           <%= f.password_field :password_confirmation, autocomplete: "パスワード確認用", class:"form-control" %>
         </div>
       </div>
+    </div>
 
-
+<div class="form-row">
       <div class="col-md-12 form-group">
+        <div class="col-xs-5"></div>
       <div class="actions">
-        <%= f.submit "アカウントを作成" , class: "col-xs-4 btn btn-primary" %>
+        <%= f.submit "アカウントを作成" , class: "col-xs-2 btn btn-success" %>
       </div> 
       </div>
     </div>
+  </div>
 
 
 <% end %>

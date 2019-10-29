@@ -7,23 +7,25 @@
 			 <% @deliveries.each do |d| %>
                 <tr>
                 	<th>名前</th>
-                	<th></th>
-                	<th></th>
-                	<th></th>
-                	<th></th>
-                	<th></th>
+                	<th>郵便番号</th>
+                	<th>都道府県</th>
+                	<th>市区町村</th>
+                	<th>番地など</th>
+                	<th>電話番号</th>
                 </tr>
 
 
 
 
 				<tr>
-					<td><%= d.name %></td>
-					<td><%= d.post_code %></td>
+<<<<<<< HEAD
+					<td><%= d.customer.name %></td>
+					<td><%= d.customer.post_code %></td>
 					<td><%= d.customer.prefecture %></td>
-					<td><%= d.municipality %></td>
-					<td><%= d.address %></td>
-					<td><%= d.telephone%></td>
+					<td><%= d.customer.municipality %></td>
+					<td><%= d.customer.address %></td>
+					<td><%= d.customer.telephone%></td>
+￥
 					<td><%= link_to "編集", edit_delivery_path(d.id) ,class: "label label-primary" %></td>
 			<% end %>
 	    </tbody>

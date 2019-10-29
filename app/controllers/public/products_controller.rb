@@ -1,6 +1,7 @@
 class Public::ProductsController < ApplicationController
 before_action :ransack
 
+
   PER = 12
 
 

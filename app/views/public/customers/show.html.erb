@@ -7,37 +7,47 @@
 </div>
 </div>
 </div>
-</div>
+
 
 <div class="row">
 <div class="col-lg-12">
-<div class="col-lg-4"></div>
-<div class="col-lg-5 bg-success">
+
 
 <table>
-	<tr>
-<h4>購入履歴</h4>
-<%= link_to '購入履歴の確認', orders_path, class: "btn btn-success btn-lg" %>
-</div>
-</tr>
-<p><%= link_to '退会する・・・', destroy_confirm_customer_path %></p>
+<tbody>
+<!-- <h2>購入履歴</h2> -->
+
+<!-- </div> -->
+
+<div class="row">
 <tr>
-<h4>登録情報</h4>
-<p>名前　<%= @customer.name %></p>
-<p>住所　<%= @customer.homeaddress %></p>
-<p>電話番号　<%= @customer.telephone %></p>
+	<div class="col-lg-3">
+<th>登録情報</th>
+</div>
+<td>
+	<p>名前　<%= @customer.name %></p>
+	<p>住所　<%= @customer.homeaddress %></p>
+	<p>電話番号　<%= @customer.telephone %></p>
+</td>
+</tr>
 
-<%= link_to '会員情報の変更', edit_customer_path, class: "btn btn-info btn-lg" %>
-<%= link_to 'お届け先住所一覧', deliveries_path, class: "btn btn-info btn-lg" %>
 
+<p><%= link_to '退会する・・・', destroy_confirm_customer_path %></p>
 
+<%= link_to '会員情報の変更', edit_customer_path, class: "btn btn-success btn-lg" %>
+<%= link_to 'お届け先住所一覧', deliveries_path, class: "btn btn-success btn-lg" %>
+<%= link_to '購入履歴の確認', orders_path, class: "btn btn-success btn-lg" %>
 <h2>クレジット情報</h2>
 <p>下４桁:xxxx</p>
 <%= link_to '登録・編集する', new_card_path %>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 
-
-<div class="row">
+<!-- <div class="row">
 <div class="col-lg-12">
 <table>
 	<tr>
@@ -45,12 +55,12 @@
 		<th>登録情報</th>
 		 </div>
 		 <div class="col-lg-6">
-		<td>名前　<%= @customer.name %></td>
+		<td>名前　<%#= @customer.name %></td>
 	</div>
 		<div class="col-lg-6">
-		<td>住所　<%= @customer.homeaddress %></td>
+		<td>住所　<%#= @customer.homeaddress %></td>
 	</div>
 		<div class="col-lg-6">
-		<td>電話番号　<%= @customer.telephone %></td>
-		</div>
+		<td>電話番号　<%#= @customer.telephone %></td>
+		</div> -->
 
