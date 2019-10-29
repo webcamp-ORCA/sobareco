@@ -17,6 +17,7 @@
 				   <!-- ログイン中のユーザー情報を表示 -->
 				    <tr>
 						<td>名前</td>
+
 						<td><%= @customer.name %></td>
 					</tr>
 					<tr>
@@ -67,9 +68,10 @@
 					</tr>
 					<tr>
 						<td><label><%= f.radio_button :settlement_method, "代引き" %>代引き</label></td>
-					</tr>
-					<tr>
-						<td><label><%= f.radio_button :settlement_method, "クレジットカード" %>クレジットカード</label></td>
+
+						<td><label><%= f.radio_button :settlement_method, "クレジットカード" %>クレジットカード</label><br><%= link_to "クレジットカードを登録する", new_card_path %></td>
+
+
 					</tr>
 				  </table>
 			     <table class="table table-hover ">

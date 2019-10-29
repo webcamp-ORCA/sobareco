@@ -42,6 +42,9 @@ class Public::CustomersController < ApplicationController
   	params.require(:customer).permit(:last_name, :first_name, :lastname_kana, :firstname_kana, :post_code, :municipality, :address, :telephone, :prefecture_id)
   end
   
+  # def ensure_correct_user
+  #   if current_customer.id !=params[:id].to_i
+  #     redirect_to customer_path(current_customer.id)
   def ransack
 
     @q = Product.ransack(params[:q])

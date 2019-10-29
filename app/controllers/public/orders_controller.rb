@@ -23,15 +23,15 @@ class Public::OrdersController < ApplicationController
     if params[:order][:addresses] == "user_address"
        # ユーザーの郵便番号と住所を表示
       @address = current_customer.post_code + current_customer.address
-      @address_id = "user_address"
+      @addresses = "user_address"
     else
       # ユーザー以外のアドレスだったら
-      delivery = Delivery.find(params[:order][:addresses].to_i)
+      # delivery = Delivery.find(params[:order][:addresses].to_i)
       #ユーザー以外の指定した配送先を表示
-      @address = delivery.name + delivery.post_code + delivery.prefecture.name# @order = Order.find(params[:id])
+      # @address = delivery.name + delivery.post_code + delivery.prefecture.name# @order = Order.find(params[:id])
     # @order.update(order_params)
     # redirect_to admin_orders + delivery.address
-      @address_id = delivery.id
+      @addresses = params[:order][:addresses].to_i
     end
     # 決済方法を保存
     @order = Order.new
@@ -56,7 +56,41 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @order.customer_id = current_customer.id
     @order.settlement_method = params[:order][:settlement_method]
+    @order.addresses = params[:order][:addresses]
+    # address = Delivery.find params[:order][:addresses]
+    @toatal_amount = params[:order][:total_amount]
+   
+    # @order.post_code = params[:order][:post_code]
+    # @order.address = params[:order][:addres]
+
+     # @customer = current_customer.id
+     #もし注文したユーザーのアドレスがユーザー自身のアドレスだったら
+    if params[:order][:addresses] == "user_address"
+       # ユーザーの郵便番号と住所を表示
+      @address = current_customer
+      # ユーザー以外のアドレスだったら
+   else
+      @address = Delivery.find(params[:order][:addresses].to_i)
+      #ユーザー以外の指定した配送先を保存
+    end
+    # binding.pry
+    @order.post_code = @address.post_code
+    @order.prefecture_id = @address.prefecture_id
+    @order.municipality = @address.municipality
+    @order.address = @address.address
+
+  # @address_id = delivery.id
+  # @address = delivery.name + delivery.post_code + delivery.prefecture.name# @order = Order.find(params[:id])
+
+     # 変数名.カラム名= 変数名.カラム名
+   #もし注文したユーザーのアドレスがユーザ-以外のアドレスだったら
+    #もし注文したユーザーのアドレスがユーザーのアドレスだったら
+
+
+
+
     if @order.save
+
      #カートに入っているアイテムをeach文で出す
       current_customer.cartitems.each do |f|
           # 注文詳細
@@ -73,7 +107,7 @@ class Public::OrdersController < ApplicationController
           order_detail.save
           #カートの中身を削除する
           f.destroy
-
+        end
     # もし配送先住所,支払い方法,合計金額の保存に成功したら購入完了画面に移動
           redirect_to order_purchase_complete_path(@order) and return
     else
@@ -88,7 +122,6 @@ class Public::OrdersController < ApplicationController
 
         # @order_detail.save
         #item.destroy （カートのアイテムを削除)
-end
 
 # 購入履歴詳細
   def show
@@ -98,23 +131,22 @@ end
 
 #購入後画面
   def purchase_complete
-  end
-
-  def update
-      @order = Order.find(params[:id])
-   if @order.update(order_params)
-      flash[:notice] = "登録しました"
-      redirect_to admin_orders_path
-    else
-      render :index
     end
+
+    def update
+          @order = Order.find(params[:id])
+       if @order.update(order_params)
+          flash[:notice] = "登録しました"
+          redirect_to admin_orders_path
+        else
+          render :index
+      end
   end
 
 # 購入履歴
   def index
-    #@orders = Order.all
 
-    @orders = Order.page(params[:page]).per(PER)
+    @orders = current_customer.orders.page(params[:page]).per(PER)
   end
 
   private

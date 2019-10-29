@@ -33,8 +33,6 @@ customer = Customer.create!(
 # )
 
 
-
-
 adminuser = AdminUser.create!(
 	email: 'kobatatsu@tmail.com',
 	password: '00000000',
