@@ -1,6 +1,4 @@
 
-<h1>お届け先住所変更</h1>
-
 <% if @deliveries.errors.any? %>
             <%= @deliveries.errors.count %>件のerrorが発生しました
             <% @deliveries.errors.full_messages.each do |message| %>
@@ -26,8 +24,8 @@
 
 <div class="field">
 <div class="col-log-3">
-    <%= f.label :email, "住所（都道府県）" %>
-    <%= f.text_field :prefecture %>
+    <%= f.label :prefecture_id, "住所（都道府県）" %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %><br>
 </div>
 
 <div class="field">

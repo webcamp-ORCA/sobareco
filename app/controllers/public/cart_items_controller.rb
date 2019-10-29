@@ -11,8 +11,9 @@ before_action :ransack
     #binding.pry
     @cartitem = Cartitem.new
     @cartitem.product_id  = params[:cartitem][:product_id].to_i
-    @cartitem.purchase_quantity = params[:cartitem][:purchase_quantity].to_i
+    @cartitem.purchase_quantity = 1
     @cartitem.customer_id = current_customer.id
+    
     if @cartitem.save
       redirect_to cart_items_path(@cartitem.id)
     else
