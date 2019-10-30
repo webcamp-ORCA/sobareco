@@ -2,6 +2,7 @@ class Admin::ArrivalManagementsController < ApplicationController
 
 before_action :ransack
 
+
   PER = 8
   def new
       @arrival = ArrivalManagement.new
