@@ -53,7 +53,8 @@
 
 
 					         	<td>合計金額</td>
-					         	<td><%= @total_price %>円</td>
+
+					         	<td><%= @total_price.to_i + @order.postage.to_i %>円</td>
 
 					        </tr>
                        </table>
