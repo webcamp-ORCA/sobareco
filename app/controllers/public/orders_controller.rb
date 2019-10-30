@@ -35,12 +35,11 @@ class Public::OrdersController < ApplicationController
     end
     # 決済方法を保存
     @order = Order.new
-
     @addresses = params[:order][:addresses]
     # 支払い方法を保存
     @settlement_method = params[:order][:settlement_method]
     # 合計金額を保存
-    @total_price = params[:order][:total_price]
+    @total_price = params[:order][:total_price].to_i
     # 合計数量を保存
     @toatal_amount = params[:order][:total_amount]
     #カートアイテムの購入数を保存
