@@ -2,14 +2,14 @@
     <div class="row">
     	 <div class="col-lg-2">
     	 </div>
-
         <div class="col-lg-8">
 	    <h1 class="text-success">購入履歴一覧画面</h1>
 		<table class="table table-hover">
 			 <% @orders.each do |o|  %>
 					 <tr class="well  well-lg">
 					 	<td><div class="small_titel-2">注文日</div><%= o.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-			          　<br><td><div class="small_titel-2">配送状況:</div><%= o.delivery_status_i18n %></font>
+					 	<td><div class="small_titel-2">お届け先住所</div><%=o.homeaddress %><br>
+			          　<td><div class="small_titel-2">配送状況</div><%= o.delivery_status_i18n %><br>
 			              <td><font size="5"><%= link_to '購入履歴詳細', order_path(o.id) %><br></font>
 			            </td>
 			        </tr>
@@ -17,17 +17,19 @@
 			        <tr class="panel panel-default">
 		                <td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
 		                <td><div class=""><font size="5">商品名:<%= f.product.product_name %></div></font>
-		                <br>
 		                <br><font size="4">商品個数:<%= f.order_quantity %>個</font>
-		                <br>
-					    <br><font size="4">金額:<%= f.product.product_price %>円<br></font>
-			           <!--  <td text-align:center;><font size="4"><%#= f.product.product_price * f.purchase_quantity %>円</font></td> -->
-		               </td>
-			       </tr>
+					    <br><font size="4">金額:<%= f.product.product_price* 1.1 %>円<br></font>
+			            <br><font size="4">合計金額:<%= f.price* 1.1 * f.order_quantity %>円</font></td>
+			             <% sum = 0 %> <% total = 0 %>
+			              <% total += f.price.to_i * f.order_quantity.to_i %>
+			            <% sum  +=  total * f.order_quantity.to_i%>
+                       <td><%#= f.total_amount %></td>
+
+
+
+                     <% end %>
 			    <% end %>
-			<% end %>
-	    </table>
-	     <%= paginate @orders %>
+	     <%#= paginate @orders %>
 	    </div>
 	    <div class="col-lg-2">
       </div>
