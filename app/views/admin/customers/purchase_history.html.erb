@@ -1,50 +1,39 @@
-<div class="col-lg-10">
-
-<h1>購入履歴</h1>
-<h2>ユーザー名:<%= @customer.name %></h2>
-
-<% @orders.each do |o| %>
-<div class="col-lg-10">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>注文日</th>
-        <th>合計数量</th>
-        <th>合計金額</th>
-        <th>お届け先住所</th>
-
-      </tr>
-      </thead>
 
 
-      <!--  Orderモデル完成後に、変数@orderで書き換える。 -->
-      <tbody>
-        <tr>
-        <td><%=h ((o.created_at).to_date).strftime('%Y年%m月%d日') %></td>
-        <td><%= o.total_amount %></td>
-        <td><%= o.order_details.sum(:order_quantity) %></td>
-        <td><%= o.addresses %></td>
-        </tr>
-      </tbody>
+<div class="row">
+<div class="col-lg-8">
 
-    </thead>
-  </table>
+<h1 class="text-muted">購入履歴</h1>
+</div>
+</div>
+<h3>ユーザー名:<%= @customer.name %></h3>
 
-  <div class="row">
-    <div class="col-lg-3">
-      <img src="/assets/no_image.png">
-    </div>
 
-<% o.order_details.each do |f| %>
-<%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
-<h2><font color="blue"><%= f.product.product_name %></font></h2>
-<%= link_to product_path(f.id) do %>
-<h2><font color="blue"><%= f.product.product_price %></font></h2>
-<h2><font color="blue"><%= f.product.artist.artist_name %></font></h2>
-<h2><font color="blue"><%= f.product.genre.genre_name %></font></h2>
-<% end %>
-<% end %>
-<% end %>
+    <table class="table table-hover">
+       <% @orders.each do |o|  %>
+           <tr class="well  well-lg">
+            <td><div class="small_titel-2">注文日</div><%= o.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+                　<br><td><div class="small_titel-2">配送状況:</div><%= o.delivery_status_i18n %></font>
+                    <td><font size="5"><%= link_to '購入履歴詳細', order_path(o.id) %><br></font>
+                  </td>
+              </tr>
+            <% o.order_details.each do |f| %>
+              <tr class="panel panel-default">
+                    <td><%= attachment_image_tag f.product, :product_image, :fill, 250, 250, fallback: "no_image.png", size:'150x150' %>
+                    <td><div class=""><font size="5">商品名:<%= f.product.product_name %></div></font>
+                    <br>
+                    <br><font size="4">商品個数:<%= f.order_quantity %>個</font>
+                    <br>
+              <br><font size="4">金額:<%= f.product.product_price %>円<br></font>
+                 <!--  <td text-align:center;><font size="4"><%#= f.product.product_price * f.purchase_quantity %>円</font></td> -->
+                   </td>
+             </tr>
+          <% end %>
+      <% end %>
+      </table>
+       <%#= paginate @orders %>
+      </div>
+      
 <!-- <div class="col-lg-9">
       <h2><font color="blue">TATSUYA 〜今宵は長い〜</font></h2>
       <h3><font color="orange">3,000円</font></h3>
