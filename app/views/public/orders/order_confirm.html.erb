@@ -22,9 +22,9 @@
 
 				                <br><div class="genre_font">ジャンル:<%=o.product.genre.genre_name %>
 					        </td>
-							 <td text-align:center;><font size="4"><%=o.product.product_price %>円</font></td>
+							 <td text-align:center;><font size="4"><%=o.product.product_price*1.1 %>円</font></td>
 								<td text-align:center;><font size="4"><%=o.purchase_quantity%>個</font></td>
-					            <td text-align:center;><font size="4"><%= o.product.product_price * o.purchase_quantity %>円</font></td>
+					            <td text-align:center;><font size="4"><%= o.product.product_price*1.1 * o.purchase_quantity %>円</font></td>
 							</td>
 						</tr>
 					<% end %>
@@ -47,14 +47,20 @@
 							    <td><%= @settlement_method %></td>
 							</tr>
 					         <tr>
+
+					         <td>合計金額</td>
+					         <td><%= @total_price * 1.1 %>円</td>
+
+
 					         	<td>合計金額</td>
 					         	<td><%= @total_price %>円</td>
+
 					        </tr>
                        </table>
 <!-- 配送先 支払い方法の選択で決めたこと -->
 		<%= form_for @order, url: "/orders" do |f| %>
+		    <%= f.hidden_field :total_amount, :@total_price => @total_amount %>
 		    <%= f.hidden_field :total_amount, :value => @total_amount %>
-		     <%#= f.hidden_field :addresses, :value => @address_id  %>
 		     <%= f.hidden_field :addresses, :value => @addresses  %>
 		    <%= f.hidden_field :settlement_method, :value => @settlement_method %>
 		    <tr>

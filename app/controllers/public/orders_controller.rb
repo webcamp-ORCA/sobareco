@@ -54,14 +54,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    # binding.pry
+     #binding.pry
     @order = Order.new
     @order.customer_id = current_customer.id
     @order.settlement_method = params[:order][:settlement_method]
     @order.addresses = params[:order][:addresses]
-    # address = Delivery.find params[:order][:addresses]
-    @toatal_amount = params[:order][:total_amount]
-   
+    @order.total_amount = @total_price.to_i + @order.postage.to_i
     # @order.post_code = params[:order][:post_code]
     # @order.address = params[:order][:addres]
 
@@ -76,6 +74,7 @@ class Public::OrdersController < ApplicationController
       #ユーザー以外の指定した配送先を保存
     end
     # binding.pry
+    @order.total_amount = @total_price
     @order.post_code = @address.post_code
     @order.prefecture_id = @address.prefecture_id
     @order.municipality = @address.municipality
@@ -133,9 +132,9 @@ class Public::OrdersController < ApplicationController
 
 #購入後画面
   def purchase_complete
-    end
+  end
 
-    def update
+  def update
           @order = Order.find(params[:id])
        if @order.update(order_params)
           flash[:notice] = "登録しました"
@@ -145,11 +144,12 @@ class Public::OrdersController < ApplicationController
       end
   end
 
+
 # 購入履歴
   def index
-
-    @orders = current_customer.orders.page(params[:page]).per(PER)
+    @orders = Order.all.page(params[:page]).per(PER)
   end
+
 
   private
     def order_params

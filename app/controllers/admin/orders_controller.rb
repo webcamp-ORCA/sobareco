@@ -35,7 +35,9 @@ end
 
 private
     def order_params
+
       params.require(:order).permit(:settlement_method,:postage,:delivery_status,:total_amount,:total_price,:addresses,:customer_id,:name,:post_code,:prefectures,:municipality,:address,:address, :prefecture_id)
+
     end
 
    def ransack
